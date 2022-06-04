@@ -12,17 +12,18 @@ const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
+
 // router.GET /recipes?name="..."
 router.get ('/recipes',async (req,res)=>{
     const {name} = req.query
     if (!name) return res.json('no pasaste ningun nombre') 
-    
-    const recipeFind = await recipe.findAll({where : {name }})
-    res.json(recipeFind.length ? recipeFind : 'no encontre la receta')
+    const recipeFind = await recipe.findAll()
+    let busqueda = recipeFind.filter(e=>e.name.includes(name))
+    res.json(busqueda.length ? busqueda : 'no encontre la receta')
 })
 
-router.get('/findAll',(req,res)=>{
-    const lola = recipe.findAll({})
+router.get('/findAll',async(req,res)=>{
+    const lola = await recipe.findAll()
    return  res.json(lola)
 })
 

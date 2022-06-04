@@ -5,16 +5,17 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('recipe', {
     id : {
-      type : DataTypes.STRING,
+      type : DataTypes.INTEGER,
       unique : true,
-      allowNull : false,
-      primaryKey :true 
+      primaryKey :true ,
+      autoIncrement: true
     },
     name: {
       type: DataTypes.STRING,
+      unique : true ,
       allowNull: false,
     },
-    resumen_del_plato :{
+    summary :{
       type : DataTypes.TEXT,
       allowNull : false,
     }
