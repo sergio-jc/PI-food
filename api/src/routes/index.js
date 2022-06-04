@@ -5,35 +5,17 @@ require("dotenv").config();
 // Ejemplo: const authRouter = require('./auth.js');
 const { Recipe, type } = require("../db");
 const { YOUR_API_KEY } = process.env;
-const {findNameRecipe, allRecipe} = require('../controllers')
+const {findNameRecipe, allRecipe , addRecite} = require('../controllers')
 const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-//* router.GET /recipes?name="..."
-
-// router.get("/recipes", async (req, res) => {
-//   const { name } = req.query;
-//   if (!name) return res.json("no pasaste ningun nombre");
-//   const { data } = await axios.get(
-//     `https://api.spoonacular.com/recipes/complexSearch?apiKey=${YOUR_API_KEY}&addRecipeInformation=true&number=100`
-//   );
-//   let aryApi = data.results.map((e) => ({
-//     id: e.id,
-//     name: e.title,
-//     summary: e.summary,
-//   }));
-// //   console.log(aryApi);
-//   const recipeFind = await Recipe.findAll();
-//   const unidos = aryApi.concat(recipeFind);
-//   console.log(unidos)
-//   let busqueda = unidos.filter((e) => e.name.toLowerCase().includes(name.toLowerCase()));
-//   res.json(busqueda.length ? busqueda : "no encontre la receta");
-// });
-
 router.get('/allRecipes',allRecipe)
 router.get('/recipes',findNameRecipe)
+router.post('/recipe',addRecite)
+
+
 
 
 
@@ -58,15 +40,7 @@ router.get("/recipes/:idReceta", async (req, res) => {
   res.json(data);
 });
 
-router.post("/recipe", async (req, res) => {
-  if (!req.body) return res.json("no se paso la informacion necesaria");
-  try {
-    const newRecipe = await Recipe.create(req.body);
-    res.json(newRecipe);
-  } catch (e) {
-    res.send("algo salio mal");
-  }
-});
+
 router.post("/type", (req, res) => {
   if (!req.body) return res.json("no se paso la informacion necesaria");
   type
