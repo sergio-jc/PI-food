@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('recipe', {
+  sequelize.define('Recipe', {
     id : {
       type : DataTypes.INTEGER,
       unique : true,
@@ -17,7 +17,27 @@ module.exports = (sequelize) => {
     },
     summary :{
       type : DataTypes.TEXT,
-      allowNull : false,
+      defaultValue : 'This recipe has no summary yet'
+    },
+    image : {
+      type : DataTypes.STRING ,
+      defaultValue :'https://us.123rf.com/450wm/blankstock/blankstock1610/blankstock161001411/63549960-plato-de-comida-que-sirve-icono-de-la-muestra-configuraci%C3%B3n-del-vector-en-el-s%C3%ADmbolo-restaurante-com.jpg?ver=6',
+    },
+    diets :{
+      type : DataTypes.STRING,
+      defaultValue : 'Unspecified diet'
+    },
+    healthScore :{
+      type : DataTypes.FLOAT,
+      validate : {
+        min : 0 ,
+        max : 100
+      },
+      defaultValue : 0
+    },
+    analyzedInstructions : {
+      type : DataTypes.TEXT,
+      defaultValue : 'This recipe has no instructions yet'
     }
   });
 };

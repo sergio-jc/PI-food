@@ -3,33 +3,42 @@ const { default: axios } = require("axios");
 require("dotenv").config();
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-const { recipe, type } = require("../db");
+const { Recipe, type } = require("../db");
 const { YOUR_API_KEY } = process.env;
-
+const {findNameRecipe} = require('../controllers')
 const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
 //* router.GET /recipes?name="..."
-router.get("/recipes", async (req, res) => {
-  const { name } = req.query;
-  if (!name) return res.json("no pasaste ningun nombre");
-  const { data } = await axios.get(
-    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${YOUR_API_KEY}&addRecipeInformation=true&number=100`
-  );
-  let aryApi = data.results.map((e) => ({
-    id: e.id,
-    name: e.title,
-    summary: e.summary,
-  }));
-//   console.log(aryApi);
-  const recipeFind = await recipe.findAll();
-  const unidos = aryApi.concat(recipeFind);
-  console.log(unidos)
-  let busqueda = unidos.filter((e) => e.name.toLowerCase().includes(name.toLowerCase()));
-  res.json(busqueda.length ? busqueda : "no encontre la receta");
-});
+
+// router.get("/recipes", async (req, res) => {
+//   const { name } = req.query;
+//   if (!name) return res.json("no pasaste ningun nombre");
+//   const { data } = await axios.get(
+//     `https://api.spoonacular.com/recipes/complexSearch?apiKey=${YOUR_API_KEY}&addRecipeInformation=true&number=100`
+//   );
+//   let aryApi = data.results.map((e) => ({
+//     id: e.id,
+//     name: e.title,
+//     summary: e.summary,
+//   }));
+// //   console.log(aryApi);
+//   const recipeFind = await Recipe.findAll();
+//   const unidos = aryApi.concat(recipeFind);
+//   console.log(unidos)
+//   let busqueda = unidos.filter((e) => e.name.toLowerCase().includes(name.toLowerCase()));
+//   res.json(busqueda.length ? busqueda : "no encontre la receta");
+// });
+router.get('/recipes',findNameRecipe)
+
+
+
+
+
+
+
 
 router.get("/findAll", async (req, res) => {
   const lola = await recipe.findAll();
@@ -42,16 +51,14 @@ router.get("/recipes/:idReceta", async (req, res) => {
   const { data } = await axios.get(
     `https://api.spoonacular.com/recipes/${idReceta}/information?apiKey=${YOUR_API_KEY}`
   );
+  const mapeado = data.map(e=>e)
   res.json(data);
-  // recipe.findAll({where:{id:idReceta}})
-  // .then(receta=>res.json(receta[0]))
-  // .catch(error=>res.send(error))
 });
 
 router.post("/recipe", async (req, res) => {
   if (!req.body) return res.json("no se paso la informacion necesaria");
   try {
-    const newRecipe = await recipe.create(req.body);
+    const newRecipe = await Recipe.create(req.body);
     res.json(newRecipe);
   } catch (e) {
     res.send("algo salio mal");
