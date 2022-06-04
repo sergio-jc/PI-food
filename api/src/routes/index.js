@@ -23,10 +23,11 @@ router.get("/recipes", async (req, res) => {
     name: e.title,
     summary: e.summary,
   }));
-  console.log(aryApi);
+//   console.log(aryApi);
   const recipeFind = await recipe.findAll();
   const unidos = aryApi.concat(recipeFind);
-  let busqueda = unidos.filter((e) => e.name.includes(name));
+  console.log(unidos)
+  let busqueda = unidos.filter((e) => e.name.toLowerCase().includes(name.toLowerCase()));
   res.json(busqueda.length ? busqueda : "no encontre la receta");
 });
 
