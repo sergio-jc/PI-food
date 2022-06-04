@@ -7,7 +7,6 @@ const findAllRecipe = async () =>{
     console.log(apiRecipe)
     console.log(dbRecipe)
     const allRecipe = apiRecipe.concat(dbRecipe)
-    console.log( allRecipe )
     return allRecipe
 }
 

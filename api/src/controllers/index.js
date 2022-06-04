@@ -2,7 +2,9 @@ const { findAllRecipe } = require("./recipe.api&db.js");
 
 const findNameRecipe = async (req,res) => {
   const { name } = req.query;
-  if (!name) return res.json("no pasaste ningun nombre");
+  if (!name) {
+     res.json("no pasaste ningun nombre")
+    };
   
   const aryAllRecipe = await findAllRecipe();
   let allRecipeFinded = aryAllRecipe.filter((e) =>
@@ -11,6 +13,12 @@ const findNameRecipe = async (req,res) => {
   res.json(allRecipeFinded.length ? allRecipeFinded : "no encontre la receta");
 };
 
+const allRecipe = async (req,res)=>{
+  const arrayAllRecipe = await findAllRecipe()
+  return res.status(200).json(arrayAllRecipe)
+}
+
 module.exports={
-    findNameRecipe
+    findNameRecipe,
+    allRecipe
 }

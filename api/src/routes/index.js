@@ -5,7 +5,7 @@ require("dotenv").config();
 // Ejemplo: const authRouter = require('./auth.js');
 const { Recipe, type } = require("../db");
 const { YOUR_API_KEY } = process.env;
-const {findNameRecipe} = require('../controllers')
+const {findNameRecipe, allRecipe} = require('../controllers')
 const router = Router();
 
 // Configurar los routers
@@ -31,7 +31,10 @@ const router = Router();
 //   let busqueda = unidos.filter((e) => e.name.toLowerCase().includes(name.toLowerCase()));
 //   res.json(busqueda.length ? busqueda : "no encontre la receta");
 // });
+
+router.get('/allRecipes',allRecipe)
 router.get('/recipes',findNameRecipe)
+
 
 
 
