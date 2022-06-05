@@ -12,7 +12,6 @@ const RecipeByIdDb = async (id)=>{
 
 const createTypes = async (array) =>{
   const arrayTypes = await Type.create(array)
-  console.log(arrayTypes)
   return arrayTypes
 }
 

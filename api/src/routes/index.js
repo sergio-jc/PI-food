@@ -1,10 +1,7 @@
 const { Router } = require("express");
-const { default: axios } = require("axios");
-require("dotenv").config();
+require("dotenv").config(); // no lo toques es necesario
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-const { Recipe, type } = require("../db");
-const { YOUR_API_KEY } = process.env;
 const {findNameRecipe, allRecipe , addRecite , recipeFoundById , typesFound} = require('../controllers')
 const router = Router();
 
@@ -12,9 +9,9 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 router.get('/allRecipes',allRecipe) // filtros
-router.get('/recipes',findNameRecipe) //  bucador
+router.get('/recipes',findNameRecipe) //  bucador por name 
 router.post('/recipe',addRecite)  // crear la carta
-router.get("/recipes/:idReceta",recipeFoundById) // 
+router.get("/recipes/:idReceta",recipeFoundById) // buscar por id
 router.get("/type",typesFound)
 
 
