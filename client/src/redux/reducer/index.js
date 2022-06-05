@@ -1,14 +1,15 @@
 import {GET_ALL_RECIPES} from '../action'
 
 const initialState = {
-    recipes : []
+    recipes : [],
+    recipe : []
 }
  const rootReducer = (state=initialState , action) =>{
 switch(action.type){
     case GET_ALL_RECIPES :
-        return {
+       return   {
             ...state ,
-            recipes : state.recipes.push(action.payload)
+            recipes : action.payload
         }
     default :
     return initialState
