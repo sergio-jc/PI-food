@@ -1,4 +1,5 @@
 const { findAllRecipe , findByIdRecipe } = require("./recipe.api&db.js");
+const {findAllDbTypes} = require('./recipe.dbController')
 const { Recipe } = require('../db')
 
 const findNameRecipe = async (req, res) => {
@@ -33,11 +34,13 @@ const recipeFoundById = async (req,res)=>{
   res.json(recipe)
 }
 
-const typesFound = async (Req,res)=>{
-  const recipe = await findAllRecipe()
-  const dietsType = recipe.flatMap(types=>types.diets);
-  const allDiets = dietsType.filter((diet,i)=>dietsType.indexOf(diet) === i)
-  res.json(allDiets)
+const allTypes =async (req,res)=>{
+  try {
+    const typesDiet = await findAllDbTypes ();
+    res.status(200).json(typesDiet)
+  }catch(e){
+    console.log(e)
+  }
 }
 
 module.exports = {
@@ -45,5 +48,5 @@ module.exports = {
   allRecipe,
   addRecite,
   recipeFoundById,
-  typesFound
+  allTypes
 };

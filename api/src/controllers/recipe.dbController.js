@@ -15,8 +15,14 @@ const createTypes = async (array) =>{
   return arrayTypes
 }
 
+const findAllDbTypes = async () => {
+  const recipeFind = await Type.findAll();
+  return recipeFind;
+};
+
 module.exports = {
   findAllDbRecipe,
   RecipeByIdDb,
-  createTypes
+  createTypes,
+  findAllDbTypes
 };
