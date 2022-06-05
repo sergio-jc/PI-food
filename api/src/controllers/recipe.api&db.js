@@ -1,15 +1,24 @@
-const {findAllApiRecipe} = require('./recipe.apiController')
-const {findAllDbRecipe} = require('./recipe.dbController')
+const {findAllApiRecipe , RecipeByIdApi } = require('./recipe.apiController')
+const {findAllDbRecipe , RecipeByIdDb } = require('./recipe.dbController')
 
 const findAllRecipe = async () =>{
     const apiRecipe = await findAllApiRecipe ()
     const dbRecipe = await findAllDbRecipe ()
-    console.log(apiRecipe)
-    console.log(dbRecipe)
     const allRecipe = apiRecipe.concat(dbRecipe)
     return allRecipe
 }
 
+const findByIdRecipe = async (id)=>{
+    const apiRecipe = await RecipeByIdApi (id);
+    const dbRecipe = await RecipeByIdDb (id);
+    console.log (apiRecipe)
+    console.log (dbRecipe)
+    if (apiRecipe?.id) return apiRecipe
+    if (dbRecipe.length) return dbRecipe
+}
+
+
 module.exports={
-    findAllRecipe
+    findAllRecipe,
+    findByIdRecipe
 }

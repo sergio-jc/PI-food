@@ -5,6 +5,11 @@ const findAllDbRecipe = async () => {
   return recipeFind;
 };
 
+const RecipeByIdDb = async (id)=>{
+  const recipeById = await Recipe.findAll({where:{id}})
+  return recipeById
+}
 module.exports = {
   findAllDbRecipe,
+  RecipeByIdDb
 };

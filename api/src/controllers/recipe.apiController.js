@@ -17,11 +17,25 @@ const findAllApiRecipe = async ()=>{
       }));
       return aryApi
 }
-// [ ] Los campos mostrados en la ruta principal para cada receta (imagen, nombre, tipo de plato y tipo de dieta)
-// [ ] Resumen del plato
-// [ ] Nivel de "comida saludable" (health score)
-// [ ] Paso a paso
+
+const RecipeByIdApi = async (id)=>{
+  const { data } = await axios.get(
+    `https://api.spoonacular.com/recipes/${id}/information?apiKey=${YOUR_API_KEY}`
+  );
+  let aryApi = {
+    id: data.id,
+    name: data.title,
+    summary: data.summary,
+    image: data.image,
+    diets: data.diets,
+    dishTypes : data.dishTypes,
+    healthScore:data.healthScore,
+    analyzedInstructions: data.analyzedInstructions[0]?.steps.map(ste=>`${ste.number}. ${ste.step}`)
+  };
+  return aryApi
+}
 
 module.exports={
-    findAllApiRecipe
+    findAllApiRecipe,
+    RecipeByIdApi
 }
