@@ -22,7 +22,7 @@ const addRecite = async (req, res) => {
     const newRecipe = await Recipe.create(req.body);
     res.json(newRecipe);
   } catch (e) {
-    res.send("Something went wrong");
+    res.send("Name already exists");
   }
 };
 
@@ -33,9 +33,17 @@ const recipeFoundById = async (req,res)=>{
   res.json(recipe)
 }
 
+const typesFound = async (Req,res)=>{
+  const recipe = await findAllRecipe()
+  const dietsType = recipe.flatMap(types=>types.diets);
+  const allDiets = dietsType.filter((diet,i)=>dietsType.indexOf(diet) === i)
+  res.json(allDiets)
+}
+
 module.exports = {
   findNameRecipe,
   allRecipe,
   addRecite,
-  recipeFoundById
+  recipeFoundById,
+  typesFound
 };
