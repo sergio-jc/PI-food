@@ -11,24 +11,11 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-router.get('/allRecipes',allRecipe)
-router.get('/recipes',findNameRecipe)
-router.post('/recipe',addRecite)
+router.get('/allRecipes',allRecipe) // filtros
+router.get('/recipes',findNameRecipe) //  bucador
+router.post('/recipe',addRecite)  // crear la carta
 
 
-
-
-
-
-
-
-
-
-
-router.get("/findAll", async (req, res) => {
-  const lola = await recipe.findAll();
-  return res.json(lola);
-});
 
 router.get("/recipes/:idReceta", async (req, res) => {
   const { idReceta } = req.params;
@@ -36,7 +23,7 @@ router.get("/recipes/:idReceta", async (req, res) => {
   const { data } = await axios.get(
     `https://api.spoonacular.com/recipes/${idReceta}/information?apiKey=${YOUR_API_KEY}`
   );
-  const mapeado = data.map(e=>e)
+  // const mapeado = data.map(e=>e)
   res.json(data);
 });
 

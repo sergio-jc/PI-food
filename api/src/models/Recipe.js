@@ -8,7 +8,11 @@ module.exports = (sequelize) => {
       type : DataTypes.INTEGER,
       unique : true,
       primaryKey :true ,
-      autoIncrement: true
+      autoIncrement: true,
+      get() {
+        const getId =this.getDataValue('id')
+        return `${getId}-recipe`
+         },
     },
     name: {
       type: DataTypes.STRING,
@@ -23,10 +27,16 @@ module.exports = (sequelize) => {
       type : DataTypes.STRING ,
       defaultValue :'https://us.123rf.com/450wm/blankstock/blankstock1610/blankstock161001411/63549960-plato-de-comida-que-sirve-icono-de-la-muestra-configuraci%C3%B3n-del-vector-en-el-s%C3%ADmbolo-restaurante-com.jpg?ver=6',
     },
+    //!OJO AQUI RECUERDA FALTA IMPLEMENTAR LAS DIETAS Y TIPOS DE PLATOS
     diets :{
       type : DataTypes.STRING,
       defaultValue : 'Unspecified diet'
     },
+    dishTypes :{
+      type: DataTypes.STRING,
+      defaultValue : 'Unspecified dish type'
+    },
+    //!-------------------------------------
     healthScore :{
       type : DataTypes.FLOAT,
       validate : {

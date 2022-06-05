@@ -11,10 +11,16 @@ const findAllApiRecipe = async ()=>{
         summary: recipe.summary,
         image: recipe.image,
         diets: recipe.diets,
+        dishTypes : recipe.dishTypes,
         healthScore:recipe.healthScore,
+        analyzedInstructions: recipe.analyzedInstructions[0]?.steps.map(ste=>`${ste.number}. ${ste.step}`)
       }));
       return aryApi
 }
+// [ ] Los campos mostrados en la ruta principal para cada receta (imagen, nombre, tipo de plato y tipo de dieta)
+// [ ] Resumen del plato
+// [ ] Nivel de "comida saludable" (health score)
+// [ ] Paso a paso
 
 module.exports={
     findAllApiRecipe
