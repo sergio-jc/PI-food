@@ -11,8 +11,7 @@ const findAllRecipe = async () =>{
 const findByIdRecipe = async (id)=>{
     const apiRecipe = await RecipeByIdApi (id);
     const dbRecipe = await RecipeByIdDb (id);
-    console.log (apiRecipe)
-    console.log (dbRecipe)
+    if (typeof(apiRecipe) === 'string') return apiRecipe
     if (apiRecipe?.id) return apiRecipe
     if (dbRecipe.length) return dbRecipe
 }

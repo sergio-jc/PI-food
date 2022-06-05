@@ -19,20 +19,28 @@ const findAllApiRecipe = async ()=>{
 }
 
 const RecipeByIdApi = async (id)=>{
-  const { data } = await axios.get(
-    `https://api.spoonacular.com/recipes/${id}/information?apiKey=${YOUR_API_KEY}`
-  );
-  let aryApi = {
-    id: data.id,
-    name: data.title,
-    summary: data.summary,
-    image: data.image,
-    diets: data.diets,
-    dishTypes : data.dishTypes,
-    healthScore:data.healthScore,
-    analyzedInstructions: data.analyzedInstructions[0]?.steps.map(ste=>`${ste.number}. ${ste.step}`)
-  };
-  return aryApi
+  const booleanOfRegExp = id.match(/[a-z]/g)
+  if ( booleanOfRegExp?.length ){return false}
+  //*    ? si el de la izquierda es true continua
+  //*    &&   
+  try {
+    const { data } = await axios.get(
+      `https://api.spoonacular.com/recipes/${id}/information?apiKey=${YOUR_API_KEY}`
+    );
+    let aryApi = {
+      id: data.id,
+      name: data.title,
+      summary: data.summary,
+      image: data.image,
+      diets: data.diets,
+      dishTypes : data.dishTypes,
+      healthScore:data.healthScore,
+      analyzedInstructions: data.analyzedInstructions[0]?.steps.map(ste=>`${ste.number}. ${ste.step}`)
+    };
+    return aryApi
+  } catch (e){
+    return `A recipe with the id ${id} does not exist.`
+  }
 }
 
 module.exports={
