@@ -45,5 +45,5 @@ const RecipeByIdApi = async (id)=>{
 
 module.exports={
     findAllApiRecipe,
-    RecipeByIdApi
+    RecipeByIdApi,
 }

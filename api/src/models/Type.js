@@ -3,15 +3,14 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('type', {
+  sequelize.define('Type', {
     id : {
-      type : DataTypes.STRING,
-      unique : true,
-      allowNull : false,
-      primaryKey :true 
+      type : DataTypes.INTEGER,
+      primaryKey :true ,
+      autoIncrement : true
     },
     name :{
-        type : DataTypes.ENUM('Gluten Free','Ketogenic','Vegetarian','Lacto-Vegetarian','Ovo-Vegetarian','Vegan','Pescetarian','Paleo','Primal','Low FODMAP','Whole30'),
+        type : DataTypes.STRING,
         allowNull :false
     }
   });
