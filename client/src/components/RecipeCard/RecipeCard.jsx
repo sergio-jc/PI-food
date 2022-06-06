@@ -20,7 +20,7 @@ const RecipeCard = (props) => {
         </ul>
       }
       <div>
-        <img src={props.image} alt='image of the recipe'/>
+        <img src={props.image} alt='recipe'/>
       </div>
     </div>
   );
@@ -28,10 +28,5 @@ const RecipeCard = (props) => {
 
 export default RecipeCard;
 
-//name ----
-//summary---------
-//image----
-//diets--------
-//dishTypes----------
-//healthScore------
-//analyzedInstructions -------
+
+
