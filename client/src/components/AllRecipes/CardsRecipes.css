@@ -1,0 +1,28 @@
+.card {
+    margin: 10px;
+  width: 25rem;
+  background-color: rgba(34, 179, 54, 0.243);
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    border-style: none;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.fund{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background: url(https://st2.depositphotos.com/3235323/9140/v/450/depositphotos_91400142-stock-illustration-kitchen-themed-illustration-and-icons.jpg);
+}
+
+.card:hover {
+    filter: opacity(0.9);
+    transform: scale(1.09);
+    background-color: rgb(29, 193, 8);
+    color: white;
+    font-weight: bold;
+  }
+  .heathScore{
+      font-size: 3rem;
+  }

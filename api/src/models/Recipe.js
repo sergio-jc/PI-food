@@ -24,10 +24,10 @@ module.exports = (sequelize) => {
       defaultValue :'https://us.123rf.com/450wm/blankstock/blankstock1610/blankstock161001411/63549960-plato-de-comida-que-sirve-icono-de-la-muestra-configuraci%C3%B3n-del-vector-en-el-s%C3%ADmbolo-restaurante-com.jpg?ver=6',
     },
     //!OJO AQUI RECUERDA FALTA IMPLEMENTAR LAS DIETAS Y TIPOS DE PLATOS
-    diets :{
-      type : DataTypes.STRING,
-      defaultValue : 'Unspecified diet'
-    },
+    // diets :{
+    //   type : DataTypes.STRING,
+    //   defaultValue : 'Unspecified diet'
+    // },
     dishTypes :{
       type: DataTypes.STRING,
       defaultValue : 'Unspecified dish type'
