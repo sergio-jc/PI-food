@@ -14,28 +14,31 @@ const Cards = () => {
   let display;
   if (allRecipes) {
     display = allRecipes.map(
-      ({ id, name, image, healthScore, diets, dishTypes }) => {
+      ({ id, name, image, healthScore, diets}) => {
         return (
           <>
             <div key={id}>
               <h3>{name}</h3>
               <h3>{healthScore}</h3>
-              {diets.length && (
-                <ul>
+              {diets.length &&
+              
+               typeof(diets[0]) === 'string' ? (
+                <ul >
                   DIETS:
                   {diets.map((e) => (
-                    <li>{e}</li>
+                    <h4 >{e}</h4>
                   ))}
                 </ul>
-              )}
-              {dishTypes.length && (
+               ) :  
+              (
                 <ul>
-                  DISH TYPES :
-                  {dishTypes.map((e) => (
-                    <li>{e}</li>
+                 <h3>DIETS:</h3> 
+                  {diets.map((e) => (
+                    <h4>{e.name}</h4>
                   ))}
                 </ul>
-              )}
+              )
+               }
               <img src={image} alt="s" />
             </div>
           </>
