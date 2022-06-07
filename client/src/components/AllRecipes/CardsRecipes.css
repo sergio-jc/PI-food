@@ -1,7 +1,7 @@
 .card {
     margin: 10px;
   width: 25rem;
-  background-color: rgba(34, 179, 54, 0.243);
+  background-color: #fcebb6;
     border-radius: 10px;
     transition: transform 0.3s ease-in-out;
     border-style: none;
@@ -13,13 +13,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    background: url(https://st2.depositphotos.com/3235323/9140/v/450/depositphotos_91400142-stock-illustration-kitchen-themed-illustration-and-icons.jpg);
+    /* background: url(https://st.depositphotos.com/3263277/4364/v/450/depositphotos_43644843-stock-illustration-pasta.jpg); */
+    background-color: #78c0a8;
 }
 
 .card:hover {
     filter: opacity(0.9);
     transform: scale(1.09);
-    background-color: rgb(29, 193, 8);
+    background-color: #f0a830;
     color: white;
     font-weight: bold;
   }

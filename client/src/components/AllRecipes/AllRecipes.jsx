@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllRecipes } from "../../redux/action";
-
+import '../AllRecipes/CardsRecipes.css'
 const Cards = () => {
   const dispatch = useDispatch();
 
@@ -13,42 +13,27 @@ const Cards = () => {
 
   let display;
   if (allRecipes) {
-    display = allRecipes.map(
-      ({ id, name, image, healthScore, diets}) => {
-        return (
-          <>
-            <div key={id}>
-              <h3>{name}</h3>
-              <h3>{healthScore}</h3>
-              {diets.length &&
-              
-               typeof(diets[0]) === 'string' ? (
-                <ul >
-                  DIETS:
-                  {diets.map((e) => (
-                    <h4 >{e}</h4>
-                  ))}
-                </ul>
-               ) :  
-              (
-                <ul>
-                 <h3>DIETS:</h3> 
-                  {diets.map((e) => (
-                    <h4>{e.name}</h4>
-                  ))}
-                </ul>
-              )
-               }
-              <img src={image} alt="s" />
+    display = allRecipes.map(({ id, name, image, healthScore, diets }) => {
+      return (
+        <>
+          <div key={id} className='card'>
+            <h3>{name}</h3>
+            <h2>{healthScore}</h2>
+            <div>
+              <h3>Diets :</h3>
+            {diets.length && typeof diets[0] === "string"
+              ? diets.map((e) => <p>{e}</p>)
+              : diets.map((e) => <p>{e.name}</p>)}
             </div>
-          </>
-        );
-      }
-    );
+            <img src={image} alt="s" />
+          </div>
+        </>
+      );
+    });
   } else {
     display = "Recipes not found";
   }
-  return <div>{display}</div>;
+  return <div className="fund">{display}</div>;
 };
 
 export default Cards;
