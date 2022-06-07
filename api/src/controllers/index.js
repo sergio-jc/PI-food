@@ -1,6 +1,6 @@
 const { findAllRecipe , findByIdRecipe } = require("./recipe.api&db.js");
-const {findAllDbTypes} = require('./recipe.dbController')
-const { Recipe ,Type } = require('../db')
+const {findAllDbDiets} = require('./recipe.dbController')
+const { Recipe ,diets } = require('../db')
 
 const findNameRecipe = async (req, res) => {
   const { name } = req.query;
@@ -29,10 +29,10 @@ const addRecipe = async (req, res) => {
   try {
     const newRecipe = await Recipe.create(req.body);
     req.body.diets.length && req.body.diets.map( async(relaciones)=>{
-      let dietasDeBd = await Type.findAll({
+      let dietasDeBd = await diets.findAll({
         where: { name : relaciones }
       });
-      newRecipe.addType(dietasDeBd);}
+      newRecipe.addDiets(dietasDeBd);}
       )
     res.json(newRecipe);
   } catch (e) {
@@ -41,9 +41,9 @@ const addRecipe = async (req, res) => {
 };
 
 
-const allTypes =async (req,res)=>{
+const allDiets =async (req,res)=>{
   try {
-    const typesDiet = await findAllDbTypes ();
+    const typesDiet = await findAllDbDiets ();
     res.status(200).json(typesDiet)
   }catch(e){
     console.log(e)
@@ -55,5 +55,5 @@ module.exports = {
   allRecipe,
   addRecipe,
   recipeFoundById,
-  allTypes
+  allDiets
 };

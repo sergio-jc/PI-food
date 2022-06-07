@@ -1,7 +1,5 @@
 const {findAllApiRecipe , RecipeByIdApi } = require('./recipe.apiController')
-const {findAllDbRecipe , RecipeByIdDb , createTypes} = require('./recipe.dbController')
-
-
+const {findAllDbRecipe , RecipeByIdDb , createDiets} = require('./recipe.dbController')
 
 const findAllRecipe = async () =>{
     const apiRecipe = await findAllApiRecipe ()
@@ -18,7 +16,7 @@ const findByIdRecipe = async (id)=>{
     if (dbRecipe.length) return dbRecipe
 }
 
-const typesFound = async ()=>{
+const dietsFound = async ()=>{
     const recipe = await findAllRecipe()
     const dietsType = recipe.flatMap(types=>types.diets);
     const allDiets = dietsType.filter((diet,i)=>dietsType.indexOf(diet) === i)
@@ -26,14 +24,14 @@ const typesFound = async ()=>{
   }
 
 (async()=>{
-    const arrayTypes = await typesFound();
+    const arrayTypes = await dietsFound();
     arrayTypes.forEach( async (diet) => {
-       await createTypes({name:diet})
+       await createDiets({name:diet})
     });
 })()
   
 module.exports={
     findAllRecipe,
     findByIdRecipe,
-    typesFound
+    dietsFound
 }

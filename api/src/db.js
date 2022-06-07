@@ -3,7 +3,7 @@ const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const modelRecipe = require('./models/Recipe.js')
-const modelType = require('./models/Type.js');
+const modelDiet = require('./models/Type.js');
 const { receiveMessageOnPort } = require('worker_threads');
 const {
   DB_USER, DB_PASSWORD, DB_HOST,
@@ -34,16 +34,16 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 modelRecipe(sequelize)
-modelType(sequelize)
-const { Recipe,Type } = sequelize.models;
+modelDiet(sequelize)
+const { Recipe,diets } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 // 'carnicor , vegetarino , omnivora  , pesquero'
 //* muhcos -> muchos 
 
-Recipe.belongsToMany(Type,{through:'type_recipe'})
-Type.belongsToMany(Recipe,{through:'type_recipe'})
+Recipe.belongsToMany(diets,{through:'type_recipe'})
+diets.belongsToMany(Recipe,{through:'type_recipe'})
 
 //* uno -> muchos
 // type.hasMany(recipe)
