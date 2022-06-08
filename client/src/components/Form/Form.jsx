@@ -1,31 +1,12 @@
 import React, { useState } from "react";
 import "../Form/Form.css";
 import axios from "axios";
-// import { diets } from "./diets.js";
+import { validate ,arrayDiets} from "./func/funcAux";
 import { allDiets } from "./diets";
-const validate = (input) => {
-  const errors = {};
-  if (!input.name) {
-    errors.name = "You cannot create a recipe without a name";
-  }
-  return errors;
-};
-const arrayDiets = (booleans) => {
-  var indices = [];
-  var element = true;
-  var idx = booleans.indexOf(element);
-  while (idx !== -1) {
-    indices.push(idx);
-    idx = booleans.indexOf(element, idx + 1);
-  }
-  var porFin = indices.map((e) => allDiets[e]);
-  console.log(porFin);
-  return porFin;
-};
 
 const From = () => {
   const [input, setInput] = useState({ name: "" });
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({ name : "You cannot create a recipe without a name"});
   const [checkedState, setCheckedState] = useState(
     new Array(allDiets.length).fill(false)
   );
@@ -77,7 +58,6 @@ const From = () => {
         <h1> YOUR RECIPE</h1>
         <label>Name : </label>
         <input
-          required
           className={errors.name && "danger"}
           type="text"
           name="name"
