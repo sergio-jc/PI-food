@@ -23,9 +23,9 @@ const recipeFoundById = async (req,res)=>{
   res.json(recipe)
 }
 const addRecipe = async (req, res) => {
-  if(!req.body.diets) return res.json("error")
-  if(!req.body.name) return res.json("The name is required")
-  if (!req.body) return res.json("The necessary information was not passed on");
+  if(!req.body.diets) return res.status(400).json("you must select a diet that is at least")
+  if(!req.body.name) return res.status(400).json("The name is required")
+  if (!req.body) return res.status(400).json("The necessary information was not passed on");
   try {
     const newRecipe = await Recipe.create(req.body);
     req.body.diets.length && req.body.diets.map( async(relaciones)=>{
