@@ -25,7 +25,7 @@ const Cards = () => {
               ? diets.map((e) => <p>{e}</p>)
               : diets.map((e) => <p>{e.name}</p>)}
             </div>
-            <img src={image} alt="s" />
+            <img src={image} alt="s" className="image" />
           </div>
         </>
       );
