@@ -53,7 +53,7 @@ const From = () => {
         diets: arrayDiets(checkedState),
       };
       console.log(newRecipe)
-      axios.post("http://localhost:3001/recipe", { newRecipe }).then((res) => {
+      axios.post("http://localhost:3001/recipe",  newRecipe ).then((res) => {
         console.log(res);
         console.log(res.data);
       });
