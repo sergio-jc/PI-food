@@ -1,6 +1,8 @@
 import React from "react";
 const CheckBoxDiets = ( {state, handle ,allDiets}) => {
   return (
+    <div>
+      <label>Diets :</label>
     <ul className="toppings-list">
           {allDiets.map((e, index) => {
             return (
@@ -22,6 +24,7 @@ const CheckBoxDiets = ( {state, handle ,allDiets}) => {
             );
           })}
         </ul>
+    </div>
   );
 };
 export default CheckBoxDiets

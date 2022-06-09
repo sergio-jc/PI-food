@@ -7,19 +7,21 @@ export const validate = (input) => {
   if (!input.healthScore) {
     errors.healthScore = "you should choose a number from 1 to 100";
   } else if (!(input.healthScore >= 0 && input.healthScore <= 100)) {
-    errors.healthScore = "* no letters or other symbols are allowed"
+    errors.healthScore =
+      "* no letters or other symbols are allowed, only numbers between 0 and 100";
   }
 
   if (!input.summary) {
     errors.summary = "encourage yourself to write a summary ";
   }
   if (!input.image) {
-    errors.image = "post an image to highlight your recipe ";
+    errors.image = "copy an image URL to make your recipe stand out ";
   }
   if (!input.analyzedInstructions) {
     errors.analyzedInstructions =
       "create steps so that others can make your recipe ";
   }
+
   return errors;
 };
 
@@ -44,7 +46,6 @@ export const arrayDiets = (booleans, allDiets) => {
 //   image: "",
 //   analyzedInstructions: "",
 // }
-
 
 // name: "enter a name for your recipe ❤",
 // healthScore: "choose a score for your recipe from 1 to 100 ❤",

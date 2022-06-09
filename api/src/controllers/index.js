@@ -1,5 +1,6 @@
 const { findAllRecipe, findByIdRecipe } = require("./recipe.api&db.js");
 const { findAllDbDiets } = require("./recipe.dbController");
+const { findAllDishTypes } = require("./recipe.apiController");
 const { Recipe, diets } = require("../db");
 
 const findNameRecipe = async (req, res) => {
@@ -16,6 +17,7 @@ const findNameRecipe = async (req, res) => {
 
 const allRecipe = async (req, res) => {
   const arrayAllRecipe = await findAllRecipe();
+  console.log(arrayAllRecipe);
   return res.status(200).json(arrayAllRecipe);
 };
 
@@ -55,10 +57,21 @@ const allDiets = async (req, res) => {
   }
 };
 
+const allDishTypes = async (req, res) => {
+  try {
+    const allDish = await findAllDishTypes();
+    const dishTypes = [...new Set(allDish)];
+    res.status(200).json(dishTypes);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 module.exports = {
   findNameRecipe,
   allRecipe,
   addRecipe,
   recipeFoundById,
   allDiets,
+  allDishTypes,
 };

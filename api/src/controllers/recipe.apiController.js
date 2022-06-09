@@ -11,7 +11,7 @@ const findAllApiRecipe = async ()=>{
         summary: recipe.summary,
         image: recipe.image,
         diets: recipe.diets,
-        dishTypes : recipe.dishTypes.join(' '),
+        dishTypes : recipe.dishTypes.join('#'),
         healthScore:recipe.healthScore,
         analyzedInstructions: recipe.analyzedInstructions[0]?.steps.map(ste=>`${ste.number}. ${ste.step}`).join('#')
       }));
@@ -44,7 +44,16 @@ const RecipeByIdApi = async (id)=>{
   }
 }
 
+const findAllDishTypes = async ()=>{
+  const { data } = await axios.get(
+    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${YOUR_API_KEY}&addRecipeInformation=true&number=40` 
+  );
+  let aryApi = data.results.flatMap((recipe) => recipe.dishTypes)
+  return aryApi
+}
+
 module.exports={
     findAllApiRecipe,
     RecipeByIdApi,
+    findAllDishTypes
 }
