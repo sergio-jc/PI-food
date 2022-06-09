@@ -1,5 +1,3 @@
-import { allDiets } from "../diets";
-
 
 // * valida si hay errores o no
 export const validate = (input) => {
@@ -11,7 +9,7 @@ export const validate = (input) => {
   };
 
 // * parsea en cambio del estado de las checkbox a un array
-export  const arrayDiets = (booleans) => {
+export  const arrayDiets = (booleans , allDiets) => {
     var indices = [];
     var element = true;
     var idx = booleans.indexOf(element);

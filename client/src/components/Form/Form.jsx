@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Form/Form.css";
 import { validate } from "./func/funcAux";
-import { allDiets } from "./diets";
-import { postRecipe } from "../../redux/action";
-import {useDispatch} from "react-redux"
-
+import { getAllTypes, postRecipe } from "../../redux/action";
+import { useDispatch , useSelector} from "react-redux";
+import CheckBoxDiets from "./inputs/CheckBoxDiets";
 const From = () => {
-  const [input, setInput] = useState({ name: "" });
-  const [errors, setErrors] = useState({ name : "You cannot create a recipe without a name"});
-  const dispatch = useDispatch()
+  const [input, setInput] = useState({ name: "" ,healthScore:0});
+  const [errors, setErrors] = useState({ name: "",healthScore:0 });
+  const dispatch = useDispatch();
+  const allDiets = useSelector((state) => state.allDiets)
   const [checkedState, setCheckedState] = useState(
-    new Array(allDiets.length).fill(false)
+    [ false, false, false, false, false, false, false ]
   );
+
+  useEffect(()=>{
+    dispatch(getAllTypes())
+  },[dispatch])
+
   const handleInputsChange = (e) => {
     setInput({
       ...input,
@@ -30,12 +35,12 @@ const From = () => {
     e.preventDefault();
     if (errors.name) {
       alert("The recipe was not created correctly");
-    } else { 
-      dispatch(postRecipe( input , checkedState ))
+    } else {
+      dispatch(postRecipe(input, checkedState,allDiets));
       alert("Your recipe was successfully created");
     }
-    setInput({ name: "" })
-    setCheckedState( new Array(allDiets.length).fill(false))
+    setInput({ name: "" });
+    setCheckedState(new Array(allDiets.length).fill(false));
   };
   // * -----------------------------------------------
   const handleOnChecked = (position) => {
@@ -61,28 +66,18 @@ const From = () => {
           value={input.name}
         />
         {errors.name && <p className="danger">{errors.name}</p>}
-
-        <ul className="toppings-list">
-          {allDiets.map((e, index) => {
-            return (
-              <li key={index}>
-                <div className="toppings-list-item">
-                  <div className="left-section">
-                    <input
-                      type="checkbox"
-                      id={`custom-checkbox-${index}`}
-                      name={e}
-                      value={e}
-                      checked={checkedState[index]}
-                      onChange={() => handleOnChecked(index)}
-                    />
-                    <label htmlFor={`custom-checkbox-${index}`}>{e}</label>
-                  </div>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+        
+        {/* <input
+          className={errors.healthScore && "danger"}
+          type="number"
+          name="healthScore"
+          onChange={(e) => handleInputsChange(e)}
+          value={input.healthScore}
+        />
+        {errors.healthScore && <p className="danger">{errors.healthScore}</p>}
+         */}
+        <CheckBoxDiets state={checkedState} handle={handleOnChecked} allDiets={allDiets}/>
+        
       </div>
       <input type="submit" value="Create" />
     </form>

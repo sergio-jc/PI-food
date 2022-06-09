@@ -1,6 +1,5 @@
 import React from "react";
-import { allDiets } from "../diets";
-const CheckBoxDiets = ( State, handle) => {
+const CheckBoxDiets = ( {state, handle ,allDiets}) => {
   return (
     <ul className="toppings-list">
           {allDiets.map((e, index) => {
@@ -13,7 +12,7 @@ const CheckBoxDiets = ( State, handle) => {
                       id={`custom-checkbox-${index}`}
                       name={e}
                       value={e}
-                      checked={State[index]}
+                      checked={state[index]}
                       onChange={() => handle(index)}
                     />
                     <label htmlFor={`custom-checkbox-${index}`}>{e}</label>
