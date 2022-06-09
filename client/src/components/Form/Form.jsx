@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "../Form/Form.css";
-import axios from "axios";
-import { validate ,arrayDiets} from "./func/funcAux";
+import { validate } from "./func/funcAux";
 import { allDiets } from "./diets";
+import { postRecipe } from "../../redux/action";
+import {useDispatch} from "react-redux"
 
 const From = () => {
   const [input, setInput] = useState({ name: "" });
   const [errors, setErrors] = useState({ name : "You cannot create a recipe without a name"});
+  const dispatch = useDispatch()
   const [checkedState, setCheckedState] = useState(
     new Array(allDiets.length).fill(false)
   );
@@ -28,18 +30,12 @@ const From = () => {
     e.preventDefault();
     if (errors.name) {
       alert("The recipe was not created correctly");
-    } else {
-      const newRecipe = {
-        name: input.name,
-        diets: arrayDiets(checkedState),
-      };
-      console.log(newRecipe)
-      axios.post("http://localhost:3001/recipe",  newRecipe ).then((res) => {
-        console.log(res);
-        console.log(res.data);
-      });
+    } else { 
+      dispatch(postRecipe( input , checkedState ))
       alert("Your recipe was successfully created");
     }
+    setInput({ name: "" })
+    setCheckedState( new Array(allDiets.length).fill(false))
   };
   // * -----------------------------------------------
   const handleOnChecked = (position) => {
