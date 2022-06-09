@@ -23,6 +23,10 @@ export const postRecipe = (input, checkedState , allDiets) => async () => {
   const newRecipe = {
     name: input.name,
     diets: arrayDiets(checkedState , allDiets),
+    healthScore : input.healthScore,
+    summary : input.summary,
+    image : input.image,
+    analyzedInstructions : input.analyzedInstructions
   };
   console.log(newRecipe)
   axios.post("http://localhost:3001/recipe",  newRecipe ).then((res) => {

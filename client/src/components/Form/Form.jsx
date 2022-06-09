@@ -2,20 +2,39 @@ import React, { useState, useEffect } from "react";
 import "../Form/Form.css";
 import { validate } from "./func/funcAux";
 import { getAllTypes, postRecipe } from "../../redux/action";
-import { useDispatch , useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CheckBoxDiets from "./inputs/CheckBoxDiets";
+import Input from "./inputs/input";
 const From = () => {
-  const [input, setInput] = useState({ name: "" ,healthScore:0});
-  const [errors, setErrors] = useState({ name: "",healthScore:0 });
+  const [input, setInput] = useState({
+    name: "",
+    healthScore: "",
+    summary: "",
+    image: "",
+    analyzedInstructions: "",
+  });
+  const [errors, setErrors] = useState({
+    name: "The recipe was not created correctly",
+    healthScore: "",
+    summary: "",
+    image: "",
+    analyzedInstructions: "",
+  });
   const dispatch = useDispatch();
-  const allDiets = useSelector((state) => state.allDiets)
-  const [checkedState, setCheckedState] = useState(
-    [ false, false, false, false, false, false, false ]
-  );
+  const allDiets = useSelector((state) => state.allDiets);
+  const [checkedState, setCheckedState] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
 
-  useEffect(()=>{
-    dispatch(getAllTypes())
-  },[dispatch])
+  useEffect(() => {
+    dispatch(getAllTypes());
+  }, [dispatch]);
 
   const handleInputsChange = (e) => {
     setInput({
@@ -36,10 +55,16 @@ const From = () => {
     if (errors.name) {
       alert("The recipe was not created correctly");
     } else {
-      dispatch(postRecipe(input, checkedState,allDiets));
+      dispatch(postRecipe(input, checkedState, allDiets));
       alert("Your recipe was successfully created");
     }
-    setInput({ name: "" });
+    setInput({
+      name: "",
+      healthScore: "",
+      summary: "",
+      image: "",
+      analyzedInstructions: "",
+    });
     setCheckedState(new Array(allDiets.length).fill(false));
   };
   // * -----------------------------------------------
@@ -66,18 +91,40 @@ const From = () => {
           value={input.name}
         />
         {errors.name && <p className="danger">{errors.name}</p>}
-        
-        {/* <input
-          className={errors.healthScore && "danger"}
-          type="number"
-          name="healthScore"
-          onChange={(e) => handleInputsChange(e)}
-          value={input.healthScore}
+
+        <Input
+          name={"healthScore"}
+          handle={handleInputsChange}
+          input={input}
+          type={"number"}
         />
-        {errors.healthScore && <p className="danger">{errors.healthScore}</p>}
-         */}
-        <CheckBoxDiets state={checkedState} handle={handleOnChecked} allDiets={allDiets}/>
-        
+
+        <Input
+          name={"summary"}
+          handle={handleInputsChange}
+          input={input}
+          type={"text"}
+        />
+
+        <Input
+          name={"image"}
+          handle={handleInputsChange}
+          input={input}
+          type={"url"}
+        />
+
+        <Input
+          name={"analyzedInstructions"}
+          handle={handleInputsChange}
+          input={input}
+          type={"text"}
+        />
+
+        <CheckBoxDiets
+          state={checkedState}
+          handle={handleOnChecked}
+          allDiets={allDiets}
+        />
       </div>
       <input type="submit" value="Create" />
     </form>
