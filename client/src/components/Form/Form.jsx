@@ -13,13 +13,7 @@ const From = () => {
     image: "",
     analyzedInstructions: "",
   });
-  const [errors, setErrors] = useState({
-    name: "The recipe was not created correctly",
-    healthScore: "",
-    summary: "",
-    image: "",
-    analyzedInstructions: "",
-  });
+  const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
   const allDiets = useSelector((state) => state.allDiets);
   const [checkedState, setCheckedState] = useState([
@@ -52,7 +46,7 @@ const From = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    if (errors.name) {
+    if (errors.name || errors.healthScore) {
       alert("The recipe was not created correctly");
     } else {
       dispatch(postRecipe(input, checkedState, allDiets));
@@ -93,33 +87,42 @@ const From = () => {
         {errors.name && <p className="danger">{errors.name}</p>}
 
         <Input
+          className={errors.healthScore && "danger"}
           name={"healthScore"}
           handle={handleInputsChange}
           input={input}
           type={"number"}
         />
+        {errors.healthScore && (
+          <p className="healthScore">{errors.healthScore}</p>
+        )}
 
         <Input
+        className={errors.summary && "danger"}
           name={"summary"}
           handle={handleInputsChange}
           input={input}
           type={"text"}
         />
-
+        {errors.summary && <p className="danger">{errors.summary}</p>}
         <Input
+        className={errors.image && "danger"}
           name={"image"}
           handle={handleInputsChange}
           input={input}
           type={"url"}
         />
-
+        {errors.image && <p className="danger">{errors.image}</p>}
         <Input
+        className={errors.analyzedInstructions && "danger"}
           name={"analyzedInstructions"}
           handle={handleInputsChange}
           input={input}
           type={"text"}
         />
-
+        {errors.analyzedInstructions && (
+          <p className="danger">{errors.analyzedInstructions}</p>
+        )}
         <CheckBoxDiets
           state={checkedState}
           handle={handleOnChecked}
