@@ -1,8 +1,13 @@
-import { GET_ALL_RECIPES, GET_ALL_TYPES, GET_ALL_DISH_TYPES } from "../action";
+import {
+  GET_ALL_RECIPES,
+  GET_ALL_TYPES,
+  GET_ALL_DISH_TYPES,
+  FIND_BY_NAME,
+} from "../action";
 
 const initialState = {
   recipes: [],
-  recipe: [],
+  findRecipe: [],
   allDiets: [],
   allDishTypes: [],
 };
@@ -22,6 +27,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         allDishTypes: action.payload,
+      };
+    case FIND_BY_NAME:
+      return {
+        ...state,
+        findRecipe: action.payload,
       };
     default:
       return initialState;

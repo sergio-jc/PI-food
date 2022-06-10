@@ -28,7 +28,6 @@ const From = () => {
     3: "",
     4: "",
   });
-  console.log(steps)
   const dispatch = useDispatch();
   const allDiets = useSelector((state) => state.allDiets);
   const allDishTypes = useSelector((state) => state.allDishTypes);
@@ -58,6 +57,7 @@ const From = () => {
     false,
   ]);
   // new Array(allDishTypes.length).fill(false)
+  const [save, setSave] = useState([]);
 
   useEffect(() => {
     dispatch(getAllDishTypes());
@@ -69,7 +69,7 @@ const From = () => {
       ...input,
       [e.target.name]: e.target.value,
     });
-    console.log(input);
+
     setErrors(
       validate({
         ...input,
@@ -80,23 +80,39 @@ const From = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    if (
-      errors.name ||
-      errors.healthScore ||
-      errors.summary ||
-      errors.image ||
-      errors.analyzedInstructions ||
-      !checkedState.filter((e) => e === true).length ||
-      !checkedDish.filter((e)=> e === true).length
-    ) {
+    if (save.includes(input.name)) {
       alert(
-        "The recipe was not created correctly ,follow the indications please"
+        "lo sentimos el nombre de la receta ya exista prueba escogiendo otro nombre"
       );
+      //! recuerda cuando estes haciendo la ruta delete no te olvides de filtrar el save para que te puedo agregar denuevo la receta Ej : [ 1 ,2 3] => [1 ,2] => 3 ...[1 ,2] error ya existe  => recuerdalo
     } else {
-      dispatch(
-        postRecipe(input, checkedState, allDiets, checkedDish, allDishTypes,steps)
-      );
-      alert("Your recipe was successfully created");
+      setSave([...save, input.name]);
+
+      if (
+        errors.name ||
+        errors.healthScore ||
+        errors.summary ||
+        errors.image ||
+        errors.analyzedInstructions ||
+        !checkedState.filter((e) => e === true).length ||
+        !checkedDish.filter((e) => e === true).length
+      ) {
+        alert(
+          "The recipe was not created correctly ,follow the indications please"
+        );
+      } else {
+        dispatch(
+          postRecipe(
+            input,
+            checkedState,
+            allDiets,
+            checkedDish,
+            allDishTypes,
+            steps
+          )
+        );
+        alert("Your recipe was successfully created");
+      }
     }
     setInput({
       name: "",
@@ -105,24 +121,31 @@ const From = () => {
       image: "",
       analyzedInstructions: "",
     });
+    setSteps({
+      0: "",
+      1: "",
+      2: "",
+      3: "",
+      4: "",
+    });
+    setAccount([]);
     setCheckedState(new Array(allDiets.length).fill(false));
+    setCheckedDish(new Array(allDishTypes.length).fill(false));
   };
   // * -----------------------------------------------
   const handleOnChecked = (position) => {
     const updatedCheckedState = checkedState.map((item, index) =>
       index === position ? !item : item
     );
-    console.log(updatedCheckedState);
+
     setCheckedState(updatedCheckedState);
-    console.log(allDiets);
   };
   const handleOnCheckedDish = (position) => {
     const updatedCheckedState = checkedDish.map((item, index) =>
       index === position ? !item : item
     );
-    console.log(updatedCheckedState);
+
     setCheckedDish(updatedCheckedState);
-    console.log(allDishTypes);
   };
   // * -----------------------------------------------
 
@@ -141,7 +164,7 @@ const From = () => {
       ...steps,
       [e.target.name]: e.target.value,
     });
-  }
+  };
 
   return (
     <form onSubmit={(e) => handleOnSubmit(e)}>
@@ -212,12 +235,11 @@ const From = () => {
           )}
           <div onClick={onClickNewStep}>New Steps</div>
 
-
-          {account.map((e ,i) => (
+          {account.map((e, i) => (
             <div key={`step_${i}`}>
               <input
                 // className={errors.analyzedInstructions && "danger"}
-                placeholder={`step ${i+2}...`}
+                placeholder={`step ${i + 2}...`}
                 type="text"
                 name={i}
                 onChange={(e) => handleSteps(e)}
@@ -225,7 +247,6 @@ const From = () => {
               />
             </div>
           ))}
-
         </div>
         <label>Diets :</label>
         <CheckBoxDiets
@@ -242,7 +263,7 @@ const From = () => {
           handle={handleOnCheckedDish}
           allDiets={allDishTypes}
         />
-        {!checkedDish.filter((e)=> e === true).length && (
+        {!checkedDish.filter((e) => e === true).length && (
           <p>Please choose at least one Dish Type ❤</p>
         )}
       </div>
