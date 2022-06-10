@@ -4,6 +4,7 @@ export const GET_ALL_RECIPES = "GET_ALL_RECIPES";
 export const GET_ALL_TYPES = "GET_ALL_TYPES";
 export const GET_ALL_DISH_TYPES = "GET_ALL_DISH_TYPES";
 export const FIND_BY_NAME = "FIND_BY_NAME";
+export const DETAIL ="DETAIL"
 
 export const getAllRecipes = () => async (dispatch) => {
   const { data } = await axios.get("http://localhost:3001/allRecipes");
@@ -30,12 +31,20 @@ export const getAllDishTypes = () => async (dispatch) => {
 };
 
 export const findByName = (name) => async (dispatch) => {
-  const { data } = await axios.get(`localhost:3001/recipes?name=${name}`);
+  const { data } = await axios.get(`http://localhost:3001/recipes?name=${name}`);
   dispatch({
     type: FIND_BY_NAME,
     payload: data,
   });
 };
+
+export const Detail = (id) => async (dispatch) =>{
+  const {data} = await axios.get(`http://localhost:3001/recipes/${id}`);
+  dispatch({
+    type : DETAIL ,
+    payload : data
+  })
+} 
 
 export const postRecipe =
   (input, checkedState, allDiets, checkedDish, allDishTypes, allSteps) =>

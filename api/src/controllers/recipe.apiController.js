@@ -33,10 +33,10 @@ const RecipeByIdApi = async (id)=>{
       summary: data.summary,
       image: data.image,
       diets: data.diets,
-      dishTypes : data.dishTypes.join(' '), // ! no te olvides dar un objeto parseado de array a string
+      dishTypes : data.dishTypes.join(' , '), // ! no te olvides dar un objeto parseado de array a string
       
       healthScore:data.healthScore,
-      analyzedInstructions: data.analyzedInstructions[0]?.steps.map(ste=>`${ste.number}. ${ste.step}`).join('#') //!  no te ilvides usar el # para poder darle espaciados en el front 
+      analyzedInstructions: data.analyzedInstructions[0]?.steps.map(ste=>`${ste.number}. ${ste.step}`).join(' ✂ ') //!  no te ilvides usar el # para poder darle espaciados en el front 
     };
     return aryApi
   } catch (e){

@@ -13,7 +13,7 @@ const findByIdRecipe = async (id)=>{
     const dbRecipe = await RecipeByIdDb (id);
     if (typeof(apiRecipe) === 'string') return apiRecipe
     if (apiRecipe?.id) return apiRecipe
-    if (dbRecipe.length) return dbRecipe
+    if (dbRecipe.length) return dbRecipe[0]
 }
 
 const dietsFound = async ()=>{

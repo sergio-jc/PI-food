@@ -3,6 +3,7 @@ import {
   GET_ALL_TYPES,
   GET_ALL_DISH_TYPES,
   FIND_BY_NAME,
+  DETAIL,
 } from "../action";
 
 const initialState = {
@@ -10,6 +11,7 @@ const initialState = {
   findRecipe: [],
   allDiets: [],
   allDishTypes: [],
+  recipeDetail: {},
 };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -32,6 +34,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         findRecipe: action.payload,
+      };
+    case DETAIL:
+      return {
+        ...state,
+        recipeDetail: action.payload,
       };
     default:
       return initialState;
