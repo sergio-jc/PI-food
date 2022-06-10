@@ -1,9 +1,19 @@
 // * valida si hay errores o no
 export const validate = (input) => {
   const errors = {};
+  let regExp = /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/;
+  let url = input.image.match(regExp);
+
+  if (!input.image) {
+    errors.image = "copy an image URL to make your recipe stand out ";
+  } else if (!url?.length) {
+    errors.image = "12314555 ";
+  }
+
   if (!input.name) {
     errors.name = "You cannot create a recipe without a name !";
   }
+
   if (!input.healthScore) {
     errors.healthScore = "you should choose a number from 1 to 100";
   } else if (!(input.healthScore >= 0 && input.healthScore <= 100)) {
@@ -14,9 +24,7 @@ export const validate = (input) => {
   if (!input.summary) {
     errors.summary = "encourage yourself to write a summary ";
   }
-  if (!input.image) {
-    errors.image = "copy an image URL to make your recipe stand out ";
-  }
+
   if (!input.analyzedInstructions) {
     errors.analyzedInstructions =
       "create steps so that others can make your recipe ";

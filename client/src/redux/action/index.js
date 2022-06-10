@@ -2,6 +2,7 @@ import axios from 'axios' ;
 import { arrayDiets } from '../../components/Form/func/funcAux.js';
 export const GET_ALL_RECIPES = "GET_ALL_RECIPES";
 export const GET_ALL_TYPES = "GET_ALL_TYPES";
+export const GET_ALL_DISH_TYPES ="GET_ALL_DISH_TYPES"
 
 export const getAllRecipes = () => async (dispatch) => {
   const {data} = await axios.get("http://localhost:3001/allRecipes");
@@ -17,6 +18,14 @@ export const getAllTypes = () => async (dispatch) =>{
     type: GET_ALL_TYPES,
     payload: data.map(e=>e.name),
   });
+}
+
+export const getAllDishTypes = () => async (dispatch) =>{
+  const {data} = await axios.get("http://localhost:3001/dishTypes");
+  dispatch({
+    type : GET_ALL_DISH_TYPES,
+    payload : data
+  })
 }
 
 export const postRecipe = (input, checkedState , allDiets) => async () => {

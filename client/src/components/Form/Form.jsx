@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../Form/Form.css";
 import { validate } from "./func/funcAux";
-import { getAllTypes, postRecipe } from "../../redux/action";
+import { getAllDishTypes, getAllTypes, postRecipe } from "../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import CheckBoxDiets from "./inputs/CheckBoxDiets";
 
@@ -22,6 +22,8 @@ const From = () => {
   });
   const dispatch = useDispatch();
   const allDiets = useSelector((state) => state.allDiets);
+  const allDishTypes = useSelector((state)=>state.allDishTypes)
+  console.log(allDishTypes)
   const [checkedState, setCheckedState] = useState([
     false,
     false,
@@ -31,8 +33,26 @@ const From = () => {
     false,
     false,
   ]);
+  const [checkedDish, setCheckedDish] = useState(
+    [false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,]
+    )
+    // new Array(allDishTypes.length).fill(false)
 
   useEffect(() => {
+    dispatch(getAllDishTypes())
     dispatch(getAllTypes());
   }, [dispatch]);
 
@@ -84,6 +104,14 @@ const From = () => {
     console.log(updatedCheckedState);
     setCheckedState(updatedCheckedState);
     console.log(allDiets);
+  };
+  const handleOnCheckedDish = (position) => {
+    const updatedCheckedState = checkedDish.map((item, index) =>
+      index === position ? !item : item
+    );
+    console.log(updatedCheckedState);
+    setCheckedDish(updatedCheckedState);
+    console.log(allDishTypes);
   };
   // * -----------------------------------------------
 
@@ -161,6 +189,11 @@ const From = () => {
           allDiets={allDiets}
         />
          {!checkedState.filter(e=> e===true).length && <p>Please choose at least one diet.</p>}
+         <CheckBoxDiets
+          state={checkedDish}
+          handle={handleOnCheckedDish}
+          allDiets={allDishTypes}
+        />
       </div>
       <input type="submit" value="Create" />
     </form>
