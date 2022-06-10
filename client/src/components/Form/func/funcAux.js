@@ -12,7 +12,7 @@ export const validate = (input) => {
 
   if (!input.name) {
     errors.name = "You cannot create a recipe without a name !";
-  }
+  } 
 
   if (!input.healthScore) {
     errors.healthScore = "you should choose a number from 1 to 100";

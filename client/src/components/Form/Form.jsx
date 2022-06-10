@@ -80,13 +80,13 @@ const From = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    if (save.includes(input.name)) {
+    if (save.includes(input.name.toLowerCase())) {
       alert(
         "Sorry the name of the recipe already exists try choosing a different name"
       );
       //! recuerda cuando estes haciendo la ruta delete no te olvides de filtrar el save para que te puedo agregar denuevo la receta Ej : [ 1 ,2 3] => [1 ,2] => 3 ...[1 ,2] error ya existe  => recuerdalo
     } else {
-      setSave([...save, input.name]);
+      setSave([...save, input.name.toLowerCase()]);
 
       if (
         errors.name ||
