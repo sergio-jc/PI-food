@@ -1,30 +1,29 @@
 import React from "react";
-const CheckBoxDiets = ( {state, handle ,allDiets}) => {
+const CheckBoxDiets = ({ state, handle, allDiets }) => {
   return (
     <div>
-      <label>Diets :</label>
-    <ul className="toppings-list">
-          {allDiets.map((e, index) => {
-            return (
-              <li key={index}>
-                <div className="toppings-list-item">
-                  <div className="left-section">
-                    <input
-                      type="checkbox"
-                      id={`custom-checkbox-${index}`}
-                      name={e}
-                      value={e}
-                      checked={state[index]}
-                      onChange={() => handle(index)}
-                    />
-                    <label htmlFor={`custom-checkbox-${index}`}>{e}</label>
-                  </div>
+      <ul className="toppings-list">
+        {allDiets.map((e, index) => {
+          return (
+            <li key={index}>
+              <div className="toppings-list-item">
+                <div className="left-section">
+                  <input
+                    type="checkbox"
+                    id={`custom-checkbox-${index}`}
+                    name={e}
+                    value={e}
+                    checked={state[index]}
+                    onChange={() => handle(index)}
+                  />
+                  <label htmlFor={`custom-checkbox-${index}`}>{e}</label>
                 </div>
-              </li>
-            );
-          })}
-        </ul>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };
-export default CheckBoxDiets
+export default CheckBoxDiets;

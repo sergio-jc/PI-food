@@ -28,14 +28,21 @@ export const getAllDishTypes = () => async (dispatch) =>{
   })
 }
 
-export const postRecipe = (input, checkedState , allDiets) => async () => {
+export const postRecipe = (input, checkedState, allDiets, checkedDish, allDishTypes ,allSteps ) => async () => {
+  let array = []
+for(let key in allSteps){
+  array.push(allSteps[key])
+}
+let sinUndefined =  array.filter((e,i)=>e!=='')
+let steps = sinUndefined.map((e,i)=>`${i+2}.${e}`)
   const newRecipe = {
     name: input.name,
     diets: arrayDiets(checkedState , allDiets),
+    dishTypes : arrayDiets(checkedDish, allDishTypes).join(' , '),
     healthScore : input.healthScore,
     summary : input.summary,
     image : input.image,
-    analyzedInstructions : input.analyzedInstructions
+    analyzedInstructions : [`1.${input.analyzedInstructions}`, ...steps].join(' ✂ ')
   };
   console.log(newRecipe)
   axios.post("http://localhost:3001/recipe",  newRecipe ).then((res) => {

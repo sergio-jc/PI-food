@@ -16,14 +16,14 @@ const Cards = () => {
     display = allRecipes.map(({ id, name, image, healthScore, diets }) => {
       return (
         <>
-          <div key={id} className='card'>
+          <div key={`card_id_${id}`} className='card'>
             <h3>{name}</h3>
             <h2>{healthScore}</h2>
             <div>
               <h3>Diets :</h3>
             {diets.length && typeof diets[0] === "string"
-              ? diets.map((e) => <p>{e}</p>)
-              : diets.map((e) => <p>{e.name}</p>)}
+              ? diets.map((e , i) => <p key={i}>{e}</p>)
+              : diets.map((e , i) => <p key={i}>{e.name}</p>)}
             </div>
             <img src={image} alt="s" className="image" />
           </div>

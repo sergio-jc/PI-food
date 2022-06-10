@@ -20,10 +20,18 @@ const From = () => {
     image: "choose an image  ❤",
     analyzedInstructions: "how is your recipe made? ❤",
   });
+  const [account, setAccount] = useState([]);
+  const [steps, setSteps] = useState({
+    0: "",
+    1: "",
+    2: "",
+    3: "",
+    4: "",
+  });
+  console.log(steps)
   const dispatch = useDispatch();
   const allDiets = useSelector((state) => state.allDiets);
-  const allDishTypes = useSelector((state)=>state.allDishTypes)
-  console.log(allDishTypes)
+  const allDishTypes = useSelector((state) => state.allDishTypes);
   const [checkedState, setCheckedState] = useState([
     false,
     false,
@@ -33,8 +41,7 @@ const From = () => {
     false,
     false,
   ]);
-  const [checkedDish, setCheckedDish] = useState(
-    [false,
+  const [checkedDish, setCheckedDish] = useState([
     false,
     false,
     false,
@@ -47,12 +54,13 @@ const From = () => {
     false,
     false,
     false,
-    false,]
-    )
-    // new Array(allDishTypes.length).fill(false)
+    false,
+    false,
+  ]);
+  // new Array(allDishTypes.length).fill(false)
 
   useEffect(() => {
-    dispatch(getAllDishTypes())
+    dispatch(getAllDishTypes());
     dispatch(getAllTypes());
   }, [dispatch]);
 
@@ -78,13 +86,16 @@ const From = () => {
       errors.summary ||
       errors.image ||
       errors.analyzedInstructions ||
-     !checkedState.filter(e=> e===true).length
+      !checkedState.filter((e) => e === true).length ||
+      !checkedDish.filter((e)=> e === true).length
     ) {
       alert(
         "The recipe was not created correctly ,follow the indications please"
       );
     } else {
-      dispatch(postRecipe(input, checkedState, allDiets));
+      dispatch(
+        postRecipe(input, checkedState, allDiets, checkedDish, allDishTypes,steps)
+      );
       alert("Your recipe was successfully created");
     }
     setInput({
@@ -114,6 +125,23 @@ const From = () => {
     console.log(allDishTypes);
   };
   // * -----------------------------------------------
+
+  let acc = 0;
+  const onClickNewStep = (e) => {
+    if (account.length < 5) {
+      acc++;
+      let input = [...account];
+      input.push(acc);
+      setAccount(input);
+    }
+  };
+
+  const handleSteps = (e) => {
+    setSteps({
+      ...steps,
+      [e.target.name]: e.target.value,
+    });
+  }
 
   return (
     <form onSubmit={(e) => handleOnSubmit(e)}>
@@ -182,18 +210,41 @@ const From = () => {
           {errors.analyzedInstructions && (
             <p className="danger">{errors.analyzedInstructions}</p>
           )}
+          <div onClick={onClickNewStep}>New Steps</div>
+
+
+          {account.map((e ,i) => (
+            <div key={`step_${i}`}>
+              <input
+                // className={errors.analyzedInstructions && "danger"}
+                placeholder={`step ${i+2}...`}
+                type="text"
+                name={i}
+                onChange={(e) => handleSteps(e)}
+                value={steps[i]}
+              />
+            </div>
+          ))}
+
         </div>
+        <label>Diets :</label>
         <CheckBoxDiets
           state={checkedState}
           handle={handleOnChecked}
           allDiets={allDiets}
         />
-         {!checkedState.filter(e=> e===true).length && <p>Please choose at least one diet.</p>}
-         <CheckBoxDiets
+        {!checkedState.filter((e) => e === true).length && (
+          <p>Please choose at least one diet ❤</p>
+        )}
+        <label>Dish Types :</label>
+        <CheckBoxDiets
           state={checkedDish}
           handle={handleOnCheckedDish}
           allDiets={allDishTypes}
         />
+        {!checkedDish.filter((e)=> e === true).length && (
+          <p>Please choose at least one Dish Type ❤</p>
+        )}
       </div>
       <input type="submit" value="Create" />
     </form>
@@ -201,7 +252,6 @@ const From = () => {
 };
 
 export default From;
-
 
 // name: "enter a name for your recipe ❤",
 // healthScore: "choose a score for your recipe from 1 to 100 ❤",
