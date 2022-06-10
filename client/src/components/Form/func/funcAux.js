@@ -1,13 +1,13 @@
 // * valida si hay errores o no
 export const validate = (input) => {
   const errors = {};
-  let regExp = /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/;
+  let regExp = /^https?:\/\/.*\/.*\.(png|gif|webp|jpeg|jpg)($|\?.*$)/;
   let url = input.image.match(regExp);
 
   if (!input.image) {
     errors.image = "copy an image URL to make your recipe stand out ";
   } else if (!url?.length) {
-    errors.image = "12314555 ";
+    errors.image = "the URL you copied is not valid, try this one -> https://www.quinoarecetas.es/wp-content/uploads/2020/10/quinoa-logo.gif";
   }
 
   if (!input.name) {
