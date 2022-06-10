@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../Form/Form.css";
 import { validate } from "./func/funcAux";
-import { getAllDishTypes, getAllTypes, postRecipe } from "../../redux/action";
+import { findByName,getAllDishTypes, getAllTypes, postRecipe } from "../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import CheckBoxDiets from "./inputs/CheckBoxDiets";
 
@@ -31,6 +31,7 @@ const From = () => {
   const dispatch = useDispatch();
   const allDiets = useSelector((state) => state.allDiets);
   const allDishTypes = useSelector((state) => state.allDishTypes);
+  const safeName = useSelector((state)=>state.findRecipe);
   const [checkedState, setCheckedState] = useState([
     false,
     false,
@@ -57,7 +58,7 @@ const From = () => {
     false,
   ]);
   // new Array(allDishTypes.length).fill(false)
-  const [save, setSave] = useState([]);
+
 
   useEffect(() => {
     dispatch(getAllDishTypes());
@@ -79,14 +80,15 @@ const From = () => {
   };
 
   const handleOnSubmit = (e) => {
+    dispatch(findByName(input.name))
     e.preventDefault();
-    if (save.includes(input.name.toLowerCase())) {
+    if (safeName.map(e=> e.name.toLowerCase()).includes(input.name.toLowerCase())) {
       alert(
         "Sorry the name of the recipe already exists try choosing a different name"
       );
       //! recuerda cuando estes haciendo la ruta delete no te olvides de filtrar el save para que te puedo agregar denuevo la receta Ej : [ 1 ,2 3] => [1 ,2] => 3 ...[1 ,2] error ya existe  => recuerdalo
     } else {
-      setSave([...save, input.name.toLowerCase()]);
+
 
       if (
         errors.name ||
