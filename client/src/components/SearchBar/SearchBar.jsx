@@ -4,6 +4,7 @@ const SearchBar = ({ input ,setInput , setValidate}) => {
   const handleOnSubmit = (e)=>{
     e.preventDefault()
     setValidate(input)
+    input === '' && alert ('lo sentimos no se encontro la receta')
   }
 
   const handleOnChange = (e)=>{

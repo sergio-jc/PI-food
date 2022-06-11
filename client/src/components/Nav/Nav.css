@@ -1,0 +1,42 @@
+nav {
+    background-color: brown;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-radius: .3s ease all;
+    box-shadow: darkblue;
+}
+
+span {
+    width:  30 px;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    background-color: none;
+    color: #fff;
+    margin: 10px 20px;
+}
+
+.logotipo{
+    font-weight:   700;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.enlaces {
+    display: flex;
+    align-items :center ;
+    
+}
+
+.switch {
+    background: #343D5B;
+    border-radius: 1000px;
+    border: none;
+    position: relative;
+    cursor : pointer ;
+    display: flex;
+    outline: none;
+    
+}
+

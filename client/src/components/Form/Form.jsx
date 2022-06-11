@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../Form/Form.css";
 import { validate } from "./func/funcAux";
-import { findByName,getAllDishTypes, getAllTypes, postRecipe } from "../../redux/action";
+import { getAllRecipes,getAllDishTypes, getAllTypes, postRecipe } from "../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import CheckBoxDiets from "./inputs/CheckBoxDiets";
 
@@ -31,7 +31,7 @@ const From = () => {
   const dispatch = useDispatch();
   const allDiets = useSelector((state) => state.allDiets);
   const allDishTypes = useSelector((state) => state.allDishTypes);
-  const safeName = useSelector((state)=>state.findRecipe);
+  const safeName = useSelector((state)=>state.recipes);
   const [checkedState, setCheckedState] = useState([
     false,
     false,
@@ -40,6 +40,9 @@ const From = () => {
     false,
     false,
     false,
+    false,
+    false,
+    false
   ]);
   const [checkedDish, setCheckedDish] = useState([
     false,
@@ -57,6 +60,7 @@ const From = () => {
     false,
     false,
   ]);
+  console.log(checkedDish)
   // new Array(allDishTypes.length).fill(false)
 
 
@@ -78,11 +82,11 @@ const From = () => {
       })
     );
   };
-
+//-------------------------------------------------------------
   const handleOnSubmit = (e) => {
-    dispatch(findByName(input.name))
+    dispatch(getAllRecipes())
     e.preventDefault();
-    if (safeName.map(e=> e.name.toLowerCase()).includes(input.name.toLowerCase())) {
+    if (safeName.filter(e=> e.name.toLowerCase()===input.name.toLowerCase()).length) {
       alert(
         "Sorry the name of the recipe already exists try choosing a different name"
       );
