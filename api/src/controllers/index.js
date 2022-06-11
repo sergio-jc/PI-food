@@ -4,15 +4,19 @@ const { findAllDishTypes } = require("./recipe.apiController");
 const { Recipe, diets } = require("../db");
 
 const findNameRecipe = async (req, res) => {
-  const { name } = req.query;
-  if (!name) res.json("no pasaste ningun nombre");
-  const aryAllRecipe = await findAllRecipe();
-  let allRecipeFinded = aryAllRecipe.filter((e) =>
-    e.name.toLowerCase().includes(name.toLowerCase())
-  );
-  res.json(
-    allRecipeFinded.length ? allRecipeFinded : "I did not find the recipe"
-  );
+  try {
+    const { name } = req.query;
+    if (!name) res.json("no pasaste ningun nombre");
+    const aryAllRecipe = await findAllRecipe();
+    let allRecipeFinded = aryAllRecipe.filter((e) =>
+      e.name.toLowerCase().includes(name.toLowerCase())
+    );
+    res.json(
+      allRecipeFinded.length ? allRecipeFinded : "I did not find the recipe"
+    );
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 const allRecipe = async (req, res) => {

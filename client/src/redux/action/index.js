@@ -32,6 +32,7 @@ export const getAllDishTypes = () => async (dispatch) => {
 
 export const findByName = (name) => async (dispatch) => {
   const { data } = await axios.get(`http://localhost:3001/recipes?name=${name}`);
+  console.log(data)
   dispatch({
     type: FIND_BY_NAME,
     payload: data,

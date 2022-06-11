@@ -8,7 +8,7 @@ const findAllApiRecipe = async ()=>{
       let aryApi = data.results.map((recipe) => ({
         id: recipe.id,
         name: recipe.title,
-        summary: recipe.summary,
+        summary: recipe.summary.replaceAll(/<(“[^”]”|'[^’]’|[^'”>])*>/g, ''),
         image: recipe.image,
         diets: recipe.diets,
         dishTypes : recipe.dishTypes.join(' , '),
@@ -30,7 +30,7 @@ const RecipeByIdApi = async (id)=>{
     let aryApi = {
       id: data.id,
       name: data.title,
-      summary: data.summary,
+      summary: data.summary.replaceAll(/<(“[^”]”|'[^’]’|[^'”>])*>/g, ''),
       image: data.image,
       diets: data.diets,
       dishTypes : data.dishTypes.join(' , '), // ! no te olvides dar un objeto parseado de array a string
