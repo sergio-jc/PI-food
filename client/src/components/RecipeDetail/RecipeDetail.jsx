@@ -10,11 +10,11 @@ const RecipeDetail = () => {
     dispatch(Detail(id))
   },[dispatch , id])
   const recipe = useSelector((state)=> state.recipeDetail)
-  const allDiets = recipe.diets ? recipe.diets.map(e=>{ 
-    if(typeof(e)==='string') {return (<h3>{e}</h3>)}
-    return (<h3>{e.name}</h3>)
+  const allDiets = recipe.diets ? recipe.diets.map((e,i)=>{ 
+    if(typeof(e)==='string') {return (<p key={`diets_${i}`}>{e}</p>)}
+    return (<p key={`diets_${i}`}>{e.name}</p>)
     }) 
-    :'hol' 
+    :"don't find details" 
   return (
     <div>
       RecipeCard
