@@ -7,7 +7,6 @@ const Nav = ( ) => {
     <div>
       <nav>
         <Link to="/">
-          
             <img
               id="logoHenry"
               src="http://www.neserideas.com/wp-content/uploads/2017/04/diseo-logotipo-blog-de-cocina.png"
@@ -16,8 +15,7 @@ const Nav = ( ) => {
               className="logo"
               alt="logo"
             />
-            Henry - Food App
-          
+            RECETAS HAPPY
         </Link>
         <SearchBar />
         <Link to={'/form'}>Form</Link>

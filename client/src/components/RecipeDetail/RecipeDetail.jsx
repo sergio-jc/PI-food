@@ -17,8 +17,8 @@ const RecipeDetail = () => {
     :"don't find details" 
   return (
     <div>
-      RecipeCard
-      <h3>{recipe.name}</h3>
+      
+      <h1>{recipe.name}</h1>
       <h3>{allDiets}</h3>
       <h3>{recipe.healthScore}</h3>
       <div>{recipe.summary}</div>
