@@ -6,7 +6,6 @@ const SearchBar = ({ input ,setInput , setValidate}) => {
     setValidate(input)
     input === '' && alert ('lo sentimos no se encontro la receta')
   }
-
   const handleOnChange = (e)=>{
     setInput(e.target.value)
   }

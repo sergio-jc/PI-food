@@ -18,3 +18,13 @@ export const orderZ= (array) => {
     var z = array.sort(SortArrayZA);
     return z
 }
+
+export const orderMin = (array) => {
+  let min = array.sort((a,b)=>a.healthScore - b.healthScore);
+  return min
+}
+
+export const orderMax = (array) => {
+  let max = array.sort((a,b)=>b.healthScore - a.healthScore);
+  return max
+}
