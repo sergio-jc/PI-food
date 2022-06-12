@@ -4,7 +4,7 @@ import {
   GET_ALL_DISH_TYPES,
   FIND_BY_NAME,
   DETAIL,
-  FILTER_BY_DIET
+  FILTER_BY_DIET,
 } from "../action";
 
 const initialState = {
@@ -41,11 +41,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         recipeDetail: action.payload,
       };
-    case FILTER_BY_DIET :
-      return{
-        ... state ,
-        findRecipe: action.payload
-      }
+    case FILTER_BY_DIET:
+      return {
+        ...state,
+        findRecipe: action.payload,
+      };
     default:
       return initialState;
   }
