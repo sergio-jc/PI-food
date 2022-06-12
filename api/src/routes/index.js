@@ -2,7 +2,7 @@ const { Router } = require("express");
 require("dotenv").config(); 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-const {findNameRecipe, allRecipe , addRecipe , recipeFoundById , allDiets ,allDishTypes} = require('../controllers')
+const {findNameRecipe, allRecipe , addRecipe , recipeFoundById , allDiets ,allDishTypes,filterByDiets} = require('../controllers')
 const router = Router();
 
 // Configurar los routers
@@ -14,5 +14,6 @@ router.post('/recipe',addRecipe)  // crear la carta
 router.get("/recipes/:idReceta",recipeFoundById) // 
 router.get("/type",allDiets)
 router.get("/dishTypes",allDishTypes)
+router.get("/filter/:diet",filterByDiets)
 
 module.exports = router;

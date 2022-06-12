@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Cards from "../Cards/Cards";
 import SearchBar from "../SearchBar/SearchBar";
 import { useDispatch, useSelector } from "react-redux";
-import { findByName, getAllRecipes , getAllTypes } from "../../redux/action";
+import { filterByDiet, findByName, getAllRecipes , getAllTypes } from "../../redux/action";
 import { orderA, orderMax, orderMin, orderZ } from "./func/Sort.js";
 const Home = () => {
   const dispatch = useDispatch();
@@ -13,6 +13,8 @@ const Home = () => {
   let allRecipes = useSelector((state) => state.recipes);
   const [button, setButton] = useState(true);
   const [MaxMin, setMaxMin] = useState(true);
+  const [selectDiet , setSelect] = useState('');
+  console.log(selectDiet)
   console.log(MaxMin);
   useEffect(() => {
     dispatch(getAllRecipes());
@@ -25,6 +27,11 @@ const Home = () => {
   MaxMin
     ? (allRecipes = orderMax(allRecipes))
     : (allRecipes = orderMin(allRecipes));
+
+    const handleOnSelect = (e)=>{
+      setSelect(e.target.value)
+      dispatch(filterByDiet(selectDiet))
+    }
 
   return (
     <div>
@@ -56,7 +63,7 @@ const Home = () => {
           <label>Diets</label>
           <label for="filter">Choose a diet:</label>
 
-          <select name="filter" id="filter">
+          <select name="filter" value={selectDiet} id="filter" onChange={handleOnSelect}>
             <option value="recipes">Recipes</option>
             {typesDiets.map((e,i)=>(<option key={`opc.${i}`} value={e} >{e}</option>))}
           </select>

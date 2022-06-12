@@ -4,7 +4,8 @@ export const GET_ALL_RECIPES = "GET_ALL_RECIPES";
 export const GET_ALL_TYPES = "GET_ALL_TYPES";
 export const GET_ALL_DISH_TYPES = "GET_ALL_DISH_TYPES";
 export const FIND_BY_NAME = "FIND_BY_NAME";
-export const DETAIL ="DETAIL"
+export const DETAIL ="DETAIL";
+export const FILTER_BY_DIET = "FILTER_BY_DIET";
 
 export const getAllRecipes = () => async (dispatch) => {
   const { data } = await axios.get("http://localhost:3001/allRecipes");
@@ -46,6 +47,14 @@ export const Detail = (id) => async (dispatch) =>{
     payload : data
   })
 } 
+
+export const filterByDiet = (diet) => async (dispatch) =>{
+  const {data} = await axios.get(`http://localhost:3001/filter/${diet}`)
+  dispatch({
+    type : FILTER_BY_DIET,
+    payload : data
+  })
+}
 
 export const postRecipe =
   (input, checkedState, allDiets, checkedDish, allDishTypes, allSteps) =>

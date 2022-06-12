@@ -71,6 +71,17 @@ const allDishTypes = async (req, res) => {
   }
 };
 
+const filterByDiets = async (req,res) => {
+  try {
+    const allRecipes = await findAllRecipe ()
+    console.log(allRecipes)
+    const filterRecipe = allRecipes.filter(e=>e.diets.includes(req.params.diet))
+    res.status(200).json(filterRecipe)
+  } catch (e) {
+    console.log(e,'no pasaste ninguna diet')
+  }
+}
+
 module.exports = {
   findNameRecipe,
   allRecipe,
@@ -78,4 +89,5 @@ module.exports = {
   recipeFoundById,
   allDiets,
   allDishTypes,
+  filterByDiets
 };
