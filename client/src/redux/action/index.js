@@ -50,6 +50,7 @@ export const Detail = (id) => async (dispatch) =>{
 
 export const filterByDiet = (diet) => async (dispatch) =>{
   const {data} = await axios.get(`http://localhost:3001/filter/${diet}`)
+  console.log(data)
   dispatch({
     type : FILTER_BY_DIET,
     payload : data

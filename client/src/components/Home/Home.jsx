@@ -78,7 +78,7 @@ const Home = () => {
             id="filter"
             onChange={handleOnSelect}
           >
-            <option value="recipes">Recipes</option>
+            <option  onClick={onSubmitSelect} value="recipes">Recipes</option>
             {typesDiets.map((e, i) => (
               <option key={`opc.${i}`} value={e} onClick={onSubmitSelect}>
                 {e}

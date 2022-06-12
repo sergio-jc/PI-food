@@ -72,6 +72,7 @@ const allDishTypes = async (req, res) => {
 };
 
 const filterByDiets = async (req,res) => {
+  if (req.params.diet === 'recipes') res.json("diet not found");
   try {
     const allRecipes = await findAllRecipe ()
     console.log(allRecipes)
