@@ -1,5 +1,5 @@
 const { findAllRecipe, findByIdRecipe } = require("./recipe.api&db.js");
-const { findAllDbDiets } = require("./recipe.dbController");
+const { findAllDbDiets , findAllDbRecipe } = require("./recipe.dbController");
 const { findAllDishTypes } = require("./recipe.apiController");
 const { Recipe, diets } = require("../db");
 
@@ -75,8 +75,11 @@ const filterByDiets = async (req,res) => {
   if (req.params.diet === 'recipes') res.json("diet not found");
   try {
     const allRecipes = await findAllRecipe ()
+    const findAllDbDiets = await findAllDbRecipe()
     console.log(allRecipes)
-    const filterRecipe = allRecipes.filter(e=>e.diets.includes(req.params.diet))
+    const filterApi = allRecipes.filter(e=>e.diets.includes(req.params.diet))
+    const filterDb = findAllDbDiets.filter(e=>e.diets.map(e=>e.name).includes(req.params.diet))
+    const filterRecipe = [...filterApi,...filterDb]
     res.status(200).json(filterRecipe)
   } catch (e) {
     console.log(e,'no pasaste ninguna diet')
