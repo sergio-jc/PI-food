@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch , useSelector} from "react-redux";
 import { filterByDiet } from "../../../redux/action";
 
-const Filter = () =>{
+const Filter = ({setCurrent}) =>{
     const dispatch = useDispatch()
   const typesDiets = useSelector((state) => state.allDiets);
   const [selectDiet, setSelect] = useState("");
@@ -11,6 +11,7 @@ const Filter = () =>{
     };
     const onSubmitSelect = (e) => {
       console.log(selectDiet);
+      setCurrent(1)
       e.preventDefault()
       dispatch(filterByDiet(selectDiet));
     };

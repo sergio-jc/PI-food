@@ -1,14 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector , useDispatch} from "react-redux";
+import { useDispatch} from "react-redux";
 import "./CardsRecipes.css";
 import { getAllRecipes } from "../../redux/action";
-const Cards = () => {
+const Cards = ({actualPage}) => {
   const dispatch = useDispatch()
-  const recipes = useSelector ((state) => state.recipes)
   let display
-  if(typeof(recipes)==='object'){
-    display = recipes.map (({id,name,healthScore,diets,image},i)=>{
+  if(typeof(actualPage)==='object'){
+    display = actualPage.map (({id,name,healthScore,diets,image},i)=>{
       return(
       <Link key={`card ${id}-${i}`} to={`/detail/${id}`}>
       <div className="card" >
@@ -35,7 +34,7 @@ const Cards = () => {
       </div>
     )
   }
-   return ( !recipes.length ?  <h1>loading</h1>  : <div className="fund">{display}</div>)
+   return ( !actualPage.length ?  <h1>loading</h1>  : <div className="fund">{display}</div>)
 };
 
 export default Cards;

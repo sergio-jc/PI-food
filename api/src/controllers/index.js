@@ -76,7 +76,6 @@ const filterByDiets = async (req,res) => {
     const allRecipes = await findAllRecipe ()
     if (req.params.diet === 'recipes')  return res.json(allRecipes);
     const findAllDbDiets = await findAllDbRecipe()
-    console.log(allRecipes)
     const filterApi = allRecipes.filter(e=>e.diets.includes(req.params.diet))
     const filterDb = findAllDbDiets.filter(e=>e.diets.map(e=>e.name).includes(req.params.diet))
     const filterRecipe = [...filterApi,...filterDb]
