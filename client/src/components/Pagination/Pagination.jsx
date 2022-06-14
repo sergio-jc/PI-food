@@ -21,7 +21,7 @@ const Pagination = ({setCurrent, size ,totalCards, current}) =>{
         <div>
             <button onClick={handlePre}>{'<'}</button>
             {
-                total.map(e=><button value={e} onClick={handleOnClick}>{e}</button>)
+                total.map((e,i)=><button value={e} onClick={handleOnClick} key={`button ${i}`}>{e}</button>)
             }
             <button onClick={handleNext}>{'>'}</button>
         </div>
