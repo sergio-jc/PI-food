@@ -1,33 +1,75 @@
-.card {
-    margin: 10px;
-  width: 25rem;
-  background-color: #fcebb6;
-    border-radius: 10px;
-    transition: transform 0.3s ease-in-out;
-    border-style: none;
-    color: rgb(0, 0, 0);
-    font-weight: bold;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-.fund{
+.container {
+    width: 100%;
+    max-width: 1200px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    /* background: url(https://st.depositphotos.com/3263277/4364/v/450/depositphotos_43644843-stock-illustration-pasta.jpg); */
-    background-color: #78c0a8;
+    justify-content: center;
+    margin: auto;
+
+}
+.container .card {
+  margin: 20px;
+  background-color: #fff;
+  /* transition: transform 0.3s ease-in-out; */
+  border-style: none;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  overflow: hidden;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+  cursor: default;
+  transition: all 400ms ease;
+  width: 350px;
+  height: 450px;
+  display: flex;
+  max-width: 1000px;
+  border-radius: 8px;
 }
 
-.card:hover {
-    filter: opacity(0.9);
-    transform: scale(1.09);
-    background-color: #f0a830;
-    color: white;
-    font-weight: bold;
-  }
-  .heathScore{
-      font-size: 3rem;
-  }
-
-.image {
-    width: 20rem;
+.fund {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* background: url(https://st.depositphotos.com/3263277/4364/v/450/depositphotos_43644843-stock-illustration-pasta.jpg); */
+  background-color: #f0ddaa;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 }
+
+.container .card:hover {
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+  filter: opacity(0.9);
+  transform: translateY(-3%);
+  /* transform: scale(1.09); */
+  background-color: #f0a830;
+  color: white;
+  font-weight: bold;
+}
+
+.card img {
+    /* width: 100%; */
+    width: 350px;
+    height: 230px;
+}
+
+.card .contenido {
+    padding: 15px;
+    text-align: center;
+}
+.card .contenido h4{
+   font-weight: 600;
+   margin-bottom: 15px;
+}
+.container .card .contenido ul li {
+    padding: 0 1rem;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+

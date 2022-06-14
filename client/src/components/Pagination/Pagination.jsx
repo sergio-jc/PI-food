@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import '../Pagination/Pagination.css'
 
 const Pagination = ({setCurrent, size ,totalCards, current}) =>{
     const display =  Math.ceil (size/totalCards)
@@ -19,11 +20,11 @@ const Pagination = ({setCurrent, size ,totalCards, current}) =>{
     }
     return (
         <div>
-            <button onClick={handlePre}>{'<'}</button>
+            <button className='button' onClick={handlePre}>{'<'}</button>
             {
-                total.map((e,i)=><button value={e} onClick={handleOnClick} key={`button ${i}`}>{e}</button>)
+                total.map((e,i)=><button className='button' value={e} onClick={handleOnClick} key={`button ${i}`}>{e}</button>)
             }
-            <button onClick={handleNext}>{'>'}</button>
+            <button className='button' onClick={handleNext}>{'>'}</button>
         </div>
     )
 }

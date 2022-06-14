@@ -1,0 +1,23 @@
+.button {
+    font-size: 20px;
+    /* line-height: 50px; */
+    text-align: center;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-color: #73c8a9;
+    color : white;
+    box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+    cursor: pointer;
+    outline: none;
+    transition: 0.2s all;
+    
+}
+.button:active {
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    /* Lowering the shadow */
+    background-color: #59b390;
+}
