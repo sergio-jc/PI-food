@@ -9,27 +9,34 @@ const Cards = ({ actualPage }) => {
   if (typeof actualPage === "object") {
     display = actualPage.map(({ id, name, healthScore, diets, image }, i) => {
       return (
-        <Link key={`card ${id}-${i}`} to={`/detail/${id}`}>
+       
           <div className="container">
             <div className="card">
-             
-                <img src={image} alt="receta rica rica" className="image" />
-              
+            <Link key={`card ${id}-${i}`} to={`/detail/${id}`}>
+              <img src={image} alt="receta rica rica" className="image" />
+              </Link>
               <div className="contenido">
-                <h4 >{name}</h4>
-                <h4 >{healthScore}</h4>
-                <div>
-                  <ul>
-                    {diets &&
-                      diets.map((e, i) => {
-                        return <li key={`list ${i} card ${id}`}>{e}</li>;
-                      })}
-                  </ul>
+                <div className="name">
+                  <h4>{name}</h4>
+                </div>
+                <div className="datos">
+                  <div className="diets">
+                    <ul>
+                      {diets &&
+                        diets.map((e, i) => {
+                          return <li key={`list ${i} card ${id}`}>{e}</li>;
+                        })}
+                    </ul>
+                  </div>
+
+                  <div className="score">
+                   {healthScore}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </Link>
+        
       );
     });
   } else {

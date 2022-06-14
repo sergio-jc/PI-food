@@ -16,6 +16,8 @@
   max-width: 1000px;
   border-radius: 8px;
   flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
 }
 
 .fund {
@@ -40,16 +42,14 @@
   font-weight: bold;
 }
 
-
-
 .card img {
-    justify-content: flex-start;
     /* width: 100%; */
     width: 350px;
     height: 230px;
 }
 .container .card h4 {
     font-weight: 600;
+    text-decoration: none;
 }
 
 
@@ -58,4 +58,39 @@
     font-size: 16px;
     font-weight: 300;
 }
+/* .container .card .contenido .name {
 
+} */
+.container .card .contenido {
+  justify-content: center;
+  justify-content: space-around;
+}
+.container .card .contenido .datos {
+  display: flex;
+  position: relative;
+  
+}
+.container .card .contenido .name {
+  justify-content: center;
+}
+.container .card .contenido .score {
+  color:#138a11;
+  font-size:xxx-large;
+  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+}
+
+
+
+
+
+
+/* .color1 { #59b390 };
+.color2 { #f0ddaa };
+.color3 { #e47c5d };
+.color4 { #e32d40 };
+#138a11
+.color5 { #152b3c }; */
