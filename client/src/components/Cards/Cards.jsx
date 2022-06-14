@@ -9,10 +9,9 @@ const Cards = ({ actualPage }) => {
   if (typeof actualPage === "object") {
     display = actualPage.map(({ id, name, healthScore, diets, image }, i) => {
       return (
-       
-          <div className="container">
+          <div key={`card ${id}-${i}`}  className="container">
             <div className="card">
-            <Link key={`card ${id}-${i}`} to={`/detail/${id}`}>
+            <Link to={`/detail/${id}`}>
               <img src={image} alt="receta rica rica" className="image" />
               </Link>
               <div className="contenido">
