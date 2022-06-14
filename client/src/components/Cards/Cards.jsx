@@ -12,9 +12,9 @@ const Cards = ({ actualPage }) => {
         <Link key={`card ${id}-${i}`} to={`/detail/${id}`}>
           <div className="container">
             <div className="card">
-              <figure>
+             
                 <img src={image} alt="receta rica rica" className="image" />
-              </figure>
+              
               <div className="contenido">
                 <h4 >{name}</h4>
                 <h4 >{healthScore}</h4>
