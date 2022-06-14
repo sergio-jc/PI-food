@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector , useDispatch} from "react-redux";
 import "./CardsRecipes.css";
+import { getAllRecipes } from "../../redux/action";
 const Cards = () => {
+  const dispatch = useDispatch()
   const recipes = useSelector ((state) => state.recipes)
   let display
   if(typeof(recipes)==='object'){
@@ -26,7 +28,12 @@ const Cards = () => {
     </Link>
     )})
   } else {
-    display = <h1>Error</h1>
+    display = (
+      <div>
+        <h1>Error</h1>
+        <button onClick={(e)=>dispatch(getAllRecipes())}>ver todas las cartas</button>
+      </div>
+    )
   }
    return ( !recipes.length ?  <h1>loading</h1>  : <div className="fund">{display}</div>)
 };

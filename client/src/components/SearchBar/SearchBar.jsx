@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { findByName } from "../../redux/action";
+const SearchBar = () => {
+  const [input, setInput]= useState('')
+  const dispatch = useDispatch()
 
-const SearchBar = ({ input ,setInput , setValidate}) => {
   const handleOnSubmit = (e)=>{
     e.preventDefault()
-    setValidate(input)
-    input === '' && alert ('lo sentimos no se encontro la receta')
+    if(input=== '') return ;
+    dispatch(findByName(input))
+    setInput('')
   }
   const handleOnChange = (e)=>{
     setInput(e.target.value)
@@ -12,9 +17,9 @@ const SearchBar = ({ input ,setInput , setValidate}) => {
   
   return (
     <div>
-      <form onSubmit={handleOnSubmit}>
-        <input type="text" placeholder="Recipe..." onChange={handleOnChange} />
-        <input type="submit" value="🔍" />
+      <form >
+        <input type="text" placeholder="Recipe..." onChange={handleOnChange} value={input}/>
+        <button  onClick={handleOnSubmit} >🔍</button>
       </form>
     </div>
   );

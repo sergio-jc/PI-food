@@ -8,48 +8,44 @@ import {
   getAllRecipes,
   getAllTypes,
 } from "../../redux/action";
-import { orderA, orderMax, orderMin, orderZ } from "./func/Sort.js";
+// import { orderA, orderMax, orderMin, orderZ } from "./func/Sort.js";
+import Order from "../Button/Order/Order";
 const Home = () => {
   const dispatch = useDispatch();
-  const findRecipe = useSelector((state) => state.findRecipe);
-  const typesDiets = useSelector((state) => state.allDiets);
-  const [input, setInput] = useState("");
-  const [validate, setValidate] = useState("");
-  let allRecipes = useSelector((state) => state.recipes);
-  const [button, setButton] = useState(true);
-  const [MaxMin, setMaxMin] = useState(true);
-  const [selectDiet, setSelect] = useState("");
-  console.log(selectDiet);
-  console.log(MaxMin);
+  // const typesDiets = useSelector((state) => state.allDiets);
+
+
+  // const [button, setButton] = useState(true);
+  // const [MaxMin, setMaxMin] = useState(true);
+  // const [selectDiet, setSelect] = useState("");
+  // button
+  //   ? (allRecipes = orderA(allRecipes))
+  //   : (allRecipes = orderZ(allRecipes));
+  // MaxMin
+  //   ? (allRecipes = orderMax(allRecipes))
+  //   : (allRecipes = orderMin(allRecipes));
+    
+  //   const handleOnSelect = (e) => {
+  //     setSelect(e.target.value);
+  //   };
+  
+  //   const onSubmitSelect = (e) => {
+  //     console.log(selectDiet);
+  //     e.preventDefault()
+  //     dispatch(filterByDiet(selectDiet));
+  //   };
   useEffect(() => {
-    dispatch(getAllRecipes());
-    dispatch(findByName(validate));
-    dispatch(getAllTypes());
-  }, [dispatch, validate]);
-  button
-    ? (allRecipes = orderA(allRecipes))
-    : (allRecipes = orderZ(allRecipes));
-  MaxMin
-    ? (allRecipes = orderMax(allRecipes))
-    : (allRecipes = orderMin(allRecipes));
+    setTimeout(()=>{
+      dispatch(getAllRecipes());
+      dispatch(getAllTypes());
+    },1000)
+  }, [dispatch]);
 
-  const handleOnSelect = (e) => {
-    setSelect(e.target.value);
-  };
-
-  const onSubmitSelect = (e) => {
-    console.log(selectDiet);
-    e.preventDefault()
-    dispatch(filterByDiet(selectDiet));
-  };
   return (
     <div>
-      <div>
-        <SearchBar
-          input={input}
-          setInput={setInput}
-          setValidate={setValidate}
-        />
+      <SearchBar/>
+      <Order/>
+      {/* <div>
         <div>
           <button
             onClick={(e) => {
@@ -86,8 +82,9 @@ const Home = () => {
             ))}
           </select>
         </div>
-      </div>
-      <Cards allRecipes={allRecipes} findRecipe={findRecipe} />
+      </div> */}
+
+      <Cards/>
     </div>
   );
 };

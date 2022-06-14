@@ -1,4 +1,5 @@
 import axios from "axios";
+import { orderA } from "../../components/Button/Order/func/Sort.js";
 import { arrayDiets } from "../../components/Form/func/funcAux.js";
 export const GET_ALL_RECIPES = "GET_ALL_RECIPES";
 export const GET_ALL_TYPES = "GET_ALL_TYPES";
@@ -6,12 +7,20 @@ export const GET_ALL_DISH_TYPES = "GET_ALL_DISH_TYPES";
 export const FIND_BY_NAME = "FIND_BY_NAME";
 export const DETAIL ="DETAIL";
 export const FILTER_BY_DIET = "FILTER_BY_DIET";
+export const ORDER_BY_ALF = "ORDER_BY_ALF"
+
+const ObjectByArray = (array) =>{
+  const allRecipes = array.filter( e => e.diets?.length );
+  allRecipes.forEach( e => typeof e.diets[0] !== 'string' ? e.diets = e.diets.map( e => e.name) : 'noooo');
+  return allRecipes
+}
 
 export const getAllRecipes = () => async (dispatch) => {
   const { data } = await axios.get("http://localhost:3001/allRecipes");
+  console.log(data)
   dispatch({
     type: GET_ALL_RECIPES,
-    payload: data,
+    payload:orderA(ObjectByArray(data))
   });
 };
 
@@ -33,10 +42,9 @@ export const getAllDishTypes = () => async (dispatch) => {
 
 export const findByName = (name) => async (dispatch) => {
   const { data } = await axios.get(`http://localhost:3001/recipes?name=${name}`);
-  console.log(data)
   dispatch({
     type: FIND_BY_NAME,
-    payload: data,
+    payload: typeof(data)=== 'string'? data:ObjectByArray(data)
   });
 };
 
@@ -49,13 +57,20 @@ export const Detail = (id) => async (dispatch) =>{
 } 
 
 export const filterByDiet = (diet) => async (dispatch) =>{
-  const {data} = await axios.get(`http://localhost:3001/filter/${diet}`)
-  console.log(data)
+  const {data} = await axios.get(`http://localhost:3001/filter/${diet}`);
   dispatch({
     type : FILTER_BY_DIET,
-    payload : data
+    payload : ObjectByArray(data)
   })
 }
+
+export const orderByAlf = (boolean) =>{
+  return ({
+    type : ORDER_BY_ALF,
+    payload : boolean
+  })
+}
+
 
 export const postRecipe =
   (input, checkedState, allDiets, checkedDish, allDishTypes, allSteps) =>
