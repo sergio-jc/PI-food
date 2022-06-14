@@ -22,7 +22,7 @@ const Cards = () => {
           </ul>
         </div>
         <div>
-        <img src={image} alt="receta rica rica" />
+        <img src={image} alt="receta rica rica"  className="image"/>
       </div>
       </div>
     </Link>

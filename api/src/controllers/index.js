@@ -72,9 +72,9 @@ const allDishTypes = async (req, res) => {
 };
 
 const filterByDiets = async (req,res) => {
-  if (req.params.diet === 'recipes') res.json("diet not found");
   try {
     const allRecipes = await findAllRecipe ()
+    if (req.params.diet === 'recipes')  return res.json(allRecipes);
     const findAllDbDiets = await findAllDbRecipe()
     console.log(allRecipes)
     const filterApi = allRecipes.filter(e=>e.diets.includes(req.params.diet))

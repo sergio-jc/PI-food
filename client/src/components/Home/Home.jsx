@@ -1,85 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Cards from "../Cards/Cards";
 import SearchBar from "../SearchBar/SearchBar";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  filterByDiet,
-  findByName,
-  getAllRecipes,
-  getAllTypes,
-} from "../../redux/action";
+import { useDispatch } from "react-redux";
+import { getAllRecipes, getAllTypes } from "../../redux/action";
 // import { orderA, orderMax, orderMin, orderZ } from "./func/Sort.js";
 import Order from "../Button/Order/Order";
 import MinMax from "../Button/Order/MinMax";
 import Filter from "../Button/Filter/Filter";
 const Home = () => {
   const dispatch = useDispatch();
-  // const typesDiets = useSelector((state) => state.allDiets);
-
-  // const [selectDiet, setSelect] = useState("");
-  //   const handleOnSelect = (e) => {
-  //     setSelect(e.target.value);
-  //   };
-  //   const onSubmitSelect = (e) => {
-  //     console.log(selectDiet);
-  //     e.preventDefault()
-  //     dispatch(filterByDiet(selectDiet));
-  //   };
-
   useEffect(() => {
-    setTimeout(()=>{
+    setTimeout(() => {
       dispatch(getAllRecipes());
       dispatch(getAllTypes());
-    },1000)
+    }, 1000);
   }, [dispatch]);
 
   return (
     <div>
-      <SearchBar/>
-      <Order/>
-      <MinMax/>
-      <Filter/>
-      {/* <div>
-        <div>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              setButton(!button);
-            }}
-          >
-            {button ? "A-Z" : "Z-A"}
-          </button>
-        </div>
-        <div>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              setMaxMin(!MaxMin);
-            }}
-          >
-            {MaxMin ? "Max" : "Min"}
-          </button>
-          <label>Diets</label>
-          /////////////////////////////////////////////
-          <label for="filter">Choose a diet:</label>
-
-          <select
-            name="filter"
-            value={selectDiet}
-            id="filter"
-            onChange={handleOnSelect}
-          >
-            <option  onClick={onSubmitSelect} value="recipes">Recipes</option>
-            {typesDiets.map((e, i) => (
-              <option key={`opc.${i}`} value={e} onClick={onSubmitSelect}>
-                {e}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div> */}
-
-      <Cards/>
+      <SearchBar />
+      <Order />
+      <MinMax />
+      <Filter />
+      <Cards />
     </div>
   );
 };

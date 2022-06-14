@@ -22,10 +22,6 @@ const Nav = () => {
         <Link to={"/form"} className="enlaces">
           Form
         </Link>
-        <button className="switch" id="">
-          <span>A</span>
-          <span>Z</span>
-        </button>
       </nav>
     </div>
   );
