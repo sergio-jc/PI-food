@@ -1,4 +1,4 @@
-import { orderA, orderZ } from "../../components/Button/Order/func/Sort.js";
+import { orderA, orderMax, orderMin, orderZ } from "../../components/Button/Order/func/Sort.js";
 import {
   GET_ALL_RECIPES,
   GET_ALL_TYPES,
@@ -6,7 +6,8 @@ import {
   FIND_BY_NAME,
   DETAIL,
   FILTER_BY_DIET,
-  ORDER_BY_ALF
+  ORDER_BY_ALF,
+  ORDER_BY_MIN_MAX
 } from "../action";
 
 const initialState = {
@@ -58,6 +59,16 @@ const rootReducer = (state = initialState, action) => {
         ...state ,
         recipes : orderArray
       }
+      case ORDER_BY_MIN_MAX:
+        let minMaxArray;
+        let allRecipesMinMax = [...state.recipes]
+        if(action.payload === false){minMaxArray = orderMax(allRecipesMinMax)}
+        if(action.payload === true){minMaxArray = orderMin(allRecipesMinMax)}
+        console.log(allRecipesMinMax)
+        return {
+          ...state ,
+          recipes : minMaxArray
+        }
     default:
       return initialState;
   }

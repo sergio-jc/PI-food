@@ -1,5 +1,5 @@
 import axios from "axios";
-import { orderA } from "../../components/Button/Order/func/Sort.js";
+import { orderA, orderMax } from "../../components/Button/Order/func/Sort.js";
 import { arrayDiets } from "../../components/Form/func/funcAux.js";
 export const GET_ALL_RECIPES = "GET_ALL_RECIPES";
 export const GET_ALL_TYPES = "GET_ALL_TYPES";
@@ -7,7 +7,8 @@ export const GET_ALL_DISH_TYPES = "GET_ALL_DISH_TYPES";
 export const FIND_BY_NAME = "FIND_BY_NAME";
 export const DETAIL ="DETAIL";
 export const FILTER_BY_DIET = "FILTER_BY_DIET";
-export const ORDER_BY_ALF = "ORDER_BY_ALF"
+export const ORDER_BY_ALF = "ORDER_BY_ALF";
+export const ORDER_BY_MIN_MAX = "ORDER_BY_MIN_MAX"
 
 const ObjectByArray = (array) =>{
   const allRecipes = array.filter( e => e.diets?.length );
@@ -20,7 +21,7 @@ export const getAllRecipes = () => async (dispatch) => {
   console.log(data)
   dispatch({
     type: GET_ALL_RECIPES,
-    payload:orderA(ObjectByArray(data))
+    payload: orderMax(orderA(ObjectByArray(data)))
   });
 };
 
@@ -67,6 +68,13 @@ export const filterByDiet = (diet) => async (dispatch) =>{
 export const orderByAlf = (boolean) =>{
   return ({
     type : ORDER_BY_ALF,
+    payload : boolean
+  })
+}
+
+export const orderByMinMax = (boolean) =>{
+  return ({
+    type : ORDER_BY_MIN_MAX,
     payload : boolean
   })
 }
