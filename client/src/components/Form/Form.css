@@ -1,3 +1,43 @@
-.from {
-    background-color: red;
+.form {
+    height: 290vh;
+   display: flex;
+   background-color: rgb(168, 225, 206);
+   align-items: center;
+   justify-content: center;
+   width: 100%;
 }
+
+.contain_form{
+    border-radius: 8px;
+    background-color: #fff;
+    width: 80%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+   justify-content: center;
+}
+
+.title_form {
+    font-weight: 100;
+    font-size: 4em;
+}
+
+.title_form  span{
+    font-weight: 100;
+    font-size: 1.70em;
+    color: #017143 ;
+    font-weight: 500;
+}
+
+/* .form_inputs{
+    display: flex;
+    display: flex;
+    align-items: center;
+   justify-content: center;
+} */
+/* .color1 { #59b390 };
+.color2 { #f0ddaa };
+.color3 { #e47c5d };
+.color4 { #e32d40 };
+#138a11
+.color5 { #152b3c }; */

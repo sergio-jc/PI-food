@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "../Form/Form.css";
 import { validate } from "./func/funcAux";
-import { getAllRecipes,getAllDishTypes, getAllTypes, postRecipe } from "../../redux/action";
+import {
+  getAllRecipes,
+  getAllDishTypes,
+  getAllTypes,
+  postRecipe,
+} from "../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import CheckBoxDiets from "./inputs/CheckBoxDiets";
 import { useHistory } from "react-router-dom";
@@ -32,8 +37,8 @@ const From = () => {
   const dispatch = useDispatch();
   const allDiets = useSelector((state) => state.allDiets);
   const allDishTypes = useSelector((state) => state.allDishTypes);
-  const safeName = useSelector((state)=>state.recipes);
-  const history = useHistory()
+  const safeName = useSelector((state) => state.recipes);
+  const history = useHistory();
   const [checkedState, setCheckedState] = useState([
     false,
     false,
@@ -44,7 +49,7 @@ const From = () => {
     false,
     false,
     false,
-    false
+    false,
   ]);
   const [checkedDish, setCheckedDish] = useState([
     false,
@@ -62,7 +67,7 @@ const From = () => {
     false,
     false,
   ]);
-  console.log(checkedDish)
+  console.log(checkedDish);
   // new Array(allDishTypes.length).fill(false)
 
   const handleInputsChange = (e) => {
@@ -78,18 +83,19 @@ const From = () => {
       })
     );
   };
-//-------------------------------------------------------------
+  //-------------------------------------------------------------
   const handleOnSubmit = (e) => {
-    dispatch(getAllRecipes())
+    dispatch(getAllRecipes());
     e.preventDefault();
-    if (safeName.filter(e=> e.name.toLowerCase()===input.name.toLowerCase()).length) {
+    if (
+      safeName.filter((e) => e.name.toLowerCase() === input.name.toLowerCase())
+        .length
+    ) {
       alert(
         "Sorry the name of the recipe already exists try choosing a different name"
       );
       //! recuerda cuando estes haciendo la ruta delete no te olvides de filtrar el save para que te puedo agregar denuevo la receta Ej : [ 1 ,2 3] => [1 ,2] => 3 ...[1 ,2] error ya existe  => recuerdalo
     } else {
-
-
       if (
         errors.name ||
         errors.healthScore ||
@@ -169,112 +175,130 @@ const From = () => {
   };
 
   return (
-    <div>
-      <button onClick={()=>{history.push('/home')}}>🏠 Home ⏪⏩ ⮞➤🔙🡸🢀</button>
-    <div>
-    <form onSubmit={(e) => handleOnSubmit(e)}>
-      <div>
-        <h1> YOUR RECIPE</h1>
-        <div>
-          <label>Name : </label>
-          <input
-            className={errors.name && "danger"}
-            placeholder="Ej: Strawberries with cream"
-            type="text"
-            name="name"
-            onChange={(e) => handleInputsChange(e)}
-            value={input.name}
-          />
-          {errors.name && <p className="danger">{errors.name}</p>}
-        </div>
-        <div>
-          <label>Health Score : </label>
-          <input
-            className={errors.healthScore && "danger"}
-            placeholder=" 0 - 100"
-            type="text"
-            name="healthScore"
-            onChange={(e) => handleInputsChange(e)}
-            value={input.healthScore}
-          />
-          {errors.healthScore && (
-            <p className="healthScore">{errors.healthScore}</p>
-          )}
-        </div>
-        <div>
-          <label>Summary : </label>
-          <input
-            className={errors.summary && "danger"}
-            placeholder="Ej: fresh sweet and sour "
-            type="text"
-            name="summary"
-            onChange={(e) => handleInputsChange(e)}
-            value={input.summary}
-          />
-          {errors.summary && <p className="danger">{errors.summary}</p>}
-        </div>
-        <div>
-          <label>Image :</label>
-          <input
-            className={errors.image && "danger"}
-            placeholder="URL ej: http://..."
-            type="url"
-            name="image"
-            onChange={(e) => handleInputsChange(e)}
-            value={input.image}
-          />
-          {errors.image && <p className="danger">{errors.image}</p>}
-        </div>
-        <div>
-          <label>Instructions :</label>
-          <input
-            className={errors.analyzedInstructions && "danger"}
-            placeholder="Ej: 1.Washes strawberries"
-            type="text"
-            name="analyzedInstructions"
-            onChange={(e) => handleInputsChange(e)}
-            value={input.analyzedInstructions}
-          />
-          {errors.analyzedInstructions && (
-            <p className="danger">{errors.analyzedInstructions}</p>
-          )}
-          <div onClick={onClickNewStep}>New Steps</div>
+    <div className="form">
+      <button
+        onClick={() => {
+          history.push("/home");
+        }}
+      >
+        🡸🢀🏠︎
+      </button>
+      <div className="contain_form">
+        <div className="form_inputs">
+          <div>
+            <form onSubmit={(e) => handleOnSubmit(e)}>
+              <div>
+                <h1 className="title_form">
+                  {" "}
+                  YOUR <span>RECIPE</span>
+                </h1>
+                <div className="input_text">
+                  <div>
+                    <label>Name : </label>
+                    <input
+                      className={errors.name && "danger"}
+                      placeholder="Ej: Strawberries with cream"
+                      type="text"
+                      name="name"
+                      onChange={(e) => handleInputsChange(e)}
+                      value={input.name}
+                    />
+                    {errors.name && <p className="danger">{errors.name}</p>}
+                  </div>
+                  <div>
+                    <label>Health Score : </label>
+                    <input
+                      className={errors.healthScore && "danger"}
+                      placeholder=" 0 - 100"
+                      type="text"
+                      name="healthScore"
+                      onChange={(e) => handleInputsChange(e)}
+                      value={input.healthScore}
+                    />
+                    {errors.healthScore && (
+                      <p className="healthScore">{errors.healthScore}</p>
+                    )}
+                  </div>
+                  <div>
+                    <label>Summary : </label>
+                    <input
+                      className={errors.summary && "danger"}
+                      placeholder="Ej: fresh sweet and sour "
+                      type="text"
+                      name="summary"
+                      onChange={(e) => handleInputsChange(e)}
+                      value={input.summary}
+                    />
+                    {errors.summary && (
+                      <p className="danger">{errors.summary}</p>
+                    )}
+                  </div>
+                  <div>
+                    <label>Image :</label>
+                    <input
+                      className={errors.image && "danger"}
+                      placeholder="URL ej: http://..."
+                      type="url"
+                      name="image"
+                      onChange={(e) => handleInputsChange(e)}
+                      value={input.image}
+                    />
+                    {errors.image && <p className="danger">{errors.image}</p>}
+                  </div>
+                  <div>
+                    <label>Instructions :</label>
+                    <input
+                      className={errors.analyzedInstructions && "danger"}
+                      placeholder="Ej: 1.Washes strawberries"
+                      type="text"
+                      name="analyzedInstructions"
+                      onChange={(e) => handleInputsChange(e)}
+                      value={input.analyzedInstructions}
+                    />
+                    {errors.analyzedInstructions && (
+                      <p className="danger">{errors.analyzedInstructions}</p>
+                    )}
+                    <div onClick={onClickNewStep}>New Steps</div>
 
-          {account.map((e, i) => (
-            <div key={`step_${i}`}>
-              <input
-                // className={errors.analyzedInstructions && "danger"}
-                placeholder={`step ${i + 2}...`}
-                type="text"
-                name={i}
-                onChange={(e) => handleSteps(e)}
-                value={steps[i]}
-              />
-            </div>
-          ))}
+                    {account.map((e, i) => (
+                      <div key={`step_${i}`}>
+                        <input
+                          // className={errors.analyzedInstructions && "danger"}
+                          placeholder={`step ${i + 2}...`}
+                          type="text"
+                          name={i}
+                          onChange={(e) => handleSteps(e)}
+                          value={steps[i]}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <label>Diets :</label>
+                <CheckBoxDiets
+                  state={checkedState}
+                  handle={handleOnChecked}
+                  allDiets={allDiets}
+                />
+                {!checkedState.filter((e) => e === true).length && (
+                  <p>Please choose at least one diet ❤</p>
+                )}
+                <label>Dish Types :</label>
+                <CheckBoxDiets
+                  state={checkedDish}
+                  handle={handleOnCheckedDish}
+                  allDiets={allDishTypes}
+                />
+                {!checkedDish.filter((e) => e === true).length && (
+                  <p>Please choose at least one Dish Type ❤</p>
+                )}
+              </div>
+              <input type="submit" value="Create" />
+            </form>
+          </div>
         </div>
-        <label>Diets :</label>
-        <CheckBoxDiets
-          state={checkedState}
-          handle={handleOnChecked}
-          allDiets={allDiets}
-        />
-        {!checkedState.filter((e) => e === true).length && (
-          <p>Please choose at least one diet ❤</p>
-        )}
-        <label>Dish Types :</label>
-        <CheckBoxDiets
-          state={checkedDish}
-          handle={handleOnCheckedDish}
-          allDiets={allDishTypes}
-        />
-        {!checkedDish.filter((e) => e === true).length && (
-          <p>Please choose at least one Dish Type ❤</p>
-        )}
       </div>
-      <input type="submit" value="Create" />
-    </form>
-    </div>
     </div>
   );
 };

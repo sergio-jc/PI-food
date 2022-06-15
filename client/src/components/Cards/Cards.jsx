@@ -56,3 +56,5 @@ const Cards = ({ actualPage }) => {
 };
 
 export default Cards;
+
+//? nota mental xd bueno para mi ti mi yo del futuro tengo suemio pero  encontre un mensaje para la pag de error (we can't seem to find the page you're looking for) asi que vamos a usarlo gracias por esforzarte tanto te quiero y te mereces todo el mundo gracias por hacer esto por ti estudiar divertirte aprender te quiero y aprecio mucho todo esta bien como ves xd pasamos muchas cosas que nos hicieron llorar hasta mas no poder pero ahora estas aqui gracias por recistir tanto , te mereces todo el amor que tengo sigue asi lucha por tus suenios que se que se cumpliran y se un estupendo programador te quiero mucho atentamente el mundo y tu y yo  y todos .
