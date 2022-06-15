@@ -8,7 +8,9 @@ import "../Nav/Nav.css"
 const Nav = ({ setCurrent }) => {
   return (
     <div className="container">
-      
+      <div className="nav_component">
+          <Link to="/" className='text'>🏠︎</Link>
+        </div>
         <div className="nav_component">
           <Link to="/home" className='text'>Home</Link>
         </div>
