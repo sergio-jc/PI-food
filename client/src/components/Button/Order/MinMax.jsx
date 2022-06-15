@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { orderByMinMax } from "../../../redux/action";
-
+import '../Order/Order.css'
 const MinMax = () =>{
     const [input,setInput] = useState(true)
     const dispatch = useDispatch()
@@ -11,7 +11,7 @@ const MinMax = () =>{
     }
     return (
         <div>
-            <button onClick={eventClick}>{input? 'Max-Min': "Min-Max"}</button>
+            <button onClick={eventClick} className={'order_alf'}>{input? 'Max-Min': "Min-Max"}</button>
         </div>
     )
 } 

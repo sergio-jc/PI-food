@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch , useSelector} from "react-redux";
 import { filterByDiet } from "../../../redux/action";
+import '../Filter/Filter.css'
 
 const Filter = ({setCurrent}) =>{
     const dispatch = useDispatch()
@@ -18,14 +19,16 @@ const Filter = ({setCurrent}) =>{
 
   return (
       <div>
-          <label >Choose a diet:</label>
+          <label className="choose" > Choose a diet : </label>
           <select
             value={selectDiet}
             onChange={handleOnSelect}
+            className={'select_diet'}
           >
-            <option  onClick={onSubmitSelect} value="recipes">Recipes</option>
+            <option  onClick={onSubmitSelect} value="recipes" className={'select_diet'}>Recipes</option>
             {typesDiets.map((e, i) => (
-              <option key={`opc.${i}`} value={e} onClick={onSubmitSelect}>
+              <option key={`opc.${i}`} value={e} onClick={onSubmitSelect} 
+              className={'select_diet'}>
                 {e}
               </option>
             ))}
