@@ -1,3 +1,7 @@
+.conteiner {
+    justify-content: center;
+}
+
 .button {
     font-size: 20px;
     /* line-height: 50px; */
@@ -12,6 +16,7 @@
     cursor: pointer;
     outline: none;
     transition: 0.2s all;
+    margin: 6px 5px 6px 5px;
     
 }
 .button:active {

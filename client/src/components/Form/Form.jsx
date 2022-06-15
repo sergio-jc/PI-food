@@ -4,6 +4,7 @@ import { validate } from "./func/funcAux";
 import { getAllRecipes,getAllDishTypes, getAllTypes, postRecipe } from "../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import CheckBoxDiets from "./inputs/CheckBoxDiets";
+import { useHistory } from "react-router-dom";
 
 const From = () => {
   const [input, setInput] = useState({
@@ -32,6 +33,7 @@ const From = () => {
   const allDiets = useSelector((state) => state.allDiets);
   const allDishTypes = useSelector((state) => state.allDishTypes);
   const safeName = useSelector((state)=>state.recipes);
+  const history = useHistory()
   const [checkedState, setCheckedState] = useState([
     false,
     false,
@@ -173,6 +175,9 @@ const From = () => {
   };
 
   return (
+    <div>
+      <button onClick={()=>{history.push('/home')}}>🏠 Home ⏪⏩ ⮞➤🔙🡸🢀</button>
+    <div>
     <form onSubmit={(e) => handleOnSubmit(e)}>
       <div>
         <h1> YOUR RECIPE</h1>
@@ -275,6 +280,8 @@ const From = () => {
       </div>
       <input type="submit" value="Create" />
     </form>
+    </div>
+    </div>
   );
 };
 

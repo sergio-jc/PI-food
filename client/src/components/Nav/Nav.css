@@ -1,42 +1,25 @@
-nav {
-    background-color: brown;
+.container{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    border-radius: .3s ease all;
-    box-shadow: darkblue;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 8px;
+
 }
 
-span {
-    width:  30 px;
-    height: 30px;
-    line-height: 30px;
-    display: block;
-    background-color: none;
+.nav_component{
+    background-color: salmon;
     color: #fff;
-    margin: 10px 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 10px 30px 10px 30px;
+    border-radius: 8px;
 }
 
-.logotipo{
-    font-weight:   700;
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+.text {
+    text-decoration: none;
+    color: #fff;
 }
 
-.enlaces {
-    display: flex;
-    align-items :center ;
-    
+.text:hover {
+    color: rgb(25, 6, 171);
 }
-
-.switch {
-    background: #343D5B;
-    border-radius: 1000px;
-    border: none;
-    position: relative;
-    cursor : pointer ;
-    display: flex;
-    outline: none;
-    
-}
-

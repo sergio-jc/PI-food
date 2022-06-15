@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Cards from "../Cards/Cards";
-import SearchBar from "../SearchBar/SearchBar";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllRecipes, getAllTypes } from "../../redux/action";
 // import { orderA, orderMax, orderMin, orderZ } from "./func/Sort.js";
-import Order from "../Button/Order/Order";
-import MinMax from "../Button/Order/MinMax";
-import Filter from "../Button/Filter/Filter";
 import Pagination from "../Pagination/Pagination";
+import Nav from "../Nav/Nav";
 const Home = () => {
   const allRecipe = useSelector((state)=>state.recipes)
   const [current , setCurrent] =useState(1)
@@ -26,9 +23,7 @@ const Home = () => {
 
   return (
     <div>
-      <Order />
-      <MinMax />
-      <Filter  setCurrent={setCurrent} />
+      <Nav setCurrent={setCurrent}/>
       <Cards actualPage={actualPage}/>
       <Pagination setCurrent={setCurrent} size={size} totalCards={totalCards} current={current}/>
     </div>

@@ -10,7 +10,6 @@ import LanndingPage from './components/landingPage/landingPage.jsx';
 function App() {
   return (
     <BrowserRouter >
-      <Nav/>
       <Route exact path={'/'} component={LanndingPage}/>
       <Route path={'/home'} component={Home}/>
       <Route path={'/form'} component={From}/>
