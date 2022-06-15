@@ -3,14 +3,13 @@
     flex-wrap: wrap;
     justify-content: center;
     border-radius: 8px;
-
+    
 }
 
 .nav_component{
-    background-color: salmon;
+    background-color: #73c8a9;
     color: #fff;
-    margin-top: 10px;
-    margin-left: 10px;
+     margin: 6px 5px 6px 5px;
     padding: 10px 30px 10px 30px;
     border-radius: 8px;
 }
@@ -21,5 +20,7 @@
 }
 
 .text:hover {
-    color: rgb(25, 6, 171);
+    color: rgb(7, 66, 25);
 }
+
+/* TODO recordatorio  : recuerda revissar favoritos ahi habian unos efectos hover muy bonitos */
