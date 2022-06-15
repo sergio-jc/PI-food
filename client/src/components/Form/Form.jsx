@@ -65,12 +65,6 @@ const From = () => {
   console.log(checkedDish)
   // new Array(allDishTypes.length).fill(false)
 
-
-  useEffect(() => {
-    dispatch(getAllDishTypes());
-    dispatch(getAllTypes());
-  }, [dispatch]);
-
   const handleInputsChange = (e) => {
     setInput({
       ...input,

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Cards from "../Cards/Cards";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllRecipes, getAllTypes } from "../../redux/action";
+import { getAllRecipes, getAllTypes , getAllDishTypes} from "../../redux/action";
 // import { orderA, orderMax, orderMin, orderZ } from "./func/Sort.js";
 import Pagination from "../Pagination/Pagination";
 import Nav from "../Nav/Nav";
@@ -18,6 +18,7 @@ const Home = () => {
     setTimeout(() => {
       dispatch(getAllRecipes());
       dispatch(getAllTypes());
+      dispatch(getAllDishTypes());
     }, 1000);
   }, [dispatch]);
 
