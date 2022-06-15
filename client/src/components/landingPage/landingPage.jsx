@@ -3,10 +3,14 @@ import "../landingPage/landingPage.css";
 import { Link } from "react-router-dom";
 import Logo from '../landingPage/img1.png'
 import Logo2 from '../landingPage/img2.png'
+
+// TODO : Recuerda porfavor deployarlo y poner un link para tu linkedind
+
 const LanndingPage = () => {
   return (
     <div className="backgorund_image">
       <section>
+      <div className="circle"/>
         <header>
           <img
             src={Logo2}
@@ -31,6 +35,7 @@ const LanndingPage = () => {
         </div>
         <div className="imgBox">
             <img src={Logo} className="starBucks"/>
+           
         </div>
       </section>
     </div>
@@ -39,4 +44,5 @@ const LanndingPage = () => {
 
 export default LanndingPage;
 
+// TODO : Recuerda porfavor deployarlo y poner un link para tu linkedind
 //https://dcassetcdn.com/design_img/27450/33893/33893_592098_27450_image.jpg
