@@ -1,0 +1,25 @@
+.search{
+    background-color: transparent;
+    border: none;
+    border-width: 1px;
+    border-radius: 5px;
+    color: white;
+}
+
+.search_button{
+    background-color: transparent;
+    border: none;
+    font-size: 19px;
+    /* line-height: 50px; */
+    border-radius: 100%;
+    width: 5px;
+    height: 5px;
+    color : white;
+    cursor: pointer;
+    transition: all 400ms ease;
+}
+
+.search_button:hover  {
+    transform: scale(1.20);
+
+}
