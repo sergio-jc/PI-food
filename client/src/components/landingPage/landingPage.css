@@ -31,7 +31,6 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -39,5 +38,59 @@ header {
 
 .logo{
     position: relative;
-    max-width: 300px;
+    max-width: 250px;
+}
+
+.content_landing {
+    position: relative;
+    width: 100%;
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content_landing .textBox {
+    position: relative;
+    max-width: 700px;
+}
+
+.content_landing .textBox h2{
+    color: #333;
+    font-size: 4em;
+    line-height: 1.4em;
+    font-weight: 500;
+}
+
+.content_landing .textBox h2 span{
+    color: #017143;
+    font-size: 1.2em;
+    font-weight: 900;
+}
+
+.content_landing .textBox p{
+    color: #333;
+}
+
+.content_landing .home_button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 20px;
+    background-color: #017143 ;
+    color: #fff;
+    border-radius: 40px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+.content_landing .imgBox {
+    width: 600px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 50px;
+    margin-top: 50px;
+}
+
+.content_landing .imgBox img {
+    max-width: 340px ;
 }
