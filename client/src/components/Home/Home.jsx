@@ -26,7 +26,6 @@ const Home = () => {
 
   return (
     <div>
-      <SearchBar />
       <Order />
       <MinMax />
       <Filter  setCurrent={setCurrent} />

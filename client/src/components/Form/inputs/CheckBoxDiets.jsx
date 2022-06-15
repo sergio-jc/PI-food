@@ -1,6 +1,6 @@
 import React from "react";
 const CheckBoxDiets = ({ state, handle, allDiets }) => {
-  return (
+  return !allDiets.length ? <h1>LOADING</h1>:(
     <div>
       <ul className="toppings-list">
         {allDiets.map((e, index) => {

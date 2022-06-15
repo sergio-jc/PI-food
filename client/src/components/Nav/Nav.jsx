@@ -1,27 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import SearchBar from '../SearchBar/SearchBar.jsx'
 const Nav = () => {
   return (
     <div>
       <nav>
-        <Link to="/home">
-          <img
-            id="logoHenry"
-            src="http://www.neserideas.com/wp-content/uploads/2017/04/diseo-logotipo-blog-de-cocina.png"
-            width="30"
-            height="30"
-            className="logotipo"
-            alt="logo"
-          />
-          <span className="logotipo">RECETAS HAPPY</span>
-        </Link>
-        <Link to="/home" className="enlaces">
+        <Link to="/home" >
           Home
         </Link>
-        <Link to={"/form"} className="enlaces">
+        <Link to={"/form"}>
           Form
         </Link>
+        <SearchBar/>
       </nav>
     </div>
   );
