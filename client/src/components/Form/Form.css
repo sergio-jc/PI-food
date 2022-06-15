@@ -15,6 +15,7 @@
     display: flex;
     align-items: center;
    justify-content: center;
+   box-shadow: 0px 12px 16px rgba(0, 0, 0, 0.3);
 }
 
 .title_form {
@@ -28,6 +29,45 @@
     color: #017143 ;
     font-weight: 500;
 }
+
+.input_text input {
+    background-color: transparent;
+    width: 400px;
+    cursor: pointer;
+    height: 30px;
+    border: none ;
+    border-bottom: 1px solid #017143;
+  }
+  
+  .input_text  div{
+    background-color: #ffffff;
+  }
+  .input_text  label{
+    color: rgb(252, 123, 11) ;
+  }
+
+  .label_type{
+    color: rgb(215, 55, 159) ;
+  }
+
+  .button_create{
+    background-color: #59e2ae;
+    border: none;
+    border-width: 1.1px;
+    font-size: x-large;
+    padding: 5px 15px 5px 15px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 400ms ease;
+  }
+
+  .button_create:active{
+    transform: scale(0.85);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    background-color: #388568;
+  }
+  
+  
 
 /* .form_inputs{
     display: flex;

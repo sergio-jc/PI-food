@@ -275,7 +275,7 @@ const From = () => {
                   </div>
                 </div>
 
-                <label>Diets :</label>
+                <label className="label_type">Diets :</label>
                 <CheckBoxDiets
                   state={checkedState}
                   handle={handleOnChecked}
@@ -284,7 +284,7 @@ const From = () => {
                 {!checkedState.filter((e) => e === true).length && (
                   <p>Please choose at least one diet ❤</p>
                 )}
-                <label>Dish Types :</label>
+                <label className="label_type">Dish Types :</label>
                 <CheckBoxDiets
                   state={checkedDish}
                   handle={handleOnCheckedDish}
@@ -294,7 +294,7 @@ const From = () => {
                   <p>Please choose at least one Dish Type ❤</p>
                 )}
               </div>
-              <input type="submit" value="Create" />
+              <input type="submit" value="Create" className="button_create"/>
             </form>
           </div>
         </div>
