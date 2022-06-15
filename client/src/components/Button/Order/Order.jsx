@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { orderByAlf } from "../../../redux/action";
-
+import '../Order/Order.css'
 const Order = () =>{
     const [input,setInput] = useState(true)
     const dispatch = useDispatch()
@@ -11,7 +11,7 @@ const Order = () =>{
     }
     return (
         <div>
-            <button onClick={eventClick}>{input? 'A-Z': "Z-A"}</button>
+            <button onClick={eventClick} className={'order_alf'}>{input? 'A-Z': "Z-A"}</button>
         </div>
     )
 } 

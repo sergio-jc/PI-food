@@ -10,7 +10,6 @@
     background-color: transparent;
     border: none;
     font-size: 19px;
-    /* line-height: 50px; */
     border-radius: 100%;
     width: 5px;
     height: 5px;
@@ -21,5 +20,4 @@
 
 .search_button:hover  {
     transform: scale(1.20);
-
 }
