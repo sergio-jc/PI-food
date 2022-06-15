@@ -29,7 +29,7 @@ const LanndingPage = () => {
             Assumenda voluptatibus accusantium atque illum!
           </p>
           <Link to={'/home'}>
-            <div className="home_button">Home</div>
+            <div className="home_button">See The Recipes</div>
           </Link>
           </div>
         </div>
