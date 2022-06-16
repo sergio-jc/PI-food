@@ -1,0 +1,106 @@
+.found_detail{
+    background-color: #bded7e;
+    height: 100%;
+}
+
+.title_detail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content_detail{
+    display: flex;
+}
+
+.score_diets{
+    display: flex;
+}
+.summary_steps{
+    background-color: red;
+}
+
+.img_detail{
+    width: 100%;
+}
+
+.img_detail img{
+    width:27em;
+}
+.score_detail {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score_detail h3{
+    font-size: 80px;
+    color: #138a11;
+    margin-top: 5px;
+}
+
+.score_detail label{
+    font-size: 20px;
+    font-weight: 200;
+    color: #000000;
+}
+
+
+.img_score_diets{
+    margin: 20px;
+    background-color: #fff;
+    border-style: none;
+    color: rgb(0, 0, 0);
+    overflow: hidden;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+    cursor: default;
+    transition: all 400ms ease;
+    width: 35.4%;
+    height: 100;
+    display: flex;
+    max-width: 1000px;
+    border-radius: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+}
+
+.diet_detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 50px;
+    justify-content: center;
+}
+
+.diet_detail label{
+    font-size: 20px;
+    font-weight: 200;
+    color: #000000;
+}
+
+.diet_detail div{
+    font-size: 20px;
+    font-weight: 200;
+    color: #000000;
+}
+
+.summary_steps {
+    margin: 20px;
+    background-color: #fff;
+    border-style: none;
+    color: rgb(0, 0, 0);
+    overflow: hidden;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+    cursor: default;
+    transition: all 400ms ease;
+    width: 70%;
+    height: 547px;
+    display: flex;
+    max-width: 1000px;
+    border-radius: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+}

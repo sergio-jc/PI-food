@@ -178,23 +178,22 @@ const From = () => {
     <div className="form">
       <div className="contain_form">
         <div className="form_inputs">
-      <button
-      className="back_home"
-        onClick={() => {
-          history.push("/home");
-        }}
-      >
-        🡸<span>🏠︎</span>
-      </button>
+          <button
+            className="back_home"
+            onClick={() => {
+              history.push("/home");
+            }}
+          >
+            🡸<span>🏠︎</span>
+          </button>
           <div>
             <form onSubmit={(e) => handleOnSubmit(e)}>
               <div>
                 <div className="title_form_div">
-                <h1 className="title_form">
-                  {" "}
-                  YOUR <span>RECIPE</span>
-                </h1>
-
+                  <h1 className="title_form">
+                    {" "}
+                    YOUR <span>RECIPE</span>
+                  </h1>
                 </div>
 
                 <div className="contain_form_inputs">
@@ -291,7 +290,9 @@ const From = () => {
                       allDiets={allDiets}
                     />
                     {!checkedState.filter((e) => e === true).length && (
-                      <p className="label_errors">Please choose at least one diet ♡</p>
+                      <p className="label_errors">
+                        Please choose at least one diet ♡
+                      </p>
                     )}
                     <label className="label_type">Dish Types :</label>
                     <CheckBoxDiets
@@ -300,7 +301,10 @@ const From = () => {
                       allDiets={allDishTypes}
                     />
                     {!checkedDish.filter((e) => e === true).length && (
-                      <p className="label_errors"> Please choose at least one Dish Type ♡</p>
+                      <p className="label_errors">
+                        {" "}
+                        Please choose at least one Dish Type ♡
+                      </p>
                     )}
                   </div>
                 </div>
