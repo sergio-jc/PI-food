@@ -5,7 +5,7 @@ import MinMax from "../Button/Order/MinMax.jsx";
 import Order from "../Button/Order/Order.jsx";
 import Filter from "../Button/Filter/Filter.jsx";
 import "../Nav/Nav.css"
-const Nav = ({ setCurrent }) => {
+const Nav = ({ setCurrent , setLoader}) => {
   return (
     <div className="container">
       <div className="nav_component">
@@ -18,7 +18,7 @@ const Nav = ({ setCurrent }) => {
           <Link to={"/form"} className='text'>Form</Link>
         </div>
         <div className="nav_component">
-          <SearchBar />
+          <SearchBar  setLoader={ setLoader}/>
         </div>
         <div className="nav_component"> 
           <Order />
@@ -27,7 +27,7 @@ const Nav = ({ setCurrent }) => {
           <MinMax />
         </div>
         <div className="nav_component">
-          <Filter setCurrent={setCurrent} />
+          <Filter setCurrent={setCurrent} setLoader={setLoader}/>
         </div>
      
     </div>

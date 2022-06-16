@@ -5,8 +5,11 @@ import { getAllRecipes, getAllTypes , getAllDishTypes} from "../../redux/action"
 // import { orderA, orderMax, orderMin, orderZ } from "./func/Sort.js";
 import Pagination from "../Pagination/Pagination";
 import Nav from "../Nav/Nav";
+import Loading from "../Cards/Loading/Loading";
+
 const Home = () => {
   const allRecipe = useSelector((state)=>state.recipes)
+  const [loader ,setLoader] = useState(false)
   const [current , setCurrent] =useState(1)
   const [totalCards] =useState(9)// ? current * total = 9
   const size = allRecipe.length 
@@ -22,9 +25,15 @@ const Home = () => {
     }, 1000);
   }, [dispatch]);
 
+  if(loader){
+    return(
+      <Loading/>
+    )
+  }
+  
   return (
     <div>
-      <Nav setCurrent={setCurrent}/>
+      <Nav setCurrent={setCurrent} setLoader={setLoader}/>
       <Cards actualPage={actualPage}/>
       <Pagination setCurrent={setCurrent} size={size} totalCards={totalCards} current={current}/>
     </div>

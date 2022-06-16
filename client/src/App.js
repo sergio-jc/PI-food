@@ -3,9 +3,9 @@ import {Route} from 'react-router-dom';
 import {BrowserRouter} from 'react-router-dom' 
 // import Recipes from './components/Recipes/Recipes';
 import RecipeDetail from './components/RecipeDetail/RecipeDetail.jsx';
-import Nav from './components/Nav/Nav.jsx';
 import Home from './components/Home/Home.jsx';
 import LanndingPage from './components/landingPage/landingPage.jsx';
+import Loading from './components/Cards/Loading/Loading.jsx';
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
       <Route path={'/home'} component={Home}/>
       <Route path={'/form'} component={From}/>
       <Route path={'/detail/:id'} component={RecipeDetail}/>
+      <Route path={'/lolo'} component={Loading}/>
     </BrowserRouter>
   );
 }

@@ -3,7 +3,7 @@ import { useDispatch , useSelector} from "react-redux";
 import { filterByDiet } from "../../../redux/action";
 import '../Filter/Filter.css'
 
-const Filter = ({setCurrent}) =>{
+const Filter = ({setCurrent , setLoader}) =>{
     const dispatch = useDispatch()
   const typesDiets = useSelector((state) => state.allDiets);
   const [selectDiet, setSelect] = useState("");
@@ -15,6 +15,10 @@ const Filter = ({setCurrent}) =>{
       setCurrent(1)
       e.preventDefault()
       dispatch(filterByDiet(selectDiet));
+      setLoader(true)
+    setTimeout(()=>{
+      setLoader(false)
+    },3000)
     };
 
   return (
