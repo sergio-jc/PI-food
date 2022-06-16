@@ -5,9 +5,9 @@ export const validate = (input) => {
   let url = input.image.match(regExp);
 
   if (!input.image) {
-    errors.image = "copy an image URL to make your recipe stand out ";
+    errors.image = "copy an image URL ";
   } else if (!url?.length) {
-    errors.image = "the URL you copied is not valid, try this one -> https://www.quinoarecetas.es/wp-content/uploads/2020/10/quinoa-logo.gif";
+    errors.image = "copy a valid URL! ";
   }
 
   if (!input.name) {
@@ -18,7 +18,7 @@ export const validate = (input) => {
     errors.healthScore = "you should choose a number from 1 to 100";
   } else if (!(input.healthScore >= 0 && input.healthScore <= 100)) {
     errors.healthScore =
-      "* no letters or other symbols are allowed, only numbers between 0 and 100";
+      "* no letters or other symbols, numbers between 0-100";
   }
 
   if (!input.summary) {

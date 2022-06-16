@@ -20,11 +20,11 @@ const From = () => {
     analyzedInstructions: "",
   });
   const [errors, setErrors] = useState({
-    name: "enter a name for your recipe ❤",
-    healthScore: "choose a score for your recipe from 1 to 100 ❤",
-    summary: "make a brief summary ❤",
-    image: "choose an image  ❤",
-    analyzedInstructions: "how is your recipe made? ❤",
+    name: "enter a name for your recipe ♡",
+    healthScore: "choose a score  at 1 to 100 ♡",
+    summary: "make a brief summary ♡",
+    image: "choose an image  ♡",
+    analyzedInstructions: "how is your recipe made? ♡",
   });
   const [account, setAccount] = useState([]);
   const [steps, setSteps] = useState({
@@ -176,125 +176,136 @@ const From = () => {
 
   return (
     <div className="form">
+      <div className="contain_form">
+        <div className="form_inputs">
       <button
+      className="back_home"
         onClick={() => {
           history.push("/home");
         }}
       >
-        🡸🢀🏠︎
+        🡸<span>🏠︎</span>
       </button>
-      <div className="contain_form">
-        <div className="form_inputs">
           <div>
             <form onSubmit={(e) => handleOnSubmit(e)}>
               <div>
+                <div className="title_form_div">
                 <h1 className="title_form">
                   {" "}
                   YOUR <span>RECIPE</span>
                 </h1>
-                <div className="input_text">
-                  <div>
-                    <label>Name : </label>
-                    <input
-                      className={errors.name && "danger"}
-                      placeholder="Ej: Strawberries with cream"
-                      type="text"
-                      name="name"
-                      onChange={(e) => handleInputsChange(e)}
-                      value={input.name}
-                    />
-                    {errors.name && <p className="danger">{errors.name}</p>}
-                  </div>
-                  <div>
-                    <label>Health Score : </label>
-                    <input
-                      className={errors.healthScore && "danger"}
-                      placeholder=" 0 - 100"
-                      type="text"
-                      name="healthScore"
-                      onChange={(e) => handleInputsChange(e)}
-                      value={input.healthScore}
-                    />
-                    {errors.healthScore && (
-                      <p className="healthScore">{errors.healthScore}</p>
-                    )}
-                  </div>
-                  <div>
-                    <label>Summary : </label>
-                    <input
-                      className={errors.summary && "danger"}
-                      placeholder="Ej: fresh sweet and sour "
-                      type="text"
-                      name="summary"
-                      onChange={(e) => handleInputsChange(e)}
-                      value={input.summary}
-                    />
-                    {errors.summary && (
-                      <p className="danger">{errors.summary}</p>
-                    )}
-                  </div>
-                  <div>
-                    <label>Image :</label>
-                    <input
-                      className={errors.image && "danger"}
-                      placeholder="URL ej: http://..."
-                      type="url"
-                      name="image"
-                      onChange={(e) => handleInputsChange(e)}
-                      value={input.image}
-                    />
-                    {errors.image && <p className="danger">{errors.image}</p>}
-                  </div>
-                  <div>
-                    <label>Instructions :</label>
-                    <input
-                      className={errors.analyzedInstructions && "danger"}
-                      placeholder="Ej: 1.Washes strawberries"
-                      type="text"
-                      name="analyzedInstructions"
-                      onChange={(e) => handleInputsChange(e)}
-                      value={input.analyzedInstructions}
-                    />
-                    {errors.analyzedInstructions && (
-                      <p className="danger">{errors.analyzedInstructions}</p>
-                    )}
-                    <div onClick={onClickNewStep}>New Steps</div>
 
-                    {account.map((e, i) => (
-                      <div key={`step_${i}`}>
-                        <input
-                          // className={errors.analyzedInstructions && "danger"}
-                          placeholder={`step ${i + 2}...`}
-                          type="text"
-                          name={i}
-                          onChange={(e) => handleSteps(e)}
-                          value={steps[i]}
-                        />
-                      </div>
-                    ))}
-                  </div>
                 </div>
 
-                <label className="label_type">Diets :</label>
-                <CheckBoxDiets
-                  state={checkedState}
-                  handle={handleOnChecked}
-                  allDiets={allDiets}
-                />
-                {!checkedState.filter((e) => e === true).length && (
-                  <p>Please choose at least one diet ❤</p>
-                )}
-                <label className="label_type">Dish Types :</label>
-                <CheckBoxDiets
-                  state={checkedDish}
-                  handle={handleOnCheckedDish}
-                  allDiets={allDishTypes}
-                />
-                {!checkedDish.filter((e) => e === true).length && (
-                  <p>Please choose at least one Dish Type ❤</p>
-                )}
+                <div className="contain_form_inputs">
+                  <div className="input_text">
+                    <div>
+                      <label>Name : </label>
+                      <input
+                        className={errors.name && "danger"}
+                        placeholder="Ej: Strawberries with cream"
+                        type="text"
+                        name="name"
+                        onChange={(e) => handleInputsChange(e)}
+                        value={input.name}
+                      />
+                      {errors.name && <p className="danger">{errors.name}</p>}
+                    </div>
+                    <div>
+                      <label>Health Score : </label>
+                      <input
+                        className={errors.healthScore && "danger"}
+                        placeholder=" 0 - 100"
+                        type="text"
+                        name="healthScore"
+                        onChange={(e) => handleInputsChange(e)}
+                        value={input.healthScore}
+                      />
+                      {errors.healthScore && (
+                        <p className="healthScore">{errors.healthScore}</p>
+                      )}
+                    </div>
+                    <div>
+                      <label>Summary : </label>
+                      <input
+                        className={errors.summary && "danger"}
+                        placeholder="Ej: fresh sweet and sour "
+                        type="text"
+                        name="summary"
+                        onChange={(e) => handleInputsChange(e)}
+                        value={input.summary}
+                      />
+                      {errors.summary && (
+                        <p className="danger">{errors.summary}</p>
+                      )}
+                    </div>
+                    <div>
+                      <label>Image :</label>
+                      <input
+                        className={errors.image && "danger"}
+                        placeholder="URL ej: http://..."
+                        type="url"
+                        name="image"
+                        onChange={(e) => handleInputsChange(e)}
+                        value={input.image}
+                      />
+                      {errors.image && <p className="danger">{errors.image}</p>}
+                    </div>
+                    <div>
+                      <label>Instructions :</label>
+                      <input
+                        className={errors.analyzedInstructions && "danger"}
+                        placeholder="Ej: 1.Washes strawberries"
+                        type="text"
+                        name="analyzedInstructions"
+                        onChange={(e) => handleInputsChange(e)}
+                        value={input.analyzedInstructions}
+                      />
+                      {errors.analyzedInstructions && (
+                        <p className="danger">{errors.analyzedInstructions}</p>
+                      )}
+                      <div onClick={onClickNewStep} className={"new_steps"}>
+                        New Steps
+                      </div>
+
+                      {account.map((e, i) => (
+                        <div key={`step_${i}`}>
+                          <input
+                            // className={errors.analyzedInstructions && "danger"}
+                            placeholder={`step ${i + 2}...`}
+                            type="text"
+                            name={i}
+                            onChange={(e) => handleSteps(e)}
+                            value={steps[i]}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="input_check">
+                    <label className="label_type">Diets :</label>
+                    <CheckBoxDiets
+                      state={checkedState}
+                      handle={handleOnChecked}
+                      allDiets={allDiets}
+                    />
+                    {!checkedState.filter((e) => e === true).length && (
+                      <p className="label_errors">Please choose at least one diet ♡</p>
+                    )}
+                    <label className="label_type">Dish Types :</label>
+                    <CheckBoxDiets
+                      state={checkedDish}
+                      handle={handleOnCheckedDish}
+                      allDiets={allDishTypes}
+                    />
+                    {!checkedDish.filter((e) => e === true).length && (
+                      <p className="label_errors"> Please choose at least one Dish Type ♡</p>
+                    )}
+                  </div>
+                </div>
               </div>
-              <input type="submit" value="Create" className="button_create"/>
+              <input type="submit" value="Create" className="button_create" />
             </form>
           </div>
         </div>
@@ -302,7 +313,7 @@ const From = () => {
     </div>
   );
 };
-
+//❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤
 export default From;
 
 // name: "enter a name for your recipe ❤",
