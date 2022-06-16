@@ -37,21 +37,27 @@ const RecipeDetail = () => {
         </div>
 
         <div className="summary_steps">
-        <div className="title_detail">
-        {/* //!<Link to={"/home"}>
+          <div className="title_detail">
+            <div>{recipe.name}</div>
+          </div>
+          {/* //!<Link to={"/home"}>
           <button className="back_home_detail">
             🡸<span>🏠︎</span>
           </button>
         </Link> */}
-        <h2>{recipe.name}</h2>
-      </div>
-          <p>{recipe.summary}</p>
-          <div>
+          <div className="summary_contain">
+            <p>{recipe.summary}</p>
+          </div>
+          {/* <label>INSTRUCTIONS :</label> */}
+          <div className="instruccions_detail">
+
             {recipe.analyzedInstructions?.split(" ✂ ").map((e, i) => (
-              <p key={`step ${i}`}>{e}</p>
+              <div key={`step ${i}`} className='instruccions_detail'>{e}</div>
             ))}
           </div>
-          <p>{recipe.dishTypes}</p>
+          <div>
+          <div className="dish_contain"> DISH TYPES : <span>{recipe.dishTypes}</span></div>
+          </div>
         </div>
       </div>
     </div>
