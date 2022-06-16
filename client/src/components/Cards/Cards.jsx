@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "./CardsRecipes.css";
 import { getAllRecipes } from "../../redux/action";
+import Loading from "./Loading/Loading";
+
 const Cards = ({ actualPage }) => {
   const dispatch = useDispatch();
   let display;
@@ -49,7 +51,7 @@ const Cards = ({ actualPage }) => {
     );
   }
   return !actualPage.length ? (
-    <h1>loading</h1>
+    <Loading/>
   ) : (
     <div className="fund">{display}</div>
   );

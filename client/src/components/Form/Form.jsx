@@ -12,6 +12,14 @@ import CheckBoxDiets from "./inputs/CheckBoxDiets";
 import { useHistory } from "react-router-dom";
 
 const From = () => {
+  const dispatch =useDispatch()
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(getAllTypes());
+      dispatch(getAllDishTypes());
+    }, 1500);
+  }, [dispatch]);
+  
   const [input, setInput] = useState({
     name: "",
     healthScore: "",
@@ -34,7 +42,6 @@ const From = () => {
     3: "",
     4: "",
   });
-  const dispatch = useDispatch();
   const allDiets = useSelector((state) => state.allDiets);
   const allDishTypes = useSelector((state) => state.allDishTypes);
   const safeName = useSelector((state) => state.recipes);

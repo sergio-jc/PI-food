@@ -1,0 +1,13 @@
+.contain_loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50vh;
+    padding-bottom: 50vh;
+    background-color: #f0ddaa;
+    transition: all 400ms ease;
+}
+
+.caracol_loading{
+    position: absolute;
+}
