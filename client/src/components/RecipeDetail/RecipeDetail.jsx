@@ -21,7 +21,7 @@ const RecipeDetail = () => {
         return <div key={`diets_${i}`}>{e.name}</div>;
       })
     : "don't find details";
-  return !recipe.name? <Loading/>  :(
+  return !recipe.image? <Loading/>  :(
     <div className="found_detail">
       <div className="content_detail"> 
         <div className="img_score_diets">
