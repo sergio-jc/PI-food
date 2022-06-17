@@ -1,7 +1,7 @@
 import React from "react";
 import "../Error/Error.css";
 import { useDispatch } from "react-redux";
-import { getAllRecipes } from "../../../redux/action";
+import { clearRecipes, getAllRecipes } from "../../../redux/action";
 const Error = () => {
   const dispatch = useDispatch();
   return (
@@ -29,7 +29,9 @@ const Error = () => {
               alt="feliz"
               className="carita_feliz"
             />
-            <div onClick={(e) => dispatch(getAllRecipes())}>
+            <div onClick={(e) => {
+                dispatch(clearRecipes())
+                dispatch(getAllRecipes())}}>
               BACK HOME
             </div>
           </div>
