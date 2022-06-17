@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { Detail } from "../../redux/action";
+import { clearDetail, Detail } from "../../redux/action";
+import Loading from "../Cards/Loading/Loading.jsx"
 import "../RecipeDetail/Detail.css";
 const RecipeDetail = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   useEffect(() => {
     dispatch(Detail(id));
+    return dispatch(clearDetail())
   }, [dispatch, id]);
   const recipe = useSelector((state) => state.recipeDetail);
   const allDiets = recipe.diets
@@ -18,7 +20,7 @@ const RecipeDetail = () => {
         return <div key={`diets_${i}`}>{e.name}</div>;
       })
     : "don't find details";
-  return (
+  return !recipe.name? <Loading/>  :(
     <div className="found_detail">
       <div className="content_detail"> 
         <div className="img_score_diets">

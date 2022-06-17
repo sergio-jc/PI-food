@@ -8,7 +8,8 @@ export const FIND_BY_NAME = "FIND_BY_NAME";
 export const DETAIL ="DETAIL";
 export const FILTER_BY_DIET = "FILTER_BY_DIET";
 export const ORDER_BY_ALF = "ORDER_BY_ALF";
-export const ORDER_BY_MIN_MAX = "ORDER_BY_MIN_MAX"
+export const ORDER_BY_MIN_MAX = "ORDER_BY_MIN_MAX";
+export const CLEAR_DETAIL = "CLEAR_DETAIL";
 
 const ObjectByArray = (array) =>{
   const allRecipes = array.filter( e => e.diets?.length );
@@ -76,6 +77,13 @@ export const orderByMinMax = (boolean) =>{
   return ({
     type : ORDER_BY_MIN_MAX,
     payload : boolean
+  })
+}
+
+export const clearDetail = ( ) =>{
+  return ({
+    type : CLEAR_DETAIL,
+    payload : {}
   })
 }
 

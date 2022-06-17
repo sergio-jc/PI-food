@@ -7,7 +7,8 @@ import {
   DETAIL,
   FILTER_BY_DIET,
   ORDER_BY_ALF,
-  ORDER_BY_MIN_MAX
+  ORDER_BY_MIN_MAX,
+  CLEAR_DETAIL
 } from "../action";
 
 const initialState = {
@@ -48,6 +49,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         recipeDetail: action.payload,
       };
+    case CLEAR_DETAIL :
+      return {
+        ...state ,
+        recipeDetail: action.payload,
+      }
     case ORDER_BY_ALF :
       console.log(action.payload)
       let orderArray;
