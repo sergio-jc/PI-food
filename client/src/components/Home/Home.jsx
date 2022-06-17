@@ -21,8 +21,7 @@ const Home = () => {
     setTimeout(() => {
       dispatch(getAllRecipes());
       dispatch(getAllTypes());
-      dispatch(getAllDishTypes());
-    }, 3000);
+    }, 1000);
   }, [dispatch]);
   
   return (

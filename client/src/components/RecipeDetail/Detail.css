@@ -1,6 +1,7 @@
 .found_detail{
     background-color: #98e9d0;
     height: 100vh;
+     background-image: url(https://web.bandalux.com/collection/backhome/img/rotulo1.png);
 }
 
 .title_detail {
@@ -118,7 +119,7 @@
     flex-wrap: wrap;
     justify-content: center;
     position: relative;
-    background-image: url(https://web.bandalux.com/collection/backhome/img/rotulo1.png);
+   
 }
 
 .summary_contain {
