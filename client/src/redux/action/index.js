@@ -10,6 +10,7 @@ export const FILTER_BY_DIET = "FILTER_BY_DIET";
 export const ORDER_BY_ALF = "ORDER_BY_ALF";
 export const ORDER_BY_MIN_MAX = "ORDER_BY_MIN_MAX";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
+export const CLEAR_RECIPES = "CLEAR_RECIPES"
 
 const ObjectByArray = (array) =>{
   const allRecipes = array.filter( e => e.diets?.length );
@@ -84,6 +85,13 @@ export const clearDetail = ( ) =>{
   return ({
     type : CLEAR_DETAIL,
     payload : {}
+  })
+}
+
+export const clearRecipes = ( ) =>{
+  return ({
+    type : CLEAR_RECIPES,
+    payload : []
   })
 }
 

@@ -17,7 +17,7 @@ const From = () => {
     setTimeout(() => {
       dispatch(getAllTypes());
       dispatch(getAllDishTypes());
-    }, 1500);
+    }, 100);
   }, [dispatch]);
   
   const [input, setInput] = useState({

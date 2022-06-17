@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { clearDetail, Detail } from "../../redux/action";
+import { clearDetail, Detail ,clearRecipes} from "../../redux/action";
 import Loading from "../Cards/Loading/Loading.jsx"
 import "../RecipeDetail/Detail.css";
 const RecipeDetail = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   useEffect(() => {
+    dispatch(clearRecipes())
     dispatch(Detail(id));
     return dispatch(clearDetail())
   }, [dispatch, id]);
