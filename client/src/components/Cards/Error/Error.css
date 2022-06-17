@@ -1,0 +1,78 @@
+.contain_error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7vh ;
+    background-color: #fff;
+    transition: all 400ms ease;
+}
+
+.color_error {
+    background-color: black;
+    padding: 1vh;
+    border-radius: 8px;
+    box-shadow: 0px 12px 16px rgba(0, 0, 0, 0.2);
+}
+
+.color_error_w{
+    background-color: #fff;
+    padding: 17vh;
+    border-radius: 8px;
+}
+
+.msg_error{
+    font-size: x-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 4vh;
+}
+
+.msg_error span{
+    font-size: 11vh;
+}
+
+.msg_error img{
+    width: 18vh;
+}
+
+.img_4{
+    height: 19vh;
+
+}
+
+.carita_feliz{
+    width: 13vh;
+}
+
+.button_error{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4vh;
+}
+.button_error div{
+    background-color: black;
+    color: white;
+    
+    padding: 2.5vh;
+    border-radius: 8px;
+    margin-left: 3vh;
+    transition: all 600ms ease;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    border-color: black;
+    cursor: pointer;
+}
+
+.button_error div:hover {
+    background-color: #fff;
+    box-shadow: 0px 12px 16px rgba(0, 0, 0, 1.0);
+    color:black;
+    border-color: black;
+
+}
+
+.button_error div:active{
+    background-color: black;
+    color: #fff;
+}
