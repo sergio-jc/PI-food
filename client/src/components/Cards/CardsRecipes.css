@@ -24,8 +24,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  /* background: url(https://st.depositphotos.com/3263277/4364/v/450/depositphotos_43644843-stock-illustration-pasta.jpg); */
-  background-color: #f0ddaa;
+   /* background: url(https://thumbs.dreamstime.com/b/patr%C3%B3n-de-iconos-comida-y-bebida-restaurante-con-un-fondo-impecable-ilustraci%C3%B3n-vectorial-patrones-sin-soldadura-172054276.jpg);  */
+  /* background-color: #f0ddaa; */
+  background-color: #c9df8a;
   width: 100%;
   height: 100%;
   align-items: center;
@@ -37,7 +38,8 @@
   filter: opacity(0.9);
   transform: translateY(-3%);
   /* transform: scale(1.09); */
-  background-color: #cefce9;
+  /* background-color: #cefce9; */
+  background-color: #f0f7da;
   color: #138a11;
   font-weight: bold;
 }

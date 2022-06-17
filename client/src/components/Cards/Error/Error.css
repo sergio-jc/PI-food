@@ -5,6 +5,7 @@
     padding: 7vh ;
     background-color: #fff;
     transition: all 400ms ease;
+    width: 100%;
 }
 
 .color_error {

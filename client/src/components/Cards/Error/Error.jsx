@@ -15,7 +15,7 @@ const Error = () => {
             />
             <img src="https://img.icons8.com/ios/500/meal.png" />
             <img
-              src="https://img.icons8.com/wired/512/meal.png"
+              src="https://img.icons8.com/ios/500/meal.png"
               className="img_0"
             />
           </div>

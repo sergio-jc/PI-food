@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import "./CardsRecipes.css";
 import { getAllRecipes } from "../../redux/action";
 import Loading from "./Loading/Loading";
-
+import Error from "./Error/Error";
 const Cards = ({ actualPage ,loader}) => {
   const dispatch = useDispatch();
   let display;
@@ -46,14 +46,7 @@ const Cards = ({ actualPage ,loader}) => {
       );
     });
   } else {
-    display = (
-      <div>
-        <h1>Error</h1>
-        <button onClick={(e) => dispatch(getAllRecipes())}>
-          ver todas las cartas
-        </button>
-      </div>
-    );
+    display = <Error/>;
   }
   return !actualPage.length ? (
     <Loading/>
