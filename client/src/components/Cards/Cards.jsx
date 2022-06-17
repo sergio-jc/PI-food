@@ -5,9 +5,14 @@ import "./CardsRecipes.css";
 import { getAllRecipes } from "../../redux/action";
 import Loading from "./Loading/Loading";
 
-const Cards = ({ actualPage }) => {
+const Cards = ({ actualPage ,loader}) => {
   const dispatch = useDispatch();
   let display;
+  if(loader){
+    return(
+      <Loading/>
+    )
+  }
   if (typeof actualPage === "object") {
     display = actualPage.map(({ id, name, healthScore, diets, image }, i) => {
       return (

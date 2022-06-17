@@ -27,7 +27,7 @@
     align-items: center;
 }
 .img_detail {
-    transition: all 400ms ease;
+    transition: all 800ms ease;
 }
 .img_detail img{
     width:27em;
@@ -37,6 +37,8 @@
     width: 100%;
     opacity:0.4;
  filter:alpha(opacity=40);
+ filter: opacity(0.9);
+  transform: translatex(1%);
 }
 .score_detail {
     padding-top: 30px;
@@ -125,7 +127,7 @@
 }
 
 .instruccions_detail  {
-    margin:2vh;
+    margin:1.5vh;
     background-color: #eeffd8;
     border-radius: 8px;
     display: flex;
@@ -143,7 +145,9 @@
 }
 
 .back_home_detail {
+    position: relative;
     color: #198080;
   text-decoration: none;
-  font-size: large;
+  font-size: 13px;
+  left: 18px;
 }

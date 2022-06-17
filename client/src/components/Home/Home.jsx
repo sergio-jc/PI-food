@@ -24,17 +24,11 @@ const Home = () => {
       dispatch(getAllDishTypes());
     }, 3000);
   }, [dispatch]);
-
-  if(loader){
-    return(
-      <Loading/>
-    )
-  }
   
   return (
     <div>
       <Nav setCurrent={setCurrent} setLoader={setLoader}/>
-      <Cards actualPage={actualPage}/>
+      <Cards actualPage={actualPage} loader={loader}/>
       <Pagination setCurrent={setCurrent} size={size} totalCards={totalCards} current={current}/>
     </div>
   );
