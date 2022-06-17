@@ -12,7 +12,7 @@ const Home = () => {
   const [loader ,setLoader] = useState(false)
   const [current , setCurrent] =useState(1)
   const [totalCards] =useState(9)// ? current * total = 9
-  const size = allRecipe.length 
+  const size = typeof(allRecipe) === 'string' ? 0 : allRecipe.length 
   const lastPage =current*totalCards
   const initialPage = lastPage-totalCards
   const actualPage = allRecipe.slice(initialPage,lastPage)
