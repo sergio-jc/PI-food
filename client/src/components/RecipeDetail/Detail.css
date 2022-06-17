@@ -24,15 +24,19 @@
     display: flex;
 }
 .summary_steps{
-    background-color: red;
+    align-items: center;
 }
-
-.img_detail{
-    width: 100%;
+.img_detail {
+    transition: all 400ms ease;
 }
-
 .img_detail img{
     width:27em;
+    
+}
+.img_detail:hover{
+    width: 100%;
+    opacity:0.4;
+ filter:alpha(opacity=40);
 }
 .score_detail {
     padding-top: 30px;
@@ -43,7 +47,7 @@
 
 .score_detail h3{
     font-size: 80px;
-    color: #138a11;
+    color: #8dac8c;
     margin-top: 5px;
 }
 
@@ -71,6 +75,7 @@
     flex-wrap: wrap;
     justify-content: center;
     position: relative;
+    
 }
 
 .diet_detail {
@@ -79,6 +84,7 @@
     align-items: center;
     margin-left: 50px;
     justify-content: center;
+    
 }
 
 .diet_detail label{
@@ -110,6 +116,7 @@
     flex-wrap: wrap;
     justify-content: center;
     position: relative;
+    background-image: url(https://web.bandalux.com/collection/backhome/img/rotulo1.png);
 }
 
 .summary_contain {
@@ -124,6 +131,19 @@
     display: flex;
 }
 
-/* .dish_contain {
+.dish_contain{
+    font-size: 0.7em;
+    color: #198080;
+    font-weight: 300;
+}
 
-} */
+.dish_contain span{
+    font-size: 2.3em;
+    color: #198080;
+}
+
+.back_home_detail {
+    color: #198080;
+  text-decoration: none;
+  font-size: large;
+}

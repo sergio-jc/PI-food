@@ -22,7 +22,7 @@ const Home = () => {
       dispatch(getAllRecipes());
       dispatch(getAllTypes());
       dispatch(getAllDishTypes());
-    }, 1000);
+    }, 3000);
   }, [dispatch]);
 
   if(loader){

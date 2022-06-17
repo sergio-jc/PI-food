@@ -20,10 +20,13 @@ const RecipeDetail = () => {
     : "don't find details";
   return (
     <div className="found_detail">
-      <div className="content_detail">
+      <div className="content_detail"> 
         <div className="img_score_diets">
           <div className="img_detail">
+            <Link to={'/home'}>
             <img src={recipe.image} alt=" jkly" />
+            <div className="back_home_detail">🏠︎</div>
+            </Link>
           </div>
           <div className="score_diets">
             <div className="score_detail">
@@ -37,26 +40,28 @@ const RecipeDetail = () => {
         </div>
 
         <div className="summary_steps">
+          <div>
           <div className="title_detail">
             <div>{recipe.name}</div>
           </div>
-          {/* //!<Link to={"/home"}>
-          <button className="back_home_detail">
-            🡸<span>🏠︎</span>
-          </button>
-        </Link> */}
+          
           <div className="summary_contain">
             <p>{recipe.summary}</p>
           </div>
+          </div>
           {/* <label>INSTRUCTIONS :</label> */}
           <div className="instruccions_detail">
-
             {recipe.analyzedInstructions?.split(" ✂ ").map((e, i) => (
-              <div key={`step ${i}`} className='instruccions_detail'>{e}</div>
+              <div key={`step ${i}`} className="instruccions_detail">
+                {e}
+              </div>
             ))}
           </div>
           <div>
-          <div className="dish_contain"> DISH TYPES : <span>{recipe.dishTypes}</span></div>
+            <div className="dish_contain">
+              {" "}
+              DISH TYPES  : <span> {recipe.dishTypes}</span>
+            </div>
           </div>
         </div>
       </div>
