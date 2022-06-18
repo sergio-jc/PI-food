@@ -28,7 +28,6 @@ const RecipeDetail = () => {
           <div className="img_detail">
             <Link to={'/home'}>
             <img src={recipe.image} alt=" jkly" />
-            <div className="back_home_detail">🏠︎</div>
             </Link>
           </div>
           <div className="score_diets">
