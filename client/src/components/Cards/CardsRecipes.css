@@ -24,9 +24,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-   /* background: url(https://thumbs.dreamstime.com/b/patr%C3%B3n-de-iconos-comida-y-bebida-restaurante-con-un-fondo-impecable-ilustraci%C3%B3n-vectorial-patrones-sin-soldadura-172054276.jpg);  */
-   background-color: #f0ddaa; 
- /* background-color: #c9df8a;*/
+   background: url(https://static.vecteezy.com/system/resources/previews/002/680/573/non_2x/wood-texture-background-wood-pattern-texture-free-photo.jpg); 
+   /* background-color: #f0ddaa;  */
+ background-color: #2b9993;
   width: 100%;
   height: 100%;
   align-items: center;
@@ -39,7 +39,7 @@
   transform: translateY(-3%);
   /* transform: scale(1.09); */
   /* background-color: #cefce9; */
-  background-color: #f0f7da;
+  background-color: #d9feff;
   color: #138a11;
   font-weight: bold;
 }
