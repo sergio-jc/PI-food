@@ -2,7 +2,7 @@
   position: relative;
     height: 200vh;
    display: flex;
-   background-color: #98d9b6;
+   background: url(https://img.freepik.com/foto-gratis/comida-ingredientes_1220-4884.jpg?w=2000); 
    align-items: center;
    justify-content: center;
    width: 100%;
@@ -32,8 +32,8 @@
 .contain_form{
     border-radius: 8px;
     background-color: #fff;
-    width: 80%;
-    height: 90%;
+    width: 73%;
+    height: 86%;
     display: flex;
     align-items: center;
    justify-content: space-around;
@@ -63,12 +63,12 @@
 }
 .input_text input {
     background-color: transparent;
-    width: 200px;
+    width: 170px;
     cursor: pointer;
     height: 30px;
     border: none ;
     border-bottom: 1px solid #017143;
-    margin-right: 200px;
+    margin-right: 100px;
   }
   
   .input_text  div{
@@ -96,7 +96,7 @@
     border: none;
     border-width: 1.1px;
     font-size: x-large;
-    padding: 5px 15px 5px 15px;
+    padding: 2px 10px 2px 10px;
     border-radius: 8px;
     font-weight: 500;
     transition: all 400ms ease;

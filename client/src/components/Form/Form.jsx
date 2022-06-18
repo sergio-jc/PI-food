@@ -298,7 +298,7 @@ const From = () => {
                     />
                     {!checkedState.filter((e) => e === true).length && (
                       <p className="label_errors">
-                        Please choose at least one diet ♡
+                        Please choose one diet ♡
                       </p>
                     )}
                     <label className="label_type">Dish Types :</label>
@@ -310,7 +310,7 @@ const From = () => {
                     {!checkedDish.filter((e) => e === true).length && (
                       <p className="label_errors">
                         {" "}
-                        Please choose at least one Dish Type ♡
+                        Choose at least one Dish Type ♡
                       </p>
                     )}
                   </div>
