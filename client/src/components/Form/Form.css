@@ -1,8 +1,8 @@
 .form {
   position: relative;
-    height: 200vh;
+    height: 220vh;
    display: flex;
-   background: url(https://img.freepik.com/foto-gratis/comida-ingredientes_1220-4884.jpg?w=2000); 
+   background: url(https://img.freepik.com/foto-gratis/ingredientes-italianos-apetitosos-frescos-sabrosos-comida-viejo-fondo-madera-rustico-listo-cocinar-inicio-italiano-comida-saludable-concepto-cocina_1220-1740.jpg?w=2000); 
    align-items: center;
    justify-content: center;
    width: 100%;
@@ -48,6 +48,7 @@
 .title_form {
     font-weight: 100;
     font-size: 4em;
+    margin-top: 17vh;
 }
 
 .title_form  span{
