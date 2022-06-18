@@ -88,7 +88,7 @@ export const clearDetail = ( ) =>{
   })
 }
 
-export const clearRecipes = ( ) =>{
+export const clearRecipes = ( ) =>{   //!recordar borrarr y mirara odnde lo usas
   return ({
     type : CLEAR_RECIPES,
     payload : []
