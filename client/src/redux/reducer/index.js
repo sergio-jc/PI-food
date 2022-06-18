@@ -61,9 +61,8 @@ const rootReducer = (state = initialState, action) => {
         recipes :action.payload
       }
     case ORDER_BY_ALF :
-      console.log(action.payload)
       let orderArray;
-      let allRecipes = [...state.recipes]
+      let allRecipes = [...state.recipes];
       if(action.payload === false){orderArray = orderA(allRecipes)}
       if(action.payload === true){orderArray = orderZ(allRecipes)}
       console.log(orderArray)
