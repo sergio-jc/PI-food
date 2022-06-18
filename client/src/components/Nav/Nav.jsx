@@ -18,7 +18,7 @@ const Nav = ({ setCurrent , setLoader}) => {
           <Link to={"/form"} className='text'>Form</Link>
         </div>
         <div className="nav_component">
-          <SearchBar  setLoader={ setLoader}/>
+          <SearchBar  setLoader={ setLoader} setCurrent={setCurrent}/>
         </div>
         <div className="nav_component"> 
           <Order />

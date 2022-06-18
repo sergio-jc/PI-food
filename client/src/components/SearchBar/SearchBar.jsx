@@ -4,14 +4,15 @@ import { useDispatch } from "react-redux";
 import { findByName } from "../../redux/action";
 import '../SearchBar/SearchBar.css'
 
-
-const SearchBar = ({ setLoader}) => {
+//setCurrent={setCurrent}
+const SearchBar = ({ setLoader ,setCurrent}) => {
   const [input, setInput]= useState('')
   const dispatch = useDispatch()
   // const history = useHistory()
   const handleOnSubmit = (e)=>{
     e.preventDefault()
     if(input=== '') return ;
+    setCurrent(1)
     dispatch(findByName(input))
     setInput('')
     setLoader(true)

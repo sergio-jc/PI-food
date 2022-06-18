@@ -22,8 +22,10 @@ const Filter = ({setCurrent , setLoader}) =>{
           <select
             onChange={onSubmitSelect}
             className={'select_diet'}
+            
           >
-            <option   value="recipes" className={'select_diet'}>Recipes</option>
+            <option   value="recipes" className={'select_diet'}>{'...'}</option>
+            <option   value="recipes" className={'select_diet'}>All Recipes</option>
             {typesDiets.map((e, i) => (
               <option key={`opc.${i}`} value={e}  
               className={'select_diet'}>
