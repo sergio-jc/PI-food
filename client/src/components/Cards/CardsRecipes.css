@@ -11,7 +11,7 @@
   cursor: default;
   transition: all 400ms ease;
   width: 330px;
-  height: 445px;
+  height:300px;
   display: flex;
   max-width: 1000px;
   border-radius: 8px;
@@ -39,9 +39,10 @@
   transform: translateY(-3%);
   /* transform: scale(1.09); */
   /* background-color: #cefce9; */
-  background-color: #d9feff;
-  color: #138a11;
+  background-color: #ecfcc6;
+  color: #458a11;
   font-weight: bold;
+  height: 445px;
 }
 
 .card img {

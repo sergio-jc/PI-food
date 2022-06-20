@@ -7,7 +7,7 @@
 }
 
 .nav_component{
-    background-color: #73c8a9;
+    background-color: #a3d921;
     color: #fff;
      margin: 6px 5px 6px 5px;
     padding: 10px 30px 10px 30px;
@@ -19,7 +19,7 @@
     box-shadow: 0px 12px 16px rgba(0, 0, 0, 0.2);
     filter: opacity(0.9);
     transform: translateY(-3%);
-    background-color: rgb(69, 227, 174);
+    background-color: #046425;
 }
 
 .text {
@@ -35,5 +35,13 @@
     color:white;
 }
 
+.icon {
+    justify-content: flex-start;
+    margin-right: 3.5vh;
+}
+.icon img{
+    width: 10vh;
+    height: 8.6vh;
+}
 
 /* TODO recordatorio  : recuerda revissar favoritos ahi habian unos efectos hover muy bonitos */
