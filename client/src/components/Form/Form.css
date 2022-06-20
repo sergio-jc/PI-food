@@ -88,7 +88,7 @@
   }
 
   .input_text  p{
-    color: #a3d715e4 ;
+    color: #6a7f32e4 ;
     font-size: large;
   }
 
@@ -129,8 +129,9 @@
   }
   
   .label_errors {
-    color: #a3d715e4 ;
+    color: #6a7f32e4 ;
     font-size: large;
+    font-weight: 400;
   }
 
 /* .form_inputs{
