@@ -37,7 +37,7 @@
 }
 
 .score_detail {
-    padding-top: 80px;
+    padding-top: 55px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -83,7 +83,12 @@
     flex-wrap: wrap;
     justify-content: center;
     position: relative;
+    background-color: rgb(243, 237, 227)
     
+}
+
+.img_score_diets:hover {
+    background-color: rgb(247, 214, 153);
 }
 
 .diet_detail {
@@ -109,7 +114,7 @@
 
 .summary_steps {
     margin: 20px;
-    background-color: #fff;
+    background-color: #d6f1e9;
     border-style: none;
     color: rgb(0, 0, 0);
     overflow: hidden;
@@ -125,6 +130,10 @@
     justify-content: center;
     position: relative;
    
+}
+
+.summary_steps:hover {
+    background-color: #b1f3de;
 }
 
 .summary_contain {
