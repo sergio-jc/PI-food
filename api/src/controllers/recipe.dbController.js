@@ -1,45 +1,53 @@
 const { Recipe , diets } = require("../db");
 
 const findAllDbRecipe = async () => {
-  const recipeFind = await Recipe.findAll({include:{
-    model : diets ,
-    attributes : ['name'],
-    through:{                   //?investigar
-      attributes:[]
-    }
-  }});
-  return recipeFind;
+  try {
+    const recipeFind = await Recipe.findAll({include:{
+      model : diets ,
+      attributes : ['name'],
+      through:{                   //?investigar
+        attributes:[]
+      }
+    }});
+    return recipeFind;
+  }catch (e) {
+    console.log(e)
+  }
 };
 
 const RecipeByIdDb = async (id)=>{
-  const recipeById = await Recipe.findAll({where:{id},include:{
-    model : diets ,
-    attributes : ['name'],
-    through:{                   //?investigar
-      attributes:[]
-    }
-  }})
-  console.log(recipeById)
-  return   recipeById
+  try {
+    const recipeById = await Recipe.findAll({where:{id},include:{
+      model : diets ,
+      attributes : ['name'],
+      through:{                  
+        attributes:[]
+      }
+    }})
+    return   recipeById
+  } catch(e) {
+    console.log(e)
+  }
 }
 
 const createDiets = async (array) =>{
-  const arrayDiets = await diets.create(array)
-  return arrayDiets
+  try {
+    const arrayDiets = await diets.create(array)
+    return arrayDiets
+  } catch(e) {
+    console.log(e)
+  }
 }
 
 const findAllDbDiets = async () => {
-  const recipeFind = await diets.findAll();
-  return recipeFind;
+  try {
+    const recipeFind = await diets.findAll();
+    return recipeFind;
+  }catch(e){
+    console.log(e)
+  }
 };
 
-// const objArray =(ary) =>{
-//   let array = ary.dataValues
-//   for(let i = 0 ; i <array.length ; i ++){
-//  let lolo = array.map(e=>e.diets.map(e=>e.name))[i]
-//  array[i].diets= lolo
-//  }
-// }                
 
 module.exports = {
   findAllDbRecipe,

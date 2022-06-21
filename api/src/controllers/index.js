@@ -1,5 +1,5 @@
 const { findAllRecipe, findByIdRecipe } = require("./recipe.api&db.js");
-const { findAllDbDiets , findAllDbRecipe } = require("./recipe.dbController");
+const { findAllDbDiets, findAllDbRecipe } = require("./recipe.dbController");
 const { findAllDishTypes } = require("./recipe.apiController");
 const { Recipe, diets } = require("../db");
 
@@ -20,16 +20,24 @@ const findNameRecipe = async (req, res) => {
 };
 
 const allRecipe = async (req, res) => {
-  const arrayAllRecipe = await findAllRecipe();
-  console.log(arrayAllRecipe);
-  return res.status(200).json(arrayAllRecipe);
+  try {
+    const arrayAllRecipe = await findAllRecipe();
+    console.log(arrayAllRecipe);
+    return res.status(200).json(arrayAllRecipe);
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 const recipeFoundById = async (req, res) => {
-  const { idReceta } = req.params;
-  if (!idReceta) return res.send("no pasaste un id");
-  const recipe = await findByIdRecipe(idReceta);
-  res.json(recipe);
+  try {
+    const { idReceta } = req.params;
+    if (!idReceta) return res.send("no pasaste un id");
+    const recipe = await findByIdRecipe(idReceta);
+    res.json(recipe);
+  } catch (e) {
+    console.log(e);
+  }
 };
 const addRecipe = async (req, res) => {
   if (!req.body.diets)
@@ -71,19 +79,23 @@ const allDishTypes = async (req, res) => {
   }
 };
 
-const filterByDiets = async (req,res) => {
+const filterByDiets = async (req, res) => {
   try {
-    const allRecipes = await findAllRecipe ()
-    if (req.params.diet === 'recipes')  return res.json(allRecipes);
-    const findAllDbDiets = await findAllDbRecipe()
-    const filterApi = allRecipes.filter(e=>e.diets.includes(req.params.diet))
-    const filterDb = findAllDbDiets.filter(e=>e.diets.map(e=>e.name).includes(req.params.diet))
-    const filterRecipe = [...filterApi,...filterDb]
-    res.status(200).json(filterRecipe)
+    const allRecipes = await findAllRecipe();
+    if (req.params.diet === "recipes") return res.json(allRecipes);
+    const findAllDbDiets = await findAllDbRecipe();
+    const filterApi = allRecipes.filter((e) =>
+      e.diets.includes(req.params.diet)
+    );
+    const filterDb = findAllDbDiets.filter((e) =>
+      e.diets.map((e) => e.name).includes(req.params.diet)
+    );
+    const filterRecipe = [...filterApi, ...filterDb];
+    res.status(200).json(filterRecipe);
   } catch (e) {
-    console.log(e,'no pasaste ninguna diet')
+    console.log(e, "no pasaste ninguna diet");
   }
-}
+};
 
 module.exports = {
   findNameRecipe,
@@ -92,5 +104,5 @@ module.exports = {
   recipeFoundById,
   allDiets,
   allDishTypes,
-  filterByDiets
+  filterByDiets,
 };

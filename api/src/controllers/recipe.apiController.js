@@ -2,6 +2,7 @@ const { YOUR_API_KEY } = process.env;
 const { default: axios } = require("axios");
 
 const findAllApiRecipe = async ()=>{
+  try {
     const { data } = await axios.get(
         `https://api.spoonacular.com/recipes/complexSearch?apiKey=${YOUR_API_KEY}&addRecipeInformation=true&number=100` // ! no te olvides de 100
       );
@@ -16,6 +17,9 @@ const findAllApiRecipe = async ()=>{
         analyzedInstructions: recipe.analyzedInstructions[0]?.steps.map(ste=>`${ste.number}. ${ste.step}`).join(' ✂ ') // ! importante al usar el emoji ✂
       }));
       return aryApi
+  } catch (e){
+    console.log(e)
+  }
 }
 
 const RecipeByIdApi = async (id)=>{
@@ -45,11 +49,16 @@ const RecipeByIdApi = async (id)=>{
 }
 
 const findAllDishTypes = async ()=>{
-  const { data } = await axios.get(
-    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${YOUR_API_KEY}&addRecipeInformation=true&number=40` 
-  );
-  let aryApi = data.results.flatMap((recipe) => recipe.dishTypes)
-  return aryApi
+  try{
+
+    const { data } = await axios.get(
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${YOUR_API_KEY}&addRecipeInformation=true&number=40` 
+    );
+    let aryApi = data.results.flatMap((recipe) => recipe.dishTypes)
+    return aryApi
+  } catch(e) {
+    console.log(e)
+  }
 }
 
 module.exports={
