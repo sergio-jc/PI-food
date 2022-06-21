@@ -26,7 +26,7 @@
   justify-content: space-around;
    background: url(https://static.vecteezy.com/system/resources/previews/001/237/180/non_2x/vegetables-on-dark-background-free-photo.JPG); 
    /* background-color: #f0ddaa;  */
- background-color: #2b9993;
+ background-color: #0c3533;
   width: 100%;
   height: 100%;
   align-items: center;
@@ -94,11 +94,12 @@
   width: 60px;
   height: 47px;
   z-index: 3;
-  background-color: #046425;
+  background-color: #008ea1;
   top: 0;
   right: 9px;
   border-radius: 0 0 0px 8px;
   box-shadow: -8px 8px 26px 0px rgba(0,0,0,0.75);
+  padding-left: 10px;
 }
 
 
