@@ -5,51 +5,49 @@ import "./CardsRecipes.css";
 import { getAllRecipes } from "../../redux/action";
 import Loading from "./Loading/Loading";
 import Error from "./Error/Error";
-const Cards = ({ actualPage ,loader}) => {
+const Cards = ({ actualPage, loader }) => {
   const dispatch = useDispatch();
   let display;
-  if(loader){
-    return(
-      <Loading/>
-    )
+  if (loader) {
+    return <Loading />;
   }
   if (typeof actualPage === "object") {
     display = actualPage.map(({ id, name, healthScore, diets, image }, i) => {
       return (
-          <div key={`card ${id}-${i}`}  className="container">
-            <div className="card">
+        <div key={`card ${id}-${i}`} className="container">
+          <div className="card">
+            <div className="img_score">
             <Link to={`/detail/${id}`}>
               <img src={image} alt="receta rica rica" className="image" />
-              </Link>
-              <div className="contenido">
-                <div className="name">
-                  <h4>{name}</h4>
+            </Link>
+            <div className="score">{healthScore}</div>
+            </div>
+            <div className="contenido">
+              <div className="name">
+                <h4>{name}</h4>
+              </div>
+              <div className="datos">
+                <div className="diets">
+                  <ul>
+                    {diets &&
+                      diets.map((e, i) => {
+                        return <li key={`list ${i} card ${id}`}>{e}</li>;
+                      })}
+                  </ul>
                 </div>
-                <div className="datos">
-                  <div className="diets">
-                    <ul>
-                      {diets &&
-                        diets.map((e, i) => {
-                          return <li key={`list ${i} card ${id}`}>{e}</li>;
-                        })}
-                    </ul>
-                  </div>
 
-                  <div className="score">
-                   {healthScore}
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>
-        
+        </div>
       );
     });
   } else {
-    display = <Error/>;
+    display = <Error />;
   }
   return !actualPage.length ? (
-    <Loading/>
+    <Loading />
   ) : (
     <div className="fund">{display}</div>
   );
