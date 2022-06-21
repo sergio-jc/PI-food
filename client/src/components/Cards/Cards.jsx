@@ -1,12 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import "./CardsRecipes.css";
-import { getAllRecipes } from "../../redux/action";
 import Loading from "./Loading/Loading";
 import Error from "./Error/Error";
 const Cards = ({ actualPage, loader }) => {
-  const dispatch = useDispatch();
   let display;
   if (loader) {
     return <Loading />;

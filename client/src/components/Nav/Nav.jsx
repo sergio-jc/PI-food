@@ -17,11 +17,6 @@ const Nav = ({ setCurrent, setLoader }) => {
           🏠︎
         </Link>
       </div>
-      {/* <div className="nav_component">
-        <Link to="/home" className="text">
-          Home
-        </Link>
-      </div> */}
       <div className="nav_component">
         <Link to={"/form"} className="text">
           Form

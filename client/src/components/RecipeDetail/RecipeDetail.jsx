@@ -32,7 +32,6 @@ const RecipeDetail = () => {
           </div>
           <div className="score_diets">
             <div className="score_detail">
-              {/* <label>Health Score</label> */}
               <h3>{recipe.healthScore}</h3>
             </div>
             <div className="diet_detail">

@@ -14,6 +14,7 @@ const LanndingPage = () => {
         <header>
           <img
             src={Logo2}
+            alt='logo_img'
             className="logo"
           />
         </header>
@@ -34,7 +35,8 @@ const LanndingPage = () => {
           </div>
         </div>
         <div className="imgBox">
-            <img src={Logo} className="starBucks"/>
+            <img src={Logo} className="starBucks"
+            alt="dish_healty"/>
            
         </div>
       </section>

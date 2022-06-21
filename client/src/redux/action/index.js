@@ -20,7 +20,6 @@ const ObjectByArray = (array) =>{
 
 export const getAllRecipes = () => async (dispatch) => {
   const { data } = await axios.get("http://localhost:3001/allRecipes");
-  console.log(data)
   dispatch({
     type: GET_ALL_RECIPES,
     payload: orderMax(orderA(ObjectByArray(data)))
