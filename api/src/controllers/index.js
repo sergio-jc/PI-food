@@ -22,7 +22,6 @@ const findNameRecipe = async (req, res) => {
 const allRecipe = async (req, res) => {
   try {
     const arrayAllRecipe = await findAllRecipe();
-    console.log(arrayAllRecipe);
     return res.status(200).json(arrayAllRecipe);
   } catch (e) {
     console.log(e);
@@ -96,6 +95,8 @@ const filterByDiets = async (req, res) => {
     console.log(e, "no pasaste ninguna diet");
   }
 };
+
+
 
 module.exports = {
   findNameRecipe,
