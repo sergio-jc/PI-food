@@ -9,8 +9,8 @@
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
-    font-weight: 300;
-    font-size: x-large;
+    font-weight: 400;
+    font-size: xx-large;
     margin-top:3vh ;
     background-color: #21b6b6;
     padding: 0px 5vh;
@@ -35,18 +35,13 @@
     width:27em;
     
 }
-.img_detail_food:hover{
-    opacity:0.4;
- filter:alpha(opacity=40);
- filter: opacity(0.9);
- color: #335838;
 
-}
 .score_detail {
-    padding-top: 30px;
+    padding-top: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 
 .home_detail {
@@ -57,6 +52,7 @@
     color: #fff;
     transition: all 400ms ease;
     background-color: orange;
+    box-shadow: -8px 8px 26px 0px rgba(0,0,0,0.75);
 }
 
 .home_detail:hover {
@@ -65,14 +61,8 @@
 
 .score_detail h3{
     font-size: 80px;
-    color: #335838;
+    color: #049e18;
     margin-top: 5px;
-}
-
-.score_detail label{
-    font-size: 20px;
-    font-weight: 200;
-    color: #000000;
 }
 
 
@@ -144,7 +134,7 @@
 
 .instruccions_detail  {
     margin:1.5vh;
-    background-color: #eeffd8;
+    background-color: #c5f587;
     border-radius: 8px;
     display: flex;
 }
@@ -152,7 +142,7 @@
 .dish_contain{
     font-size: 0.7em;
     color: #198080;
-    font-weight: 300;
+    font-weight: 450;
 }
 
 .dish_contain span{
