@@ -96,8 +96,7 @@ export const clearRecipes = ( ) =>{   //!recordar borrarr y mirara odnde lo usas
 
 
 export const postRecipe =
-  (input, checkedState, allDiets, checkedDish, allDishTypes, allSteps) =>
-  async () => {
+  (input, checkedState, allDiets, checkedDish, allDishTypes, allSteps) =>{
     let array = [];
     for (let key in allSteps) {
       array.push(allSteps[key]);
@@ -114,10 +113,8 @@ export const postRecipe =
       analyzedInstructions: [`1.${input.analyzedInstructions}`, ...steps].join(
         " ✂ "
       ),
-    };
-    console.log(newRecipe);
-    axios.post("http://localhost:3001/recipe", newRecipe).then((res) => {
-      console.log(res);
-      console.log(res.data);
-    });
+    }
+  return async () => {
+   await axios.post("http://localhost:3001/recipe", newRecipe)
   };
+}
