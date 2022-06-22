@@ -4,7 +4,7 @@ const { default: axios } = require("axios");
 const findAllApiRecipe = async () => {
   const lola = axios
     .get(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${YOUR_API_KEY}&addRecipeInformation=true&number=1`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${YOUR_API_KEY}&addRecipeInformation=true&number=100`
     )
     .then((e) => e.data)
     .then((data) => {

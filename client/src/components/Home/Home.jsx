@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Cards from "../Cards/Cards";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllRecipes, getAllTypes , getAllDishTypes} from "../../redux/action";
+import { getAllRecipes, getAllTypes , getAllDishTypes, clearRecipes} from "../../redux/action";
 import Pagination from "../Pagination/Pagination";
 import Nav from "../Nav/Nav";
 
@@ -22,6 +22,7 @@ const Home = () => {
       dispatch(getAllTypes());
       dispatch(getAllDishTypes());
     }, 1000);
+    return dispatch(clearRecipes())
   }, [dispatch]);
   
   return (
