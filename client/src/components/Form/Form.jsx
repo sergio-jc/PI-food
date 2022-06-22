@@ -12,14 +12,14 @@ import CheckBoxDiets from "./inputs/CheckBoxDiets";
 import { useHistory } from "react-router-dom";
 
 const From = () => {
-  const dispatch =useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
     setTimeout(() => {
       dispatch(getAllTypes());
       dispatch(getAllDishTypes());
     }, 100);
   }, [dispatch]);
-  
+
   const [input, setInput] = useState({
     name: "",
     healthScore: "",
@@ -74,7 +74,6 @@ const From = () => {
     false,
     false,
   ]);
-  console.log(checkedDish);
   // new Array(allDishTypes.length).fill(false)
 
   const handleInputsChange = (e) => {
@@ -101,7 +100,6 @@ const From = () => {
       alert(
         "Sorry the name of the recipe already exists try choosing a different name"
       );
-      //! recuerda cuando estes haciendo la ruta delete no te olvides de filtrar el save para que te puedo agregar denuevo la receta Ej : [ 1 ,2 3] => [1 ,2] => 3 ...[1 ,2] error ya existe  => recuerdalo
     } else {
       if (
         errors.name ||
@@ -250,7 +248,7 @@ const From = () => {
                       <input
                         className={errors.image && "danger"}
                         placeholder="URL ej: http://..."
-                        type="url"
+                        type="text"
                         name="image"
                         onChange={(e) => handleInputsChange(e)}
                         value={input.image}
@@ -297,9 +295,7 @@ const From = () => {
                       allDiets={allDiets}
                     />
                     {!checkedState.filter((e) => e === true).length && (
-                      <p className="label_errors">
-                        Please choose one diet ♡
-                      </p>
+                      <p className="label_errors">Please choose one diet ♡</p>
                     )}
                     <label className="label_type">Dish Types :</label>
                     <CheckBoxDiets
