@@ -8,7 +8,6 @@ const RecipeDetail = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   useEffect(() => {
-    dispatch(clearRecipes());
     dispatch(Detail(id));
     return dispatch(clearDetail());
   }, [dispatch, id]);

@@ -9,6 +9,7 @@ const Pagination = ({ setCurrent, size, totalCards, current }) => {
   const display = Math.ceil(size / totalCards);
   
   let total = [];
+  // [ 1,2,3]
 
   for (let i = 1; i <= display; i++) {
     total.push(i);
@@ -30,9 +31,12 @@ const Pagination = ({ setCurrent, size, totalCards, current }) => {
   };
   return (
     <div className="container_button">
+      {
+        1 ===current ? <div></div> :
       <button className="button" onClick={handlePre}>
         {"<"}
       </button>
+      }
       {total.map((e, i) => (
         <button
           className={current === e? 'button active_button':'button'}
@@ -43,9 +47,12 @@ const Pagination = ({ setCurrent, size, totalCards, current }) => {
           {e}
         </button>
       ))}
+      {
+       total[total.length-1] ===current ? <div></div> :
       <button className="button" onClick={handleNext}>
         {">"}
       </button>
+      }
     </div>
   );
 };

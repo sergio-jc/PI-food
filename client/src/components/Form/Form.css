@@ -90,6 +90,7 @@
   .input_text  p{
     color: #6a7f32e4 ;
     font-size: large;
+    font-weight: 400;
   }
 
   .button_create{

@@ -75,7 +75,9 @@ const From = () => {
     false,
   ]);
   // new Array(allDishTypes.length).fill(false)
-
+  let numberDiets = checkedState.filter(e=>e===true).length;
+  let numberDish = checkedDish.filter(e=>e===true).length
+ 
   const handleInputsChange = (e) => {
     setInput({
       ...input,
@@ -144,6 +146,13 @@ const From = () => {
     setAccount([]);
     setCheckedState(new Array(allDiets.length).fill(false));
     setCheckedDish(new Array(allDishTypes.length).fill(false));
+    setErrors({
+      name: "enter a name for your recipe ♡",
+      healthScore: "choose a score  at 1 to 100 ♡",
+      summary: "make a brief summary ♡",
+      image: "choose an image  ♡",
+      analyzedInstructions: "how is your recipe made? ♡",
+    })
   };
   // * -----------------------------------------------
   const handleOnChecked = (position) => {
@@ -213,7 +222,7 @@ const From = () => {
                         onChange={(e) => handleInputsChange(e)}
                         value={input.name}
                       />
-                      {errors.name && <p className="danger">{errors.name}</p>}
+                      {errors.name ? <p className="danger">{errors.name}</p> : <p>Name is correct ✔️</p>}
                     </div>
                     <div>
                       <label>Health Score : </label>
@@ -225,9 +234,9 @@ const From = () => {
                         onChange={(e) => handleInputsChange(e)}
                         value={input.healthScore}
                       />
-                      {errors.healthScore && (
+                      {errors.healthScore?(
                         <p className="healthScore">{errors.healthScore}</p>
-                      )}
+                      ):<p>Valid healthScore ✔️</p>}
                     </div>
                     <div>
                       <label>Summary : </label>
@@ -239,9 +248,9 @@ const From = () => {
                         onChange={(e) => handleInputsChange(e)}
                         value={input.summary}
                       />
-                      {errors.summary && (
+                      {errors.summary ? (
                         <p className="danger">{errors.summary}</p>
-                      )}
+                      ):<p>Aggregate Summary ✔️</p>}
                     </div>
                     <div>
                       <label>Image :</label>
@@ -253,7 +262,7 @@ const From = () => {
                         onChange={(e) => handleInputsChange(e)}
                         value={input.image}
                       />
-                      {errors.image && <p className="danger">{errors.image}</p>}
+                      {errors.image ? <p className="danger">{errors.image}</p>:<p>Valid URL ✔️</p>}
                     </div>
                     <div>
                       <label>Instructions :</label>
@@ -265,9 +274,9 @@ const From = () => {
                         onChange={(e) => handleInputsChange(e)}
                         value={input.analyzedInstructions}
                       />
-                      {errors.analyzedInstructions && (
+                      {errors.analyzedInstructions ? (
                         <p className="danger">{errors.analyzedInstructions}</p>
-                      )}
+                      ):<p>Aggregate Instruction ✔️</p>}
                       <div onClick={onClickNewStep} className={"new_steps"}>
                         New Steps
                       </div>
@@ -294,21 +303,19 @@ const From = () => {
                       handle={handleOnChecked}
                       allDiets={allDiets}
                     />
-                    {!checkedState.filter((e) => e === true).length && (
+                    {!checkedState.filter((e) => e === true).length ? (
                       <p className="label_errors">Please choose one diet ♡</p>
-                    )}
+                    ):<p className="label_errors"> {numberDiets} types diets selected ✔️</p>}
                     <label className="label_type">Dish Types :</label>
                     <CheckBoxDiets
                       state={checkedDish}
                       handle={handleOnCheckedDish}
                       allDiets={allDishTypes}
                     />
-                    {!checkedDish.filter((e) => e === true).length && (
+                    {!checkedDish.filter((e) => e === true).length ? 
                       <p className="label_errors">
-                        {" "}
-                        Choose at least one Dish Type ♡
-                      </p>
-                    )}
+                        Please choose one  ♡
+                      </p>: <p className="label_errors"> {numberDish} types dish selected ✔️</p>}
                   </div>
                 </div>
               </div>
